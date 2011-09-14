@@ -71,6 +71,9 @@
 ;; On OSX, use cmd-r to compile
 (global-set-key (kbd "s-r") 'compile)
 
+;; use buffer-menu instead of list-buffers
+(global-set-key "\C-x\C-b" 'buffer-menu)
+
 ;; Make scrolling not suck.
 (setq scroll-margin 0
       scroll-conservatively 100000
