@@ -47,6 +47,10 @@
 ;; Turn off startup message
 (setq inhibit-startup-message t)
 
+;; Setup backups
+(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
+(setq backup-by-copying t)
+
 ;; On OSX, use cmd-r to compile
 (global-set-key (kbd "s-r") 'compile)
 
