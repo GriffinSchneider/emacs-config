@@ -1,0 +1,18 @@
+[submodule "evil"]
+	path = evil
+	url = https://github.com/emacsmirror/evil.git
+[submodule "evil-surround"]
+	path = evil-surround
+	url = https://github.com/timcharper/evil-surround.git
+[submodule "haskell-mode"]
+	path = haskell-mode
+	url = https://github.com/emacsmirror/haskell-mode.git
+[submodule "sr-speedbar"]
+	path = sr-speedbar
+	url = https://github.com/emacsmirror/sr-speedbar.git
+[submodule "maxframe.el"]
+	path = maxframe.el
+	url = https://github.com/rmm5t/maxframe.el.git
+[submodule "sml-modeline"]
+	path = sml-modeline
+	url = https://github.com/emacsmirror/sml-modeline.git
