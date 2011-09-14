@@ -16,3 +16,6 @@
 [submodule "sml-modeline"]
 	path = sml-modeline
 	url = https://github.com/emacsmirror/sml-modeline.git
+[submodule "zenburn-emacs"]
+	path = zenburn-emacs
+	url = git://github.com/bbatsov/zenburn-emacs.git

@@ -32,10 +32,8 @@
   (define-key evil-insert-state-map (kbd "k") 'gcs-escape-if-next-char-is-j))
 
 
-(when (require 'color-theme nil 'noerror)
-  (setq color-theme-is-global t)
-  (load-theme 'wombat)
-  (color-theme-wombat))
+(when (require 'color-theme-zenburn nil 'noerror)
+  (color-theme-zenburn))
 
 
 (when (require 'maxframe nil 'noerror)
