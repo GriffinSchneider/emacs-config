@@ -4,6 +4,7 @@
   (setq load-path (cons default-directory nil))
   (normal-top-level-add-subdirs-to-load-path)
   (nconc load-path orig-load-path))
+(add-to-list 'load-path "~/emacs-config/maxframe.el")
 
 
 (when (and (require 'evil nil 'noerror)
