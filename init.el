@@ -68,6 +68,9 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
+;; Turn off startup message
+(setq inhibit-startup-message t)
+
 ;; On OSX, use cmd-r to compile
 (global-set-key (kbd "s-r") 'compile)
 
