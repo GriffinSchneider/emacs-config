@@ -72,11 +72,11 @@
 ;; Highlight matching parens
 (show-paren-mode 1)
 
-;; Use C-c [h, j, k, l] for window navigation
-(global-set-key (kbd "C-c h")  'windmove-left)
-(global-set-key (kbd "C-c l") 'windmove-right)
-(global-set-key (kbd "C-c k")    'windmove-up)
-(global-set-key (kbd "C-c j")  'windmove-down)
+;; Use s-[h, j, k, l] for window navigation
+(global-set-key (kbd "s-h")  'windmove-left)
+(global-set-key (kbd "s-l") 'windmove-right)
+(global-set-key (kbd "s-k")    'windmove-up)
+(global-set-key (kbd "s-j")  'windmove-down)
 
 ;; Make C-M-g the same as C-g - in case 'Esc' is pressed accidentally
 (global-set-key "\C-\M-g" 'keyboard-quit)
