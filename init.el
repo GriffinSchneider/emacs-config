@@ -6,8 +6,6 @@
   (nconc load-path orig-load-path))
 (add-to-list 'load-path "~/emacs-config/maxframe.el")
 
-(load "evil-mode-customizations")
-
 
 (require 'color-theme-zenburn nil 'noerror)
 (color-theme-zenburn)
@@ -30,6 +28,9 @@
 (global-set-key (kbd "s-s") 'sr-speedbar-toggle)
 
 
+(load "evil-mode-customizations")
+
+
 ;; Setup haskell-mode
 ;;   NOTE: If the ghci prompt is changed in your .ghci file,
 ;;   inferior-haskell-mode's regex to match the prompt may 
@@ -44,6 +45,7 @@
 (load "~/emacs-config/haskell-mode/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
 
 ;; Turn off startup message
 (setq inhibit-startup-message t)
