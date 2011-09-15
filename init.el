@@ -8,25 +8,26 @@
 
 (load "evil-mode-customizations")
 
-(when (require 'color-theme-zenburn nil 'noerror)
-  (color-theme-zenburn))
+
+(require 'color-theme-zenburn nil 'noerror)
+(color-theme-zenburn)
 
 
-(when (require 'maxframe nil 'noerror)
-  ;; Maximize window on startup
-  (add-hook 'window-setup-hook 'maximize-frame t))
+(require 'maxframe nil 'noerror)
+;; Maximize window on startup
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 
-(when (require 'sml-modeline nil 'noerror)
-  ;; Scroll indicator in modeline
-  (sml-modeline-mode t))
+(require 'sml-modeline nil 'noerror)
+;; Scroll indicator in modeline
+(sml-modeline-mode t)
 
 
-(when (require 'sr-speedbar nil 'noerror)
-  (setq speedbar-show-unknown-files t
-        sr-speedbar-width-x 30
-	sr-speedbar-right-side nil)
-  (global-set-key (kbd "s-s") 'sr-speedbar-toggle))
+(require 'sr-speedbar nil 'noerror)
+(setq speedbar-show-unknown-files t
+      sr-speedbar-width-x 30
+      sr-speedbar-right-side nil)
+(global-set-key (kbd "s-s") 'sr-speedbar-toggle)
 
 
 ;; Setup haskell-mode
