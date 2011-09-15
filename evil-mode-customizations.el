@@ -8,7 +8,6 @@
   ;; Make cursor red in Emacs mode.
   (setq evil-emacs-state-cursor '("red" box))
   
-  ;; make "kj" exit insert mode.
   (defun gcs-escape-if-next-char (c)
     (self-insert-command 1)
     (let ((next-key (read-event)))
@@ -23,4 +22,7 @@
 	(gcs-escape-if-next-char ?j)
       (self-insert-command arg)))
   
-  (define-key evil-insert-state-map (kbd "k") 'gcs-escape-if-next-char-is-j))
+  ;; make "kj" exit insert mode.
+  (define-key evil-insert-state-map (kbd "k") 'gcs-escape-if-next-char-is-j)
+
+)
