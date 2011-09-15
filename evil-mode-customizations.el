@@ -29,4 +29,10 @@
   (define-key evil-normal-state-map " " (lambda () (interactive) (next-line 10)))
   (define-key evil-normal-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
 
+  ;; Use <leader>f for find-file
+  (define-key evil-normal-state-map "\\f" 'find-file)
+
+  ;; Use <leader>w for save-buffer
+  (define-key evil-normal-state-map "\\w" 'save-buffer)
+
 )
