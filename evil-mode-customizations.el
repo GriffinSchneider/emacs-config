@@ -25,4 +25,8 @@
   ;; make "kj" exit insert mode.
   (define-key evil-insert-state-map (kbd "k") 'gcs-escape-if-next-char-is-j)
 
+  ;; Use space and backspace to move up/down 10 lines. 
+  (define-key evil-normal-state-map " " (lambda () (interactive) (next-line 10)))
+  (define-key evil-normal-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
+
 )
