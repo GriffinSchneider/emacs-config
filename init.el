@@ -50,6 +50,9 @@
 ;; Turn off startup message
 (setq inhibit-startup-message t)
 
+;; Turn on winner-mode
+(winner-mode t)
+
 ;; Setup backups
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 (setq backup-by-copying t)
