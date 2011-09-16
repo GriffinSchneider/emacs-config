@@ -27,6 +27,7 @@
 
 ;; Use space and backspace to move up/down 10 lines. 
 (define-key evil-normal-state-map " " (lambda () (interactive) (next-line 10)))
+(define-key evil-visual-state-map " " (lambda () (interactive) (next-line 10)))
 (define-key evil-normal-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
 
 ;; Use <leader>f for find-file
