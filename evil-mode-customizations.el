@@ -41,3 +41,14 @@
 ;; Use <leader>x instead of M-x
 (define-key evil-normal-state-map "\\x" 'execute-extended-command)
 
+;; Use <leader>0 instead of C-x 0
+(define-key evil-normal-state-map "\\0" 'delete-window)
+
+;; Use <leader>1 instead of C-x 1
+(define-key evil-normal-state-map "\\1" 'delete-other-windows)
+
+;; Use <leader>2 instead of C-x 2
+(define-key evil-normal-state-map "\\2" 'split-window-vertically)
+
+;; Use <leader>3 instead of C-x 3
+(define-key evil-normal-state-map "\\3" 'split-window-horizontally)
