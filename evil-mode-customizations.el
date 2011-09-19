@@ -39,6 +39,9 @@
 ;; Use <leader>b for buffer-menu
 (define-key evil-normal-state-map "\\b" 'buffer-menu)
 
+;; Use <leader>c for compile
+(define-key evil-normal-state-map "\\c" 'compile)
+
 ;; Use <leader>x instead of M-x
 (define-key evil-normal-state-map "\\x" 'execute-extended-command)
 
