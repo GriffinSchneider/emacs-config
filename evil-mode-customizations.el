@@ -42,6 +42,9 @@
 ;; Use <leader>c for compile
 (define-key evil-normal-state-map "\\c" 'compile)
 
+;; Use <leader>j for ace-jump-mode
+(define-key evil-normal-state-map "\\j" 'ace-jump-mode)
+
 ;; Use <leader>x instead of M-x
 (define-key evil-normal-state-map "\\x" 'execute-extended-command)
 

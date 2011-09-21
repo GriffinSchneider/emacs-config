@@ -19,3 +19,6 @@
 [submodule "zenburn-emacs"]
 	path = zenburn-emacs
 	url = git://github.com/bbatsov/zenburn-emacs.git
+[submodule "ace-jump-mode"]
+	path = ace-jump-mode
+	url = https://github.com/winterTTr/ace-jump-mode.git
