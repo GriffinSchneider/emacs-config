@@ -42,6 +42,12 @@
 ;; Use <leader>c for compile
 (define-key evil-normal-state-map "\\c" 'compile)
 
+;; Use <leader>e for next-error
+(define-key evil-normal-state-map "\\e" 'next-error)
+
+;; Use <leader>E for previous-erorr
+(define-key evil-normal-state-map "\\E" 'previous-error)
+
 ;; Use <leader>j for ace-jump-mode
 (define-key evil-normal-state-map "\\j" 'ace-jump-mode)
 
