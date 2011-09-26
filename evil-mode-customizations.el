@@ -32,7 +32,8 @@
 
 (define-key evil-normal-state-map "\\f" 'find-file)
 (define-key evil-normal-state-map "\\w" 'save-buffer)
-(define-key evil-normal-state-map "\\b" 'buffer-menu)
+(define-key evil-normal-state-map "\\B" 'buffer-menu)
+(define-key evil-normal-state-map "\\b" 'switch-to-buffer)
 
 (define-key evil-normal-state-map "\\c" 'compile)
 (define-key evil-normal-state-map "\\e" 'next-error)
