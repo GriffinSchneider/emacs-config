@@ -1,3 +1,6 @@
+;; Turn off toolbar
+(tool-bar-mode -1)
+
 ;; Add everything in ~/emacs to the load-path
 (let* ((default-directory "~/emacs-config")
        (orig-load-path load-path))
@@ -6,10 +9,8 @@
   (nconc load-path orig-load-path))
 (add-to-list 'load-path "~/emacs-config/maxframe.el")
 
-
-(require 'color-theme-zenburn nil 'noerror)
-(color-theme-zenburn)
-
+(add-to-list 'custom-theme-load-path "~/emacs-config/zenburn-emacs")
+(load-theme 'zenburn 'no-confirm)
 
 (require 'maxframe nil 'noerror)
 ;; Maximize window on startup
