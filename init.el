@@ -9,8 +9,10 @@
   (nconc load-path orig-load-path))
 (add-to-list 'load-path "~/emacs-config/maxframe.el")
 
+
 (add-to-list 'custom-theme-load-path "~/emacs-config/zenburn-emacs")
 (load-theme 'zenburn 'no-confirm)
+
 
 (require 'maxframe nil 'noerror)
 ;; Maximize window on startup
@@ -84,6 +86,9 @@
 
 ;; Highlight matching parens
 (show-paren-mode 1)
+
+;; Use "y or n" instead of "yes or no"
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Use s-[h, j, k, l] for window navigation
 (global-set-key (kbd "s-h")  'windmove-left)
