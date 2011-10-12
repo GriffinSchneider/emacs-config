@@ -14,6 +14,15 @@
 (load-theme 'zenburn 'no-confirm)
 
 
+(add-to-list 'load-path (expand-file-name "~/emacs-config/emacs-eclim"))
+;; only add the vendor path when you want to use the libraries provided with emacs-eclim
+(add-to-list 'load-path (expand-file-name "~/emacs-config/emacs-eclim/vendor"))
+(require 'eclim)
+(setq eclim-auto-save t)
+(global-eclim-mode)
+(setq eclim-eclipse-dirs "~/Dev/eclipse")
+
+
 (require 'maxframe nil 'noerror)
 ;; Maximize window on startup
 (add-hook 'window-setup-hook 'maximize-frame t)
