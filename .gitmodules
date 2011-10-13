@@ -25,3 +25,6 @@
 [submodule "emacs-eclim"]
 	path = emacs-eclim
 	url = https://github.com/senny/emacs-eclim.git
+[submodule "company"]
+	path = company
+	url = https://github.com/jwiegley/company.git

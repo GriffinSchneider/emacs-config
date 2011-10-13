@@ -23,6 +23,12 @@
 (setq eclim-eclipse-dirs "~/Dev/eclipse")
 
 
+(require 'company)
+(require 'company-emacs-eclim)
+(company-emacs-eclim-setup)
+(global-company-mode t)
+
+
 (require 'maxframe nil 'noerror)
 ;; Maximize window on startup
 (add-hook 'window-setup-hook 'maximize-frame t)
