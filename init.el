@@ -24,6 +24,7 @@
 (require 'company-emacs-eclim)
 (company-emacs-eclim-setup)
 (global-company-mode t)
+(global-set-key (kbd "C-SPC") 'company-complete)
 
 
 (require 'maxframe nil 'noerror)
