@@ -53,6 +53,9 @@
 (load "org-mode-customizations")
 
 
+(load "buffer-menu-buffer-font-lock-keywords")
+
+
 ;; Setup haskell-mode
 ;;   NOTE: If the ghci prompt is changed in your .ghci file,
 ;;   inferior-haskell-mode's regex to match the prompt may 
