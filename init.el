@@ -32,11 +32,6 @@
 (global-set-key (kbd "C-SPC") 'company-complete)
 
 
-(require 'maxframe nil 'noerror)
-;; Maximize window on startup
-(add-hook 'window-setup-hook 'maximize-frame t)
-
-
 (require 'sml-modeline nil 'noerror)
 ;; Scroll indicator in modeline
 (sml-modeline-mode t)

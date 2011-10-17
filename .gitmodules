@@ -10,9 +10,6 @@
 [submodule "sr-speedbar"]
 	path = sr-speedbar
 	url = https://github.com/emacsmirror/sr-speedbar.git
-[submodule "maxframe.el"]
-	path = maxframe.el
-	url = https://github.com/rmm5t/maxframe.el.git
 [submodule "sml-modeline"]
 	path = sml-modeline
 	url = https://github.com/emacsmirror/sml-modeline.git
