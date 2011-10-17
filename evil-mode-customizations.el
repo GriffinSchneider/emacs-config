@@ -14,7 +14,7 @@
     (if (= c next-key)
 	(progn
 	  (delete-backward-char 1)
-	  (evil-esc))
+	  (evil-normal-state))
         (setq unread-command-events (list next-key)))))
 (defun gcs-escape-if-next-char-is-j (arg)
   (interactive "p")
