@@ -17,3 +17,6 @@
     (font-lock-fontify-buffer)))
 
 (add-hook 'buffer-menu-mode-hook 'buffer-menu-custom-font-lock)
+
+
+(provide 'buffer-menu-customizations)

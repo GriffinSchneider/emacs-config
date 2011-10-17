@@ -47,3 +47,6 @@
 (define-key evil-normal-state-map "\\1" 'delete-other-windows)
 (define-key evil-normal-state-map "\\2" 'split-window-vertically)
 (define-key evil-normal-state-map "\\3" 'split-window-horizontally)
+
+
+(provide 'evil-mode-customizations)

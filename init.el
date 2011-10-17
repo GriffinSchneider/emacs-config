@@ -14,6 +14,11 @@
 (load-theme 'zenburn 'no-confirm)
 
 
+(require   'evil-mode-customizations)
+(require    'org-mode-customizations)
+(require 'buffer-menu-customizations)
+
+
 (require 'eclim)
 (setq eclim-auto-save t)
 (global-eclim-mode)
@@ -45,15 +50,6 @@
 
 
 (require 'ace-jump-mode)
-
-
-(load "evil-mode-customizations")
-
-
-(load "org-mode-customizations")
-
-
-(load "buffer-menu-buffer-font-lock-keywords")
 
 
 ;; Setup haskell-mode
