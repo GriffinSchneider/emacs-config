@@ -28,3 +28,6 @@
 [submodule "magit"]
 	path = magit
 	url = https://github.com/magit/magit.git
+[submodule "android-mode"]
+	path = android-mode
+	url = https://github.com/remvee/android-mode.git

@@ -19,6 +19,9 @@
 (require 'buffer-menu-customizations)
 
 
+(require 'android-mode)
+
+
 (require 'magit)
 
 
