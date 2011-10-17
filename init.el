@@ -63,6 +63,10 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 
+;; Setup starting frame size
+(add-to-list 'default-frame-alist '(height . 50))
+(add-to-list 'default-frame-alist '(width . 155))
+
 ;; Turn off startup message
 (setq inhibit-startup-message t)
 
