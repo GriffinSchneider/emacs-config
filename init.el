@@ -19,6 +19,9 @@
 (require 'buffer-menu-customizations)
 
 
+(require 'magit)
+
+
 (require 'eclim)
 (setq eclim-auto-save t)
 (global-eclim-mode)

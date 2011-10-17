@@ -25,3 +25,6 @@
 [submodule "company"]
 	path = company
 	url = https://github.com/jwiegley/company.git
+[submodule "magit"]
+	path = magit
+	url = https://github.com/magit/magit.git
