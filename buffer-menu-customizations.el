@@ -1,3 +1,5 @@
+(setq Buffer-menu-buffer+size-width 40)
+
 (setq buffer-menu-buffer-font-lock-keywords
       '(("^....[*]Man .*Man.*"   . font-lock-variable-name-face) ; Man page
         (".*Dired.*"             . font-lock-comment-face)       ; Dired
