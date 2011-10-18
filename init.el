@@ -17,18 +17,12 @@
 (require   'evil-mode-customizations)
 (require    'org-mode-customizations)
 (require 'buffer-menu-customizations)
-
+(require       'eclim-customizations)
 
 (require 'android-mode)
 
 
 (require 'magit)
-
-
-(require 'eclim)
-(setq eclim-auto-save t)
-(global-eclim-mode)
-(setq eclim-eclipse-dirs '("~/Dev/eclipse"))
 
 
 (require 'company)
