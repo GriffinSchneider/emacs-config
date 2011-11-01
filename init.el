@@ -78,6 +78,9 @@
 ;; Turn on winner-mode
 (winner-mode t)
 
+;; Use 4-wide tabs
+(setq tab-width 4)
+
 ;; Setup backups
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 (setq backup-by-copying t)
