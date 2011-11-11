@@ -30,23 +30,29 @@
 (define-key evil-visual-state-map " " (lambda () (interactive) (next-line 10)))
 (define-key evil-normal-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
 
-(define-key evil-normal-state-map "\\f" 'find-file)
-(define-key evil-normal-state-map "\\w" 'save-buffer)
-(define-key evil-normal-state-map "\\b" 'buffer-menu)
-(define-key evil-normal-state-map "\\B" 'switch-to-buffer)
+;; Setup prefix keybindings
+(defconst gcs-prefix-key "\\")
+(defun gcs-define-key-with-prefix (key binding)
+  (define-key evil-normal-state-map (concat gcs-prefix-key key) binding)
+  (define-key evil-motion-state-map (concat gcs-prefix-key key) binding))
 
-(define-key evil-normal-state-map "\\c" 'compile)
-(define-key evil-normal-state-map "\\e" 'next-error)
-(define-key evil-normal-state-map "\\E" 'previous-error)
+(gcs-define-key-with-prefix "f" 'find-file)
+(gcs-define-key-with-prefix "w" 'save-buffer)
+(gcs-define-key-with-prefix "b" 'buffer-menu)
+(gcs-define-key-with-prefix "B" 'switch-to-buffer)
 
-(define-key evil-normal-state-map "\\j" 'ace-jump-mode)
+(gcs-define-key-with-prefix "c" 'compile)
+(gcs-define-key-with-prefix "e" 'next-error)
+(gcs-define-key-with-prefix "E" 'previous-error)
 
-(define-key evil-normal-state-map "\\x" 'execute-extended-command)
+(gcs-define-key-with-prefix "j" 'ace-jump-mode)
 
-(define-key evil-normal-state-map "\\0" 'delete-window)
-(define-key evil-normal-state-map "\\1" 'delete-other-windows)
-(define-key evil-normal-state-map "\\2" 'split-window-vertically)
-(define-key evil-normal-state-map "\\3" 'split-window-horizontally)
+(gcs-define-key-with-prefix "x" 'execute-extended-command)
+
+(gcs-define-key-with-prefix "0" 'delete-window)
+(gcs-define-key-with-prefix "1" 'delete-other-windows)
+(gcs-define-key-with-prefix "2" 'split-window-vertically)
+(gcs-define-key-with-prefix "3" 'split-window-horizontally)
 
 
 (provide 'evil-mode-customizations)
