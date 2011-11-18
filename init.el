@@ -86,6 +86,9 @@
 ;; Use 4-wide tabs
 (setq tab-width 4)
 
+;; Use electric-indent-mode
+(electric-indent-mode)
+
 ;; Setup backups
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 (setq backup-by-copying t)
