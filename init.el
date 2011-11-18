@@ -1,3 +1,8 @@
+;; The following variables should be set by a local config file:
+;;   eclim-executable 
+;;   android-mode-sdk-dir
+
+
 ;; Turn off toolbar
 (tool-bar-mode -1)
 
