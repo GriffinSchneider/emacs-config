@@ -4,7 +4,7 @@
 
 
 ;; Turn off toolbar
-(tool-bar-mode -1)
+(if window-system (tool-bar-mode -1))
 
 ;; Add everything in ~/emacs to the load-path
 (let* ((default-directory "~/emacs-config")
