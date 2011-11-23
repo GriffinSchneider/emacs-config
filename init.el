@@ -117,6 +117,9 @@
 ;; Use "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Use C-s-f to toggle fullscreen
+(global-set-key (kbd "C-s-f") 'ns-toggle-fullscreen)
+
 ;; Use s-[h, j, k, l] for window navigation
 (global-set-key (kbd "s-h")  'windmove-left)
 (global-set-key (kbd "s-l") 'windmove-right)
