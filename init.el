@@ -35,6 +35,12 @@
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 (setq lua-indent-level 4)
 
+
+(require 'yasnippet) ;; not yasnippet-bundle
+(setq yas/snippet-dirs '("~/emacs-config/yasnippet/snippets"))
+(yas/initialize)
+
+
 (require 'company)
 (require 'company-emacs-eclim)
 (company-emacs-eclim-setup)

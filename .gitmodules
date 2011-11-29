@@ -34,3 +34,6 @@
 [submodule "lua-mode"]
 	path = lua-mode
 	url = https://github.com/immerrr/lua-mode.git
+[submodule "yasnippet"]
+	path = yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
