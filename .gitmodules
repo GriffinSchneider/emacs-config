@@ -37,3 +37,6 @@
 [submodule "yasnippet"]
 	path = yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "key-chord"]
+	path = key-chord
+	url = https://github.com/emacsmirror/key-chord.git
