@@ -11,7 +11,11 @@
 ;; Use space and backspace to move up/down 10 lines. 
 (define-key evil-normal-state-map " " (lambda () (interactive) (next-line 10)))
 (define-key evil-visual-state-map " " (lambda () (interactive) (next-line 10)))
+(define-key evil-motion-state-map " " (lambda () (interactive) (next-line 10)))
+
 (define-key evil-normal-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
+(define-key evil-visual-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
+(define-key evil-motion-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
 
 ;; Setup prefix keybindings
 (defconst gcs-prefix-key "\\")
