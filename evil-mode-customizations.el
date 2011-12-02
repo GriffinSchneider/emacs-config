@@ -34,7 +34,8 @@
 
 (gcs-define-key-with-prefix "j" 'ace-jump-mode)
 
-(gcs-define-key-with-prefix "x" 'execute-extended-command)
+(gcs-define-key-with-prefix "x" 'smex)
+(gcs-define-key-with-prefix "X" 'smex-major-mode-commands)
 
 (gcs-define-key-with-prefix "0" 'delete-window)
 (gcs-define-key-with-prefix "1" 'delete-other-windows)
