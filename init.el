@@ -129,6 +129,9 @@
 ;; Use "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Use C-w for backward-kill-word in the minibuffer
+(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
+
 ;; Use C-s-f to toggle fullscreen
 (global-set-key (kbd "C-s-f") 'ns-toggle-fullscreen)
 
