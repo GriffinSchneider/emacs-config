@@ -142,6 +142,16 @@
 ;; Use C-s-f to toggle fullscreen
 (global-set-key (kbd "C-s-f") 'ns-toggle-fullscreen)
 
+;; Use [C-]s-[y, u, i, o] to resize windows
+(global-set-key (kbd "s-y")   (lambda () (interactive) (shrink-window-horizontally 5)))
+(global-set-key (kbd "C-s-y") (lambda () (interactive) (shrink-window-horizontally 1)))
+(global-set-key (kbd "s-u")   (lambda () (interactive) (shrink-window 5)))
+(global-set-key (kbd "C-s-u") (lambda () (interactive) (shrink-window 1)))
+(global-set-key (kbd "s-i")   (lambda () (interactive) (enlarge-window 5)))
+(global-set-key (kbd "C-s-i") (lambda () (interactive) (enlarge-window 1)))
+(global-set-key (kbd "s-o")   (lambda () (interactive) (enlarge-window-horizontally 5)))
+(global-set-key (kbd "C-s-o") (lambda () (interactive) (enlarge-window-horizontally 1)))
+
 ;; Use s-[h, j, k, l] for window navigation
 (global-set-key (kbd "s-h")  'windmove-left)
 (global-set-key (kbd "s-l") 'windmove-right)
