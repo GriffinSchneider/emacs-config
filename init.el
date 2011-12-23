@@ -3,8 +3,9 @@
 ;;   android-mode-sdk-dir
 
 
-;; Turn off toolbar
+;; Turn off toolbar and menu bar
 (if window-system (tool-bar-mode -1))
+(if window-system (menu-bar-mode -1))
 
 ;; Add everything in ~/emacs to the load-path
 (let* ((default-directory "~/emacs-config")
