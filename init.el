@@ -56,10 +56,14 @@
 
 
 (require 'company)
-(require 'company-emacs-eclim)
-(company-emacs-eclim-setup)
 (global-company-mode t)
 (global-set-key (kbd "C-SPC") 'company-complete)
+;; stop company from opening completion window when you're not typing
+(setq company-begin-commands '(self-insert-command))
+
+
+(require 'company-emacs-eclim)
+(company-emacs-eclim-setup)
 
 
 (require 'sml-modeline nil 'noerror)
