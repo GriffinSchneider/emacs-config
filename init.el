@@ -2,21 +2,22 @@
 ;;   eclim-executable 
 ;;   android-mode-sdk-dir
 
+(setq gcs-config-directory (file-name-directory load-file-name))
 
 ;; Turn off toolbar and menu bar
 (if window-system (tool-bar-mode -1))
 (if window-system (menu-bar-mode -1))
 
-;; Add everything in ~/emacs to the load-path
-(let* ((default-directory "~/emacs-config")
+;; Add everything in this directory to the load-path
+(let* ((default-directory gcs-config-directory)
        (orig-load-path load-path))
   (setq load-path (cons default-directory nil))
   (normal-top-level-add-subdirs-to-load-path)
   (nconc load-path orig-load-path))
-(add-to-list 'load-path "~/emacs-config/maxframe.el")
+(add-to-list 'load-path (concat gcs-config-directory "maxframe.el"))
 
 
-(add-to-list 'custom-theme-load-path "~/emacs-config/zenburn-emacs")
+(add-to-list 'custom-theme-load-path (concat gcs-config-directory "zenburn-emacs"))
 (load-theme 'zenburn 'no-confirm)
 
 
