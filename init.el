@@ -52,7 +52,7 @@
 
 
 (require 'yasnippet) ;; not yasnippet-bundle
-(setq yas/snippet-dirs '("~/emacs-config/yasnippet/snippets"))
+(setq yas/snippet-dirs (list (concat gcs-config-directory "yasnippet/snippets")))
 (yas/initialize)
 
 
@@ -93,7 +93,7 @@
 ;;
 ;;  where REGEX matches the ghci prompt. Otherwise, emacs will hang on 
 ;;  inferior-haskell-load-file.
-(load "~/emacs-config/haskell-mode/haskell-site-file")
+(load (concat gcs-config-directory "haskell-mode/haskell-site-file"))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
