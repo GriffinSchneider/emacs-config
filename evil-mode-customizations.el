@@ -1,5 +1,6 @@
 (require 'evil)
 (require 'surround)
+(require 'magit)
 
 ;; Start In evil-mode with surround.vim emulation
 (evil-mode 1)
@@ -19,6 +20,8 @@
 
 ;; Setup prefix keybindings
 (defconst gcs-prefix-key "\\")
+(define-key evil-normal-state-map gcs-prefix-key nil)
+(define-key evil-motion-state-map gcs-prefix-key nil)
 (defun gcs-define-key-with-prefix (key binding)
   (define-key evil-normal-state-map (concat gcs-prefix-key key) binding)
   (define-key evil-motion-state-map (concat gcs-prefix-key key) binding)
