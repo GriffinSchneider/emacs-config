@@ -28,6 +28,7 @@
   (define-key magit-mode-map (concat gcs-prefix-key key) binding))
 
 (gcs-define-key-with-prefix "f" 'find-file)
+(gcs-define-key-with-prefix "F" 'find-alternate-file)
 (gcs-define-key-with-prefix "w" 'save-buffer)
 (gcs-define-key-with-prefix "b" 'buffer-menu)
 (gcs-define-key-with-prefix "B" 'switch-to-buffer)
