@@ -21,7 +21,8 @@
 (defconst gcs-prefix-key "\\")
 (defun gcs-define-key-with-prefix (key binding)
   (define-key evil-normal-state-map (concat gcs-prefix-key key) binding)
-  (define-key evil-motion-state-map (concat gcs-prefix-key key) binding))
+  (define-key evil-motion-state-map (concat gcs-prefix-key key) binding)
+  (define-key magit-mode-map (concat gcs-prefix-key key) binding))
 
 (gcs-define-key-with-prefix "f" 'find-file)
 (gcs-define-key-with-prefix "w" 'save-buffer)
