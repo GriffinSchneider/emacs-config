@@ -7,7 +7,8 @@
 (global-surround-mode 1)
 
 ;; Make cursor red in Emacs mode.
-(setq evil-emacs-state-cursor '("red" box))
+(setq evil-emacs-state-cursor '("red" box)
+      evil-cross-lines t)
 
 ;; Use space and backspace to move up/down 10 lines. 
 (define-key evil-normal-state-map " " (lambda () (interactive) (next-line 10)))
