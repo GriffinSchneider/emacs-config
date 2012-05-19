@@ -48,5 +48,22 @@
 (gcs-define-key-with-prefix "2" 'split-window-vertically)
 (gcs-define-key-with-prefix "3" 'split-window-horizontally)
 
+;; Use "jk" to exit insert state
+(evil-define-command gcs-evil-maybe-exit ()
+  :repeat change
+  (interactive)
+  (let ((modified (buffer-modified-p))
+        (entry-key ?j)
+        (exit-key ?k))
+    (insert entry-key)
+    (let ((evt (read-event (format "Insert %c to exit insert state" exit-key) nil 0.5)))
+      (cond
+       ((null evt) (message ""))
+       ((and (integerp evt) (char-equal evt exit-key))
+          (delete-char -1)
+          (set-buffer-modified-p modified)
+          (push 'escape unread-command-events))
+       (t (push evt unread-command-events))))))
+(define-key evil-insert-state-map "j" 'gcs-evil-maybe-exit)
 
 (provide 'evil-mode-customizations)
