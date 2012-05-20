@@ -42,6 +42,8 @@
 
 
 (require 'magit)
+;; "q" always kills magit buffers
+(define-key magit-mode-map "q" (lambda () (interactive) (magit-quit-window 'kill-buffer)))
 
 
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
