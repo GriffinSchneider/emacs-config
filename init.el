@@ -2,7 +2,8 @@
 ;;   eclim-executable 
 ;;   android-mode-sdk-dir
 
-(setq gcs-config-directory (file-name-directory load-file-name))
+(when load-in-progress
+  (setq gcs-config-directory (file-name-directory load-file-name)))
 
 ;; Turn off toolbar and menu bar
 (if window-system (tool-bar-mode -1))
