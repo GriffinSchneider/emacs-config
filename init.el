@@ -27,6 +27,10 @@
 (require       'eclim-customizations)
 
 
+(require 'iswitchb)
+(iswitchb-mode)
+
+
 (require 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
