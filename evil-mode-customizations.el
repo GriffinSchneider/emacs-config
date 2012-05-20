@@ -73,4 +73,14 @@
   (gcs-evil-maybe-exit ?k ?j))
 (define-key evil-insert-state-map "k" 'gcs-evil-maybe-exit-k)
 
+(defun gcs-toggle-tab-width-setting ()
+    "Toggle setting tab widths between 4 and 8"
+    (interactive)
+    (setq tab-width (cond ((= tab-width 8) 4)
+													((= tab-width 4) 2)
+													(t 8)))
+		(message (format "Tab width is now %d" tab-width))
+    (redraw-display))
+(gcs-define-key-with-prefix "t" 'gcs-toggle-tab-width-setting)
+
 (provide 'evil-mode-customizations)
