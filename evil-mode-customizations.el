@@ -33,6 +33,9 @@
 (gcs-define-key-with-prefix "w" 'save-buffer)
 (gcs-define-key-with-prefix "b" 'buffer-menu)
 (gcs-define-key-with-prefix "B" 'iswitchb-buffer)
+(gcs-define-key-with-prefix "k" 'delete-window)
+(gcs-define-key-with-prefix "K" 'kill-buffer)
+(gcs-define-key-with-prefix "\\K" 'kill-buffer-and-window)
 
 (gcs-define-key-with-prefix "c" 'compile)
 (gcs-define-key-with-prefix "e" 'next-error)
