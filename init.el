@@ -42,6 +42,7 @@
 
 
 (require 'magit)
+(require 'magit-blame)
 ;; "q" always kills magit buffers
 (define-key magit-mode-map "q" (lambda () (interactive) (magit-quit-window 'kill-buffer)))
 
