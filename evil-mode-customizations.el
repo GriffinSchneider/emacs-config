@@ -34,7 +34,14 @@
 (gcs-define-key-with-prefix "b" 'buffer-menu)
 (gcs-define-key-with-prefix "B" 'iswitchb-buffer)
 (gcs-define-key-with-prefix "k" 'delete-window)
-(gcs-define-key-with-prefix "K" 'kill-buffer)
+;; "\K" kills the buffer without asking and refreshes the buffer list (in case
+;; the kill switches to it).
+(gcs-define-key-with-prefix "K"
+  (lambda ()
+  	(interactive)
+  	(kill-buffer (current-buffer))
+  	(when (Buffer-menu-buffer nil)
+			(revert-buffer (Buffer-menu-buffer nil)))))
 (gcs-define-key-with-prefix "\\K" 'kill-buffer-and-window)
 
 (gcs-define-key-with-prefix "c" 'compile)
