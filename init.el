@@ -30,6 +30,7 @@
 
 (require 'iswitchb)
 (iswitchb-mode)
+(setq iswitchb-buffer-ignore (cons "\\*Buffer List\\*" iswitchb-buffer-ignore))
 
 
 (require 'smex)
