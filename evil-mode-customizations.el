@@ -10,14 +10,10 @@
 (setq evil-emacs-state-cursor '("red" box)
       evil-cross-lines t)
 
-;; Use space and backspace to move up/down 10 lines. 
-(define-key evil-normal-state-map " " (lambda () (interactive) (next-line 10)))
-(define-key evil-visual-state-map " " (lambda () (interactive) (next-line 10)))
-(define-key evil-motion-state-map " " (lambda () (interactive) (next-line 10)))
-
-(define-key evil-normal-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
-(define-key evil-visual-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
-(define-key evil-motion-state-map (kbd "DEL") (lambda () (interactive) (previous-line 10)))
+;; Use space for ace-jump
+(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
+(define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-char-mode)
+(define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-line-mode)
 
 ;; Setup prefix keybindings
 (defconst gcs-prefix-key "\\")
