@@ -29,7 +29,7 @@
 (gcs-define-key-with-prefix "w" 'save-buffer)
 (gcs-define-key-with-prefix "W" 'write-file)
 (gcs-define-key-with-prefix "b" 'buffer-menu)
-(gcs-define-key-with-prefix "B" 'iswitchb-buffer)
+(gcs-define-key-with-prefix "v" 'iswitchb-buffer)
 (gcs-define-key-with-prefix "k" 'delete-window)
 ;; "\K" kills the buffer without asking and refreshes the buffer list (in case
 ;; the kill switches to it).
