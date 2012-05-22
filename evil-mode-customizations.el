@@ -90,4 +90,11 @@
     (redraw-display))
 (gcs-define-key-with-prefix "t" 'gcs-toggle-tab-width-setting)
 
+(loop for (mode . state) in '((inferior-emacs-lisp-mode  . emacs)
+                              (comint-mode               . emacs)
+                              (shell-mode                . emacs)
+                              (term-mode                 . emacs)
+                              (magit-branch-manager-mode . emacs))
+      do (evil-set-initial-state mode state))
+
 (provide 'evil-mode-customizations)
