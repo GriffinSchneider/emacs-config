@@ -27,6 +27,7 @@
 (gcs-define-key-with-prefix "f" 'find-file)
 (gcs-define-key-with-prefix "F" 'find-alternate-file)
 (gcs-define-key-with-prefix "w" 'save-buffer)
+(gcs-define-key-with-prefix "W" 'write-file)
 (gcs-define-key-with-prefix "b" 'buffer-menu)
 (gcs-define-key-with-prefix "B" 'iswitchb-buffer)
 (gcs-define-key-with-prefix "k" 'delete-window)
