@@ -43,6 +43,7 @@
 (gcs-define-key-with-prefix "c" 'compile)
 (gcs-define-key-with-prefix "e" 'next-error)
 (gcs-define-key-with-prefix "E" 'previous-error)
+(gcs-define-key-with-prefix "r" 'eval-buffer)
 
 (gcs-define-key-with-prefix "j" 'ace-jump-mode)
 
