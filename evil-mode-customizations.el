@@ -39,7 +39,6 @@
   	(kill-buffer (current-buffer))
   	(when (Buffer-menu-buffer nil)
 			(revert-buffer (Buffer-menu-buffer nil)))))
-(gcs-define-key-with-prefix "\\K" 'kill-buffer-and-window)
 
 (gcs-define-key-with-prefix "c" 'compile)
 (gcs-define-key-with-prefix "e" 'next-error)
@@ -80,6 +79,18 @@
   (interactive)
   (gcs-evil-maybe-exit ?k ?j))
 (define-key evil-insert-state-map "k" 'gcs-evil-maybe-exit-k)
+
+(defun comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command.
+   If no region is selected and current line is not blank and we are not at the end of the line,
+   then comment current line.
+   Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+(gcs-define-key-with-prefix "\\" 'comment-dwim-line)
 
 (defun gcs-toggle-tab-width-setting ()
     "Toggle setting tab widths between 4 and 8"
