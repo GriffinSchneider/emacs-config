@@ -13,6 +13,7 @@
 ;; Use space for ace-jump
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
 (define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-char-mode)
+(define-key evil-normal-state-map (kbd "M-SPC") 'ace-jump-char-mode)
 (define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-line-mode)
 
 ;; Setup prefix keybindings
