@@ -117,6 +117,10 @@
 ;; Use electric-indent-mode
 (electric-indent-mode)
 
+;; Always show line and column numbers in mode-line
+(setq line-number-mode t)
+(setq column-number-mode t)
+
 ;; Setup backups
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 (setq backup-by-copying t)
