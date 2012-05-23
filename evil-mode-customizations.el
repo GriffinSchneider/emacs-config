@@ -16,6 +16,15 @@
 (define-key evil-normal-state-map (kbd "M-SPC") 'ace-jump-char-mode)
 (define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-line-mode)
 
+;; For some reason, magit overrides the k binding if I don't use
+;;  evil-add-hjkl-bindings.
+(evil-add-hjkl-bindings magit-mode-map 'emacs
+  "K" 'magit-discard-item
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section
+  "l" 'magit-key-mode-popup-logging
+  "h" 'magit-toggle-diff-refine-hunk)
+
 ;; Setup prefix keybindings
 (defconst gcs-prefix-key "\\")
 (define-key evil-normal-state-map gcs-prefix-key nil)
