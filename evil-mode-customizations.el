@@ -19,6 +19,9 @@
 (gcs-define-evil-motion-key (kbd "s-SPC") 'ace-jump-char-mode)
 (gcs-define-evil-motion-key (kbd "C-SPC") 'ace-jump-line-mode)
 
+(define-key evil-normal-state-map "'" 'evil-goto-mark)
+(define-key evil-normal-state-map "`" 'evil-goto-mark-line)
+
 ;; For some reason, magit overrides the k binding if I don't use
 ;;  evil-add-hjkl-bindings.
 (evil-add-hjkl-bindings magit-mode-map 'emacs
