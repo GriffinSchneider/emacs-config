@@ -11,10 +11,13 @@
       evil-cross-lines t)
 
 ;; Use space for ace-jump
-(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-word-mode)
-(define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-char-mode)
-(define-key evil-normal-state-map (kbd "M-SPC") 'ace-jump-char-mode)
-(define-key evil-normal-state-map (kbd "C-SPC") 'ace-jump-line-mode)
+(defun gcs-define-evil-motion-key (key def)
+  (define-key evil-normal-state-map key def)
+  (define-key evil-visual-state-map key def)
+  (define-key evil-motion-state-map key def))
+(gcs-define-evil-motion-key (kbd "SPC") 'ace-jump-word-mode)
+(gcs-define-evil-motion-key (kbd "s-SPC") 'ace-jump-char-mode)
+(gcs-define-evil-motion-key (kbd "C-SPC") 'ace-jump-line-mode)
 
 ;; For some reason, magit overrides the k binding if I don't use
 ;;  evil-add-hjkl-bindings.
