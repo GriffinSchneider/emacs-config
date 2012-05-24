@@ -72,11 +72,11 @@
 (gcs-define-key-with-prefix "2" 'split-window-vertically)
 (gcs-define-key-with-prefix "3" 'split-window-horizontally)
 
-;; Use j and k pressed within .05 seconds to exit insert mode
+;; Use j and k pressed within .15 seconds to exit insert mode
 (defun gcs-evil-maybe-exit (entry-key exit-key)
   (let ((modified (buffer-modified-p)))
     (insert entry-key)
-    (let ((evt (read-event nil nil 0.05)))
+    (let ((evt (read-event nil nil 0.15)))
       (cond
        ((null evt) (message ""))
        ((and (integerp evt) (char-equal evt exit-key))
