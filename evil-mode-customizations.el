@@ -29,7 +29,8 @@
   "j" 'magit-goto-next-section
   "k" 'magit-goto-previous-section
   "l" 'magit-key-mode-popup-logging
-  "h" 'magit-toggle-diff-refine-hunk)
+  "h" 'magit-toggle-diff-refine-hunk
+  ":" 'magit-git-command)
 
 ;; Setup prefix keybindings
 (defconst gcs-prefix-key "\\")
