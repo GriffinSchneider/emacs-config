@@ -28,6 +28,12 @@
 (require       'eclim-customizations)
 
 
+(require 'uniquify)
+(setq
+  uniquify-buffer-name-style 'post-forward
+  uniquify-separator ":")
+
+
 (require 'iswitchb)
 (iswitchb-mode)
 (setq iswitchb-buffer-ignore (cons "\\*Buffer List\\*" iswitchb-buffer-ignore))
