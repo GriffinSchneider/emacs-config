@@ -173,3 +173,8 @@
 
 ;; Make C-M-g the same as C-g - in case 'Esc' is pressed accidentally
 (global-set-key "\C-\M-g" 'keyboard-quit)
+
+
+;; Prevent annoying "Active processes exist" query when Emacs is quit
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  (flet ((process-list ())) ad-do-it))
