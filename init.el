@@ -6,8 +6,8 @@
   (setq gcs-config-directory (file-name-directory load-file-name)))
 
 ;; Turn off toolbar and menu bar
-(if window-system (tool-bar-mode -1))
-(if window-system (menu-bar-mode -1))
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 
 ;; Add everything in this directory to the load-path
 (let* ((default-directory gcs-config-directory)
