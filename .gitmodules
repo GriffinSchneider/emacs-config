@@ -43,3 +43,6 @@
 [submodule "popup-el"]
 	path = popup-el
 	url = https://github.com/m2ym/popup-el.git
+[submodule "emacs-powerline"]
+	path = emacs-powerline
+	url = git://github.com/jonathanchu/emacs-powerline.git
