@@ -50,13 +50,13 @@
 
 (require 'powerline)
 (global-set-key (kbd "C-SPC") 'auto-complete)
+(setq powerline-color1 "#598559")
+(setq powerline-color2 "#383838")
 (setq powerline-arrow-shape 'arrow14)
-(set-face-font 'mode-line "-apple-Inconsolata-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+(set-face-font 'mode-line "Inconsolata-12")
 (set-face-foreground 'mode-line "#030303")
 (set-face-background 'mode-line "#f0dfaf")
-(set-face-font 'mode-line-inactive "-apple-Inconsolata-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-(set-face-foreground 'mode-line-inactive "#f9f9f9")
-(set-face-background 'mode-line-inactive "#454545")
+(set-face-font 'mode-line-inactive "Inconsolata-12")
 
 
 (require 'magit)
