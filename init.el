@@ -22,10 +22,11 @@
 (load-theme 'zenburn 'no-confirm)
 
 
-(require   'evil-mode-customizations)
-(require    'org-mode-customizations)
-(require 'buffer-menu-customizations)
-(require       'eclim-customizations)
+(require     'evil-mode-customizations)
+(require      'org-mode-customizations)
+(require   'buffer-menu-customizations)
+(require         'eclim-customizations)
+(require 'auto-complete-customizations)
 
 
 (require 'uniquify)
@@ -49,7 +50,6 @@
 
 
 (require 'powerline)
-(global-set-key (kbd "C-SPC") 'auto-complete)
 (setq powerline-color1 "#598559")
 (setq powerline-color2 "#383838")
 (setq powerline-arrow-shape 'arrow14)
@@ -74,17 +74,6 @@
 (require 'yasnippet) ;; not yasnippet-bundle
 (setq yas/snippet-dirs (list (concat gcs-config-directory "yasnippet/snippets")))
 (yas/initialize)
-
-
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories (concat gcs-config-directory "auto-complete/dict"))
-(ac-config-default)
-(setq ac-quick-help-delay 0.1)
-(ac-flyspell-workaround)
-
-;; add the emacs-eclim source
-(require 'ac-emacs-eclim-source)
-(add-hook 'eclim-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-emacs-eclim)))
 
 
 (require 'sr-speedbar nil 'noerror)
