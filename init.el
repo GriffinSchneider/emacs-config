@@ -49,6 +49,7 @@
 
 
 (require 'powerline)
+(global-set-key (kbd "C-SPC") 'auto-complete)
 (setq powerline-arrow-shape 'arrow14)
 (set-face-font 'mode-line "-apple-Inconsolata-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
 (set-face-foreground 'mode-line "#030303")
