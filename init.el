@@ -85,10 +85,6 @@
 (require 'ac-emacs-eclim-source)
 (add-hook 'eclim-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-emacs-eclim)))
 
-(require 'sml-modeline nil 'noerror)
-;; Scroll indicator in modeline
-(sml-modeline-mode t)
-
 
 (require 'sr-speedbar nil 'noerror)
 (setq speedbar-show-unknown-files t
