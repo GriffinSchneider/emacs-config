@@ -69,6 +69,7 @@
 (add-to-list 'ac-dictionary-directories (concat gcs-config-directory "auto-complete/dict"))
 (ac-config-default)
 (setq ac-quick-help-delay 0.1)
+(ac-flyspell-workaround)
 
 ;; add the emacs-eclim source
 (require 'ac-emacs-eclim-source)
