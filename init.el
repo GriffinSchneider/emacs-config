@@ -65,16 +65,12 @@
 (yas/initialize)
 
 
-(require 'company)
-(global-company-mode t)
-(global-set-key (kbd "C-SPC") 'company-complete)
-;; stop company from opening completion window when you're not typing
-(setq company-begin-commands '(self-insert-command))
-
-
-(require 'company-emacs-eclim)
-(company-emacs-eclim-setup)
-
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories (concat gcs-config-directory "auto-complete/dict"))
+(ac-config-default)
+;; add the emacs-eclim source
+(require 'ac-emacs-eclim-source)
+(add-hook 'eclim-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-emacs-eclim)))
 
 (require 'sml-modeline nil 'noerror)
 ;; Scroll indicator in modeline

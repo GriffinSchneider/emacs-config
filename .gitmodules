@@ -22,9 +22,6 @@
 [submodule "emacs-eclim"]
 	path = emacs-eclim
 	url = https://github.com/senny/emacs-eclim.git
-[submodule "company"]
-	path = company
-	url = https://github.com/jwiegley/company.git
 [submodule "magit"]
 	path = magit
 	url = https://github.com/magit/magit.git
@@ -40,3 +37,6 @@
 [submodule "smex"]
 	path = smex
 	url = https://github.com/nonsequitur/smex.git
+[submodule "auto-complete"]
+	path = auto-complete
+	url = https://github.com/m2ym/auto-complete.git
