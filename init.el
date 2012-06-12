@@ -106,6 +106,9 @@
 ;; Use 4-wide tabs
 (setq tab-width 4)
 
+;; Don't insert tabs
+(setq-default indent-tabs-mode nil)
+
 ;; Use electric-indent-mode
 (electric-indent-mode)
 
