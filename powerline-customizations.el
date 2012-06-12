@@ -16,10 +16,20 @@
       (set-face-font 'mode-line-inactive "Inconsolata-12")))
 
 ;; Setup modeline items
+(defun gcs-propertized-evil-mode-tag ()
+  (propertize evil-mode-line-tag 'font-lock-face
+    ;; Don't propertize if we're not in the selected buffer
+    (cond ((not (eq (current-buffer) (car (buffer-list)))) '())
+          ((evil-emacs-state-p)  '(:background "red"))
+          ((evil-motion-state-p) '(:background "orange"))
+          ((evil-visual-state-p) '(:background "blue" :foreground "white"))
+          ((evil-insert-state-p) '(:background "green"))
+          (t '()))))
+
 (setq-default mode-line-format
   (list "%e"
     '(:eval (concat
-	     evil-mode-line-tag
+	     (gcs-propertized-evil-mode-tag)
 	     (powerline-rmw           'left   nil)
 	     (powerline-buffer-id     'left   nil  powerline-color1)
 	     (powerline-major-mode    'left        powerline-color1)
