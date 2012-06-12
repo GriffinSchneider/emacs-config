@@ -51,11 +51,11 @@
 ;; "\K" kills the buffer without asking and refreshes the buffer list (in case
 ;; the kill switches to it).
 (gcs-define-key-with-prefix "K"
-  (lambda ()
-  	(interactive)
-  	(kill-buffer (current-buffer))
-  	(when (Buffer-menu-buffer nil)
-			(revert-buffer (Buffer-menu-buffer nil)))))
+ (lambda ()
+   (interactive)
+   (kill-buffer (current-buffer))
+   (when (Buffer-menu-buffer nil)
+     (revert-buffer (Buffer-menu-buffer nil)))))
 
 (gcs-define-key-with-prefix "c" 'compile)
 (gcs-define-key-with-prefix "e" 'next-error)
@@ -80,9 +80,9 @@
       (cond
        ((null evt) (message ""))
        ((and (integerp evt) (char-equal evt exit-key))
-	(delete-char -1)
-	(set-buffer-modified-p modified)
-	(push 'escape unread-command-events))
+        (delete-char -1)
+        (set-buffer-modified-p modified)
+        (push 'escape unread-command-events))
        (t (push evt unread-command-events))))))
 
 (evil-define-command gcs-evil-maybe-exit-j ()
@@ -110,13 +110,13 @@
 (gcs-define-key-with-prefix "\\" 'comment-dwim-line)
 
 (defun gcs-toggle-tab-width-setting ()
-    "Toggle setting tab widths between 4 and 8"
-    (interactive)
-    (setq tab-width (cond ((= tab-width 8) 4)
-													((= tab-width 4) 2)
-													(t 8)))
-		(message (format "Tab width is now %d" tab-width))
-    (redraw-display))
+  "Toggle setting tab widths between 4 and 8"
+  (interactive)
+  (setq tab-width (cond ((= tab-width 8) 4)
+                        ((= tab-width 4) 2)
+                        (t 8)))
+  (message (format "Tab width is now %d" tab-width))
+  (redraw-display))
 (gcs-define-key-with-prefix "t" 'gcs-toggle-tab-width-setting)
 
 (loop for (mode . state) in '((inferior-emacs-lisp-mode  . emacs)
