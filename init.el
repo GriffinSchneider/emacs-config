@@ -27,6 +27,7 @@
 (require   'buffer-menu-customizations)
 (require         'eclim-customizations)
 (require 'auto-complete-customizations)
+(require     'powerline-customizations)
 
 
 (require 'uniquify)
@@ -47,16 +48,6 @@
 
 
 (require 'android-mode)
-
-
-(require 'powerline)
-(setq powerline-color1 "#598559")
-(setq powerline-color2 "#383838")
-(setq powerline-arrow-shape 'arrow14)
-(set-face-font 'mode-line "Inconsolata-12")
-(set-face-foreground 'mode-line "#030303")
-(set-face-background 'mode-line "#f0dfaf")
-(set-face-font 'mode-line-inactive "Inconsolata-12")
 
 
 (require 'magit)
