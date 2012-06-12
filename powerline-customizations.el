@@ -10,8 +10,10 @@
 (set-face-background 'mode-line "#f0dfaf")
 
 ;; Setup modeline font
-(set-face-font 'mode-line "Inconsolata-12")
-(set-face-font 'mode-line-inactive "Inconsolata-12")
+(if (find-font (font-spec :name "Inconsolata"))
+    (progn
+      (set-face-font 'mode-line "Inconsolata-12")
+      (set-face-font 'mode-line-inactive "Inconsolata-12")))
 
 ;; Setup modeline items
 (setq-default mode-line-format
