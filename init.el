@@ -29,6 +29,7 @@
 (require 'auto-complete-customizations)
 (require     'powerline-customizations)
 
+(require 'moonscript-mode)
 
 (require 'uniquify)
 (setq
