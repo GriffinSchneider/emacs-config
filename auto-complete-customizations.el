@@ -20,7 +20,7 @@
 (real-global-auto-complete-mode t)
 
 ;; add the emacs-eclim source
-(add-hook 'eclim-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-emacs-eclim)))
+(add-hook 'eclim-mode-hook (lambda () (setq ac-sources '(ac-source-emacs-eclim ac-source-eclim))))
 
 (provide 'auto-complete-customizations)
 
