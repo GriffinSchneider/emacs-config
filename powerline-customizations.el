@@ -33,7 +33,7 @@
              (powerline-rmw         'left   nil)
              (powerline-buffer-id   'left   nil powerline-color1)
              (powerline-major-mode  'left   powerline-color1)
-             (powerline-make-text   " : "   powerline-color1)
+             (powerline-make-text   " :"   powerline-color1)
              (powerline-minor-modes 'left   powerline-color1)
              (powerline-narrow      'left   powerline-color1 powerline-color2)
              (powerline-vc          'center powerline-color2)
