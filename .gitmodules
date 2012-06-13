@@ -43,3 +43,6 @@
 [submodule "emacs-powerline"]
 	path = emacs-powerline
 	url = git://github.com/jonathanchu/emacs-powerline.git
+[submodule "fuzzy-el"]
+	path = fuzzy-el
+	url = https://github.com/m2ym/fuzzy-el.git
