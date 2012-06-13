@@ -143,6 +143,9 @@
 ;; No scrollbars
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
+;; Half-width fringes
+(fringe-mode 4)
+
 ;; Highlight the current line
 (global-hl-line-mode 1)
 
