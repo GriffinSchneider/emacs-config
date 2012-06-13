@@ -15,8 +15,7 @@
 (define-globalized-minor-mode real-global-auto-complete-mode
   auto-complete-mode (lambda ()
                        (if (not (minibufferp (current-buffer)))
-                         (auto-complete-mode 1))
-                       ))
+                         (auto-complete-mode 1))))
 (real-global-auto-complete-mode t)
 
 ;; add the emacs-eclim source
