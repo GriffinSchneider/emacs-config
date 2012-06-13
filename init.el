@@ -30,6 +30,9 @@
 (require     'powerline-customizations)
 
 (require 'moonscript-mode)
+(require 'android-mode)
+(require 'ace-jump-mode)
+
 
 (require 'uniquify)
 (setq
@@ -46,9 +49,6 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-
-(require 'android-mode)
 
 
 (require 'magit)
@@ -73,9 +73,6 @@
       sr-speedbar-width-x 30
       sr-speedbar-right-side nil)
 (global-set-key (kbd "s-s") 'sr-speedbar-toggle)
-
-
-(require 'ace-jump-mode)
 
 
 ;; Setup haskell-mode
