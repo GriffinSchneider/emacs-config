@@ -46,3 +46,6 @@
 [submodule "fuzzy-el"]
 	path = fuzzy-el
 	url = https://github.com/m2ym/fuzzy-el.git
+[submodule "yascroll-el"]
+	path = yascroll-el
+	url = https://github.com/m2ym/yascroll-el.git

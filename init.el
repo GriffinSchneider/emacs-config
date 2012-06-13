@@ -34,6 +34,16 @@
 (require 'ace-jump-mode)
 
 
+(require 'yascroll)
+(global-yascroll-bar-mode 1)
+(setq yascroll:delay-to-hide nil)
+(set-face-background 'yascroll:thumb-fringe powerline-color1)
+(set-face-foreground 'yascroll:thumb-fringe powerline-color1)
+(set-face-background 'yascroll:thumb-text-area powerline-color1)
+;; Don't hide scrollbar when editing
+(defadvice yascroll:before-change (around always-show-bar activate) ())
+
+
 (require 'uniquify)
 (setq
   uniquify-buffer-name-style 'post-forward
