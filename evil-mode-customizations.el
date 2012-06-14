@@ -50,14 +50,16 @@
 (gcs-define-key-with-prefix "W" 'write-file)
 (gcs-define-key-with-prefix "b" 'buffer-menu)
 (gcs-define-key-with-prefix "v" 'iswitchb-buffer)
-;; "\k" kills the buffer without asking and refreshes the buffer list (in case
-;; the kill switches to it).
+;; "\k" kills the buffer without asking and makes sure the buffer menu
+;;  opens with point at the first line.
 (gcs-define-key-with-prefix "k"
  (lambda ()
    (interactive)
    (kill-buffer (current-buffer))
-   (when (get-buffer "*Buffer List*")
-     (revert-buffer (get-buffer "*Buffer List*")))))
+   (let ((buffer-menu-buffer (get-buffer "*Buffer List*")))
+     (when buffer-menu-buffer
+       (with-current-buffer buffer-menu-buffer
+         (goto-line 0))))))
 
 (gcs-define-key-with-prefix "c" 'compile)
 (gcs-define-key-with-prefix "e" 'next-error)
