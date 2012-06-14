@@ -42,6 +42,7 @@
   (define-key evil-emacs-state-map (concat gcs-prefix-key key) binding))
 
 (gcs-define-key-with-prefix "g" 'magit-status)
+
 (gcs-define-key-with-prefix "u" 'undo-tree-visualize)
 (gcs-define-key-with-prefix "f" 'find-file)
 (gcs-define-key-with-prefix "F" 'find-alternate-file)
@@ -49,15 +50,14 @@
 (gcs-define-key-with-prefix "W" 'write-file)
 (gcs-define-key-with-prefix "b" 'buffer-menu)
 (gcs-define-key-with-prefix "v" 'iswitchb-buffer)
-(gcs-define-key-with-prefix "k" 'delete-window)
-;; "\K" kills the buffer without asking and refreshes the buffer list (in case
+;; "\k" kills the buffer without asking and refreshes the buffer list (in case
 ;; the kill switches to it).
-(gcs-define-key-with-prefix "K"
+(gcs-define-key-with-prefix "k"
  (lambda ()
    (interactive)
    (kill-buffer (current-buffer))
-   (when (Buffer-menu-buffer nil)
-     (revert-buffer (Buffer-menu-buffer nil)))))
+   (when (get-buffer "*Buffer List*")
+     (revert-buffer (get-buffer "*Buffer List*")))))
 
 (gcs-define-key-with-prefix "c" 'compile)
 (gcs-define-key-with-prefix "e" 'next-error)
