@@ -41,6 +41,7 @@
   (define-key evil-motion-state-map (concat gcs-prefix-key key) binding)
   (define-key evil-emacs-state-map (concat gcs-prefix-key key) binding))
 
+(gcs-define-key-with-prefix "g" 'magit-status)
 (gcs-define-key-with-prefix "u" 'undo-tree-visualize)
 (gcs-define-key-with-prefix "f" 'find-file)
 (gcs-define-key-with-prefix "F" 'find-alternate-file)
