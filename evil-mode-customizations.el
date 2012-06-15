@@ -16,8 +16,8 @@
   (define-key evil-visual-state-map key def)
   (define-key evil-motion-state-map key def))
 (gcs-define-evil-motion-key (kbd "SPC") 'ace-jump-word-mode)
-(gcs-define-evil-motion-key (kbd "s-SPC") 'ace-jump-char-mode)
-(gcs-define-evil-motion-key (kbd "C-SPC") 'ace-jump-line-mode)
+(gcs-define-evil-motion-key (kbd "C-SPC") 'ace-jump-char-mode)
+(gcs-define-evil-motion-key (kbd "M-SPC") 'ace-jump-line-mode)
 
 (define-key evil-normal-state-map "'" 'evil-goto-mark)
 (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
