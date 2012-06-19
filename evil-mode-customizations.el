@@ -44,12 +44,13 @@
 (gcs-define-key-with-prefix "g" 'magit-status)
 
 (gcs-define-key-with-prefix "u" 'undo-tree-visualize)
-(gcs-define-key-with-prefix "f" 'find-file)
-(gcs-define-key-with-prefix "F" 'find-alternate-file)
+(gcs-define-key-with-prefix "f" 'ido-find-file)
+(gcs-define-key-with-prefix "F" 'ido-find-alternate-file)
 (gcs-define-key-with-prefix "w" 'save-buffer)
 (gcs-define-key-with-prefix "W" 'write-file)
 (gcs-define-key-with-prefix "b" 'buffer-menu)
-(gcs-define-key-with-prefix "v" 'iswitchb-buffer)
+(gcs-define-key-with-prefix "v" 'ido-switch-buffer)
+(gcs-define-key-with-prefix "V" 'ido-switch-buffer-other-frame)
 ;; "\k" kills the buffer without asking and makes sure the buffer menu
 ;;  opens with point at the first line.
 (gcs-define-key-with-prefix "k"

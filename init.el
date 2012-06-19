@@ -50,9 +50,9 @@
   uniquify-separator ":")
 
 
-(require 'iswitchb)
-(iswitchb-mode)
-(setq iswitchb-buffer-ignore (cons "\\*Buffer List\\*" iswitchb-buffer-ignore))
+(require 'ido)
+(ido-mode t)
+(setq ido-ignore-buffers (cons "\\*Buffer List\\*" ido-ignore-buffers))
 
 
 (require 'smex)
