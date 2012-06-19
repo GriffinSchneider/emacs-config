@@ -53,6 +53,7 @@
 (require 'ido)
 (ido-mode t)
 (setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 (setq ido-ignore-buffers (cons "\\*Buffer List\\*" ido-ignore-buffers))
 ;; Show ido completions vertically
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
