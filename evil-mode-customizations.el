@@ -37,9 +37,10 @@
 (define-key evil-normal-state-map gcs-prefix-key nil)
 (define-key evil-motion-state-map gcs-prefix-key nil)
 (defun gcs-define-key-with-prefix (key binding)
-  (define-key evil-normal-state-map (concat gcs-prefix-key key) binding)
-  (define-key evil-motion-state-map (concat gcs-prefix-key key) binding)
-  (define-key evil-emacs-state-map (concat gcs-prefix-key key) binding))
+  (let* ((key     (read-kbd-macro (concat gcs-prefix-key " " key)))
+         (maps    (list evil-normal-state-map evil-motion-state-map evil-emacs-state-map))
+         (add-key (lambda (keymap) (define-key keymap key binding))))
+    (mapcar add-key  maps)))
 
 (gcs-define-key-with-prefix "g" 'magit-status)
 
@@ -101,6 +102,19 @@
   (interactive)
   (gcs-evil-maybe-exit ?k ?j))
 (define-key evil-insert-state-map "k" 'gcs-evil-maybe-exit-k)
+
+;; Use \<left> and \<right> to navigate buffer list, ignoring buffer menu
+(defun gcs-previous-buffer ()
+  (interactive)
+  (previous-buffer)
+  (when (string= (buffer-name) "*Buffer List*") (previous-buffer)))
+(gcs-define-key-with-prefix "<left>" 'gcs-previous-buffer)
+
+(defun gcs-next-buffer ()
+  (interactive)
+  (next-buffer)
+  (when (string= (buffer-name) "*Buffer List*") (next-buffer)))
+(gcs-define-key-with-prefix "<right>" 'gcs-next-buffer)
 
 (defun comment-dwim-line (&optional arg)
   "Replacement for the comment-dwim command.
