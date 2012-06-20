@@ -20,5 +20,6 @@
 
 (add-hook 'buffer-menu-mode-hook 'buffer-menu-custom-font-lock)
 
+(define-key Buffer-menu-mode-map (kbd "C-g") 'quit-window)
 
 (provide 'buffer-menu-customizations)
