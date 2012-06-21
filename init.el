@@ -158,8 +158,22 @@
 ;; Highlight the current line
 (global-hl-line-mode 1)
 
+;; Highlight surrounding parens
+(require 'highlight-parentheses)
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
+
 ;; Highlight matching parens
 (show-paren-mode 1)
+(setq show-paren-delay 0)
+(setq show-paren-style 'parenthesis)
+;; Make show-paren-mode use the same color as highlight-parentheses
+(set-face-foreground 'show-paren-match (car hl-paren-colors))
+(set-face-background 'show-paren-match nil)
+(set-face-bold-p 'show-paren-match nil)
 
 ;; Use "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
