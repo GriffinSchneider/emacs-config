@@ -40,7 +40,7 @@
   (let* ((key     (read-kbd-macro (concat gcs-prefix-key " " key)))
          (maps    (list evil-normal-state-map evil-motion-state-map evil-emacs-state-map))
          (add-key (lambda (keymap) (define-key keymap key binding))))
-    (mapcar add-key  maps)))
+    (mapcar add-key maps)))
 
 (gcs-define-key-with-prefix "g" 'magit-status)
 
