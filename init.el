@@ -32,6 +32,7 @@
 (require 'moonscript-mode)
 (require 'android-mode)
 (require 'ace-jump-mode)
+(require 'typing)
 
 
 (require 'yascroll)
