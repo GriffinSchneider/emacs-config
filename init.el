@@ -37,6 +37,12 @@
 (require 'typing)
 
 
+;; XCode-like line wrapping
+(require 'adaptive-wrap-prefix)
+(global-adaptive-wrap-prefix-mode t)
+(global-visual-line-mode)
+
+
 (require 'yascroll)
 (global-yascroll-bar-mode 1)
 (setq yascroll:delay-to-hide nil)
