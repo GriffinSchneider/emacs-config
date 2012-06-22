@@ -18,7 +18,8 @@
 	 '(buffer-menu-buffer-font-lock-keywords t))
     (font-lock-fontify-buffer)))
 
-(add-hook 'buffer-menu-mode-hook 'buffer-menu-custom-font-lock)
+(defadvice buffer-menu (after buffer-menu-font-lock activate)
+  (buffer-menu-custom-font-lock))
 
 (define-key Buffer-menu-mode-map (kbd "C-g") 'quit-window)
 
