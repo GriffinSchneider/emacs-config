@@ -1,51 +1,51 @@
-[submodule "evil"]
-	path = evil
+[submodule "thirdparty/evil"]
+	path = thirdparty/evil
 	url = https://github.com/emacsmirror/evil.git
-[submodule "evil-surround"]
-	path = evil-surround
+[submodule "thirdparty/evil-surround"]
+	path = thirdparty/evil-surround
 	url = https://github.com/timcharper/evil-surround.git
-[submodule "haskell-mode"]
-	path = haskell-mode
+[submodule "thirdparty/haskell-mode"]
+	path = thirdparty/haskell-mode
 	url = https://github.com/emacsmirror/haskell-mode.git
-[submodule "sr-speedbar"]
-	path = sr-speedbar
+[submodule "thirdparty/sr-speedbar"]
+	path = thirdparty/sr-speedbar
 	url = https://github.com/emacsmirror/sr-speedbar.git
-[submodule "zenburn-emacs"]
-	path = zenburn-emacs
+[submodule "thirdparty/zenburn-emacs"]
+	path = thirdparty/zenburn-emacs
 	url = git://github.com/bbatsov/zenburn-emacs.git
-[submodule "ace-jump-mode"]
-	path = ace-jump-mode
+[submodule "thirdparty/ace-jump-mode"]
+	path = thirdparty/ace-jump-mode
 	url = https://github.com/winterTTr/ace-jump-mode.git
-[submodule "emacs-eclim"]
-	path = emacs-eclim
+[submodule "thirdparty/emacs-eclim"]
+	path = thirdparty/emacs-eclim
 	url = https://github.com/senny/emacs-eclim.git
-[submodule "magit"]
-	path = magit
+[submodule "thirdparty/magit"]
+	path = thirdparty/magit
 	url = https://github.com/magit/magit.git
-[submodule "android-mode"]
-	path = android-mode
+[submodule "thirdparty/android-mode"]
+	path = thirdparty/android-mode
 	url = https://github.com/remvee/android-mode.git
-[submodule "lua-mode"]
-	path = lua-mode
+[submodule "thirdparty/lua-mode"]
+	path = thirdparty/lua-mode
 	url = https://github.com/immerrr/lua-mode.git
-[submodule "yasnippet"]
-	path = yasnippet
+[submodule "thirdparty/yasnippet"]
+	path = thirdparty/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
-[submodule "smex"]
-	path = smex
+[submodule "thirdparty/smex"]
+	path = thirdparty/smex
 	url = https://github.com/nonsequitur/smex.git
-[submodule "auto-complete"]
-	path = auto-complete
+[submodule "thirdparty/auto-complete"]
+	path = thirdparty/auto-complete
 	url = https://github.com/m2ym/auto-complete.git
-[submodule "popup-el"]
-	path = popup-el
+[submodule "thirdparty/popup-el"]
+	path = thirdparty/popup-el
 	url = https://github.com/m2ym/popup-el.git
-[submodule "emacs-powerline"]
-	path = emacs-powerline
+[submodule "thirdparty/emacs-powerline"]
+	path = thirdparty/emacs-powerline
 	url = git://github.com/jonathanchu/emacs-powerline.git
-[submodule "fuzzy-el"]
-	path = fuzzy-el
+[submodule "thirdparty/fuzzy-el"]
+	path = thirdparty/fuzzy-el
 	url = https://github.com/m2ym/fuzzy-el.git
-[submodule "yascroll-el"]
-	path = yascroll-el
+[submodule "thirdparty/yascroll-el"]
+	path = thirdparty/yascroll-el
 	url = https://github.com/m2ym/yascroll-el.git

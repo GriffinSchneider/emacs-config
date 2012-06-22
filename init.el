@@ -3,7 +3,8 @@
 ;;   android-mode-sdk-dir
 
 (when load-in-progress
-  (setq gcs-config-directory (file-name-directory load-file-name)))
+  (setq gcs-config-directory (file-name-directory load-file-name))
+  (setq gcs-thirdparty-directory (concat gcs-config-directory "thirdparty/")))
 
 ;; Turn off toolbar and menu bar
 (tool-bar-mode -1)
@@ -18,7 +19,7 @@
 (add-to-list 'load-path (concat gcs-config-directory "maxframe.el"))
 
 
-(add-to-list 'custom-theme-load-path (concat gcs-config-directory "zenburn-emacs"))
+(add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
 (load-theme 'zenburn 'no-confirm)
 
 
@@ -105,7 +106,7 @@
 ;;
 ;;  where REGEX matches the ghci prompt. Otherwise, emacs will hang on 
 ;;  inferior-haskell-load-file.
-(load (concat gcs-config-directory "haskell-mode/haskell-site-file"))
+(load (concat gcs-thirdparty-directory "haskell-mode/haskell-site-file"))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
