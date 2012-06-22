@@ -18,6 +18,7 @@
   (nconc load-path orig-load-path))
 (add-to-list 'load-path (concat gcs-config-directory "maxframe.el"))
 
+(when load-in-progress (byte-recompile-directory gcs-config-directory))
 
 (add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
 (load-theme 'zenburn 'no-confirm)
