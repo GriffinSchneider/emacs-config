@@ -22,5 +22,10 @@
   (buffer-menu-custom-font-lock))
 
 (define-key Buffer-menu-mode-map (kbd "C-g") 'quit-window)
+(define-key Buffer-menu-mode-map (kbd "g")
+  (lambda ()
+    (interactive)
+    (revert-buffer)
+    (buffer-menu-custom-font-lock)))
 
 (provide 'buffer-menu-customizations)
