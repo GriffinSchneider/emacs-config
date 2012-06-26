@@ -61,7 +61,7 @@
    (let ((buffer-menu-buffer (get-buffer "*Buffer List*")))
      (when buffer-menu-buffer
        (with-current-buffer buffer-menu-buffer
-         (goto-line 0))))))
+         (goto-char (point-min)))))))
 
 (gcs-define-key-with-prefix "c" 'compile)
 (gcs-define-key-with-prefix "e" 'next-error)
@@ -138,11 +138,11 @@
   (redraw-display))
 (gcs-define-key-with-prefix "t" 'gcs-toggle-tab-width-setting)
 
-(loop for (mode . state) in '((inferior-emacs-lisp-mode  . emacs)
-                              (comint-mode               . emacs)
-                              (shell-mode                . emacs)
-                              (term-mode                 . emacs)
-                              (magit-branch-manager-mode . emacs))
-      do (evil-set-initial-state mode state))
+(mapc (lambda (mode) (evil-set-initial-state mode 'emacs))
+       '(inferior-emacs-lisp-mode
+         comint-mode
+         shell-mode
+         term-mode
+         magit-branch-manager-mode))
 
 (provide 'evil-mode-customizations)
