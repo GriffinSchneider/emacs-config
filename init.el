@@ -37,6 +37,11 @@
 (require 'typing)
 
 
+(require 'sunrise-commander)
+(add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
+(setq find-directory-functions (cons 'sr-dired find-directory-functions))
+
+
 ;; XCode-like line wrapping
 (require 'adaptive-wrap-prefix)
 (global-adaptive-wrap-prefix-mode t)

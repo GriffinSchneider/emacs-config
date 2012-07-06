@@ -49,3 +49,6 @@
 [submodule "thirdparty/yascroll-el"]
 	path = thirdparty/yascroll-el
 	url = https://github.com/m2ym/yascroll-el.git
+[submodule "thirdparty/sunrise-commander"]
+	path = thirdparty/sunrise-commander
+	url = git://github.com/escherdragon/sunrise-commander.git

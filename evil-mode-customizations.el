@@ -43,6 +43,8 @@
     (mapcar add-key maps)))
 
 (gcs-define-key-with-prefix "g" 'magit-status)
+(gcs-define-key-with-prefix "s" 'sunrise)
+(gcs-define-key-with-prefix "S" 'sunrise-cd)
 
 (gcs-define-key-with-prefix "u" 'undo-tree-visualize)
 (gcs-define-key-with-prefix "f" 'ido-find-file)
