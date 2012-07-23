@@ -95,7 +95,7 @@
 (define-key magit-mode-map "q" (lambda () (interactive) (magit-quit-window 'kill-buffer)))
 
 
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(require 'lua-mode)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 (setq lua-indent-level 4)
@@ -186,6 +186,7 @@
 (global-highlight-parentheses-mode t)
 
 ;; Highlight matching parens
+(require 'paren)
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 (setq show-paren-style 'parenthesis)
