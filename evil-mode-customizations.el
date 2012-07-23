@@ -23,6 +23,9 @@
 (define-key evil-normal-state-map "'" 'evil-goto-mark)
 (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
 
+;; Get rid of the "K" binding for evil-lookup
+(define-key evil-motion-state-map "K" nil)
+
 ;; For some reason, magit overrides the k binding if I don't use
 ;;  evil-add-hjkl-bindings.
 (evil-add-hjkl-bindings magit-mode-map 'emacs
