@@ -1,6 +1,7 @@
 (require 'evil)
 (require 'surround)
 (require 'magit)
+(require 'pianobar)
 
 ;; Start In evil-mode with surround.vim emulation
 (evil-mode 1)
@@ -34,13 +35,15 @@
 
 ;; Setup prefix keybindings
 (defconst gcs-prefix-key "\\")
-(define-key evil-normal-state-map gcs-prefix-key nil)
-(define-key evil-motion-state-map gcs-prefix-key nil)
+(defconst gcs-prefix-key-maps (list evil-normal-state-map
+                                    evil-motion-state-map
+                                    evil-emacs-state-map
+                                    pianobar-mode-map))
+(mapc (lambda (keymap) (define-key keymap gcs-prefix-key nil)) gcs-prefix-key-maps)
 (defun gcs-define-key-with-prefix (key binding)
   (let* ((key     (read-kbd-macro (concat gcs-prefix-key " " key)))
-         (maps    (list evil-normal-state-map evil-motion-state-map evil-emacs-state-map))
          (add-key (lambda (keymap) (define-key keymap key binding))))
-    (mapcar add-key maps)))
+    (mapcar add-key gcs-prefix-key-maps)))
 
 (gcs-define-key-with-prefix "g" 'magit-status)
 (gcs-define-key-with-prefix "s" 'sunrise)
