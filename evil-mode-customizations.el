@@ -145,6 +145,7 @@
          comint-mode
          shell-mode
          term-mode
-         magit-branch-manager-mode))
+         magit-branch-manager-mode
+         pianobar-mode))
 
 (provide 'evil-mode-customizations)
