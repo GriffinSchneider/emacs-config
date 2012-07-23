@@ -1,6 +1,8 @@
 ;; The following variables should be set by a local config file:
 ;;   eclim-executable 
 ;;   android-mode-sdk-dir
+;; Optional:
+;;    pianobar-password
 
 (when load-in-progress
   (setq gcs-config-directory (file-name-directory load-file-name))
@@ -35,6 +37,10 @@
 (require 'android-mode)
 (require 'ace-jump-mode)
 (require 'typing)
+
+
+(require 'pianobar)
+(setq pianobar-username "griffinschneider@gmail.com")
 
 
 (require 'sunrise-commander)
