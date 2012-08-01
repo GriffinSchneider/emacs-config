@@ -41,6 +41,14 @@
 
 (require 'pianobar)
 (setq pianobar-username "griffinschneider@gmail.com")
+;; Use q to quit the pianobar window
+(define-key pianobar-mode-map (kbd "q")
+  (lambda (N)
+    (interactive "p")
+    ;; Check if pianobar is prompting, so you can still type "q" into prompts
+    (if pianobar-is-prompting
+        (self-insert-command N)
+        (quit-window))))
 (global-set-key (kbd "s-p") nil)
 (global-set-key (kbd "s-p p") 'pianobar)
 (global-set-key (kbd "s-p n") 'pianobar-next-song)
