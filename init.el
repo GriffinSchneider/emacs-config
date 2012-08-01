@@ -49,12 +49,16 @@
     (if pianobar-is-prompting
         (self-insert-command N)
         (quit-window))))
+;; Setup various pianobar commands with a s-p prefix
 (global-set-key (kbd "s-p") nil)
-(global-set-key (kbd "s-p p") 'pianobar)
-(global-set-key (kbd "s-p n") 'pianobar-next-song)
-(global-set-key (kbd "s-p SPC") 'pianobar-play-or-pause)
-(global-set-key (kbd "s-p s") 'pianobar-change-station)
-(global-set-key (kbd "s-p +") 'pianobar-love-current-song)
+(defun gcs-map-pianobar-key (key command)
+  (global-set-key (read-kbd-macro (concat "s-p " key)) command)
+  (global-set-key (read-kbd-macro (concat "s-p s-" key)) command))
+(gcs-map-pianobar-key "p" 'pianobar)
+(gcs-map-pianobar-key "n" 'pianobar-next-song)
+(gcs-map-pianobar-key "SPC" 'pianobar-play-or-pause)
+(gcs-map-pianobar-key "s" 'pianobar-change-station)
+(gcs-map-pianobar-key "+" 'pianobar-love-current-song)
 
 
 (require 'sunrise-commander)
