@@ -208,10 +208,10 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 (setq show-paren-style 'parenthesis)
-;; Make show-paren-mode use the same color as highlight-parentheses
-(set-face-foreground 'show-paren-match (car hl-paren-colors))
+;; Make show-paren-mode use a different color than highlight-parentheses
+(set-face-foreground 'show-paren-match "Orange")
 (set-face-background 'show-paren-match nil)
-(set-face-bold-p 'show-paren-match nil)
+(set-face-bold-p 'show-paren-match t)
 
 ;; Use "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
