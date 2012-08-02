@@ -52,6 +52,7 @@
          (add-key (lambda (keymap) (define-key keymap key binding))))
     (mapcar add-key gcs-prefix-key-maps)))
 
+(gcs-define-key-with-prefix "q" 'quit-window)
 (gcs-define-key-with-prefix "g" 'magit-status)
 (gcs-define-key-with-prefix "s" 'sunrise)
 (gcs-define-key-with-prefix "S" 'sunrise-cd)
