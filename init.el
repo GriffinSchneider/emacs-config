@@ -59,7 +59,13 @@
 (gcs-map-pianobar-key "SPC" 'pianobar-play-or-pause)
 (gcs-map-pianobar-key "s" 'pianobar-change-station)
 (gcs-map-pianobar-key "+" 'pianobar-love-current-song)
-
+(gcs-map-pianobar-key "o"
+  (lambda ()
+    (interactive)
+    (message "\"%s\" by \"%s\" on \"%s\""
+             pianobar-current-song
+             pianobar-current-artist
+             pianobar-current-album)))
 
 (require 'sunrise-commander)
 (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
