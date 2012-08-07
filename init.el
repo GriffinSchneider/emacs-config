@@ -41,6 +41,23 @@
 
 (require 'pianobar)
 (setq pianobar-username "griffinschneider@gmail.com")
+
+;; Stop comint from highlighting what it thinks is the prompt
+(add-hook 'pianobar-mode-hook
+  (lambda ()
+    (set (make-local-variable 'comint-use-prompt-regexp) t)
+    (face-remap-add-relative 'comint-highlight-prompt :inherit nil)))
+    
+;; Setup pianobar faces to follow the color scheme
+(set-face-foreground 'pianobar-mode-input-face         (face-foreground 'font-lock-variable-name-face))
+(set-face-foreground 'pianobar-mode-song-name-face     (face-foreground 'font-lock-builtin-face))
+(set-face-foreground 'pianobar-mode-time-face          (face-foreground 'font-lock-constant-face))
+(set-face-foreground 'pianobar-mode-choice-number-face (face-foreground 'font-lock-constant-face))
+(set-face-foreground 'pianobar-mode-choice-item-face   (face-foreground 'font-lock-variable-name-face))
+(set-face-foreground 'pianobar-mode-info-face          (face-foreground 'font-lock-comment-face))
+(set-face-foreground 'pianobar-mode-prompt-face        (face-foreground 'font-lock-keyword-face))
+(set-face-bold-p     'pianobar-mode-prompt-face t)
+
 ;; Use q to quit the pianobar window
 (define-key pianobar-mode-map (kbd "q")
   (lambda (N)
