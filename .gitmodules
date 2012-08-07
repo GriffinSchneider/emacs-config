@@ -52,3 +52,6 @@
 [submodule "thirdparty/sunrise-commander"]
 	path = thirdparty/sunrise-commander
 	url = git://github.com/escherdragon/sunrise-commander.git
+[submodule "thirdparty/pianobar-el"]
+	path = thirdparty/pianobar-el
+	url = git@github.com:GriffinSchneider/pianobar.el.git
