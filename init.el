@@ -90,6 +90,7 @@
 (require 'magit-blame)
 ;; "q" always kills magit buffers
 (define-key magit-mode-map "q" (lambda () (interactive) (magit-quit-window 'kill-buffer)))
+(set-face-background 'magit-item-highlight nil)
 
 
 (require 'lua-mode)
