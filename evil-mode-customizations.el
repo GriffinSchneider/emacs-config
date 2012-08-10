@@ -8,8 +8,8 @@
 (global-surround-mode 1)
 
 ;; Use C-u to scoll up like vim, move emacs's universal argument to C-S-u
-(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-(define-key evil-normal-state-map (kbd "C-S-u") 'universal-argument)
+(global-set-key (kbd "C-u") 'evil-scroll-up)
+(global-set-key (kbd "C-S-u") 'universal-argument)
 
 ;; Make cursor red in Emacs mode.
 (setq evil-emacs-state-cursor '("red" box)
