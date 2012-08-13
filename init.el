@@ -172,6 +172,9 @@
 ;; Half-width fringes
 (fringe-mode 4)
 
+;; Make window divider line the same color as the fringe
+(set-face-foreground 'vertical-border (face-background 'fringe))
+
 ;; Highlight the current line
 (global-hl-line-mode 1)
 
@@ -224,3 +227,4 @@
 ;; Prevent annoying "Active processes exist" query when Emacs is quit
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   (flet ((process-list ())) ad-do-it))
+
