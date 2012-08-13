@@ -169,8 +169,8 @@
 ;; No scrollbars
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; Half-width fringes
-(fringe-mode 4)
+;; Only one half-width fringe on the right
+(fringe-mode (cons 0 4))
 
 ;; Make window divider line the same color as the fringe
 (set-face-foreground 'vertical-border (face-background 'fringe))
