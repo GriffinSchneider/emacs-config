@@ -9,7 +9,7 @@
         ("^..[*].*"              . font-lock-constant-face)      ; Modified
         ("^.[%].*"               . font-lock-keyword-face)))     ; Read only
 
-(defun buffer-menu-custom-font-lock  ()
+(defun gcs-buffer-menu-custom-font-lock  ()
   (let ((font-lock-unfontify-region-function
 	 (lambda (start end)
 	   (remove-text-properties start end '(font-lock-face nil)))))
@@ -19,13 +19,13 @@
     (font-lock-fontify-buffer)))
 
 (defadvice buffer-menu (after buffer-menu-font-lock activate)
-  (buffer-menu-custom-font-lock))
+  (gcs-buffer-menu-custom-font-lock))
 
 (define-key Buffer-menu-mode-map (kbd "C-g") 'quit-window)
 (define-key Buffer-menu-mode-map (kbd "g")
   (lambda ()
     (interactive)
     (revert-buffer)
-    (buffer-menu-custom-font-lock)))
+    (gcs-buffer-menu-custom-font-lock)))
 
 (provide 'buffer-menu-customizations)

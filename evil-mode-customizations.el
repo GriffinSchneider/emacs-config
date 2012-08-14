@@ -3,6 +3,8 @@
 (require 'magit)
 (require 'pianobar)
 
+(require 'buffer-menu-customizations)
+
 ;; Start In evil-mode with surround.vim emulation
 (evil-mode 1)
 (global-surround-mode 1)
@@ -74,6 +76,8 @@
    (let ((buffer-menu-buffer (get-buffer "*Buffer List*")))
      (when buffer-menu-buffer
        (with-current-buffer buffer-menu-buffer
+         (revert-buffer)
+         (gcs-buffer-menu-custom-font-lock)
          (goto-char (point-min)))))))
 
 (gcs-define-key-with-prefix "c" 'compile)
