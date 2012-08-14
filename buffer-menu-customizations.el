@@ -1,4 +1,5 @@
-(setq Buffer-menu-buffer+size-width 40)
+(setq Buffer-menu-size-width 7)
+(setq Buffer-menu-name-width 33)
 
 (setq buffer-menu-buffer-font-lock-keywords
       '(("^....[*]Man .*Man.*"   . font-lock-variable-name-face) ; Man page
