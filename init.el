@@ -43,6 +43,9 @@
 (require 'sunrise-commander)
 (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
 (setq find-directory-functions (cons 'sr-dired find-directory-functions))
+(define-key sr-mode-map "j" 'dired-next-line)
+(define-key sr-mode-map "k" 'dired-previous-line)
+(define-key sr-mode-map "J" 'sr-dired-prev-subdir)
 
 
 ;; XCode-like line wrapping
