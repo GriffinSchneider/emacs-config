@@ -48,28 +48,28 @@
                                     evil-motion-state-map
                                     evil-emacs-state-map
                                     pianobar-mode-map))
-(mapc (lambda (keymap) (define-key keymap gcs-prefix-key nil)) gcs-prefix-key-maps)
-(defun gcs-define-key-with-prefix (key binding)
-  (let* ((key     (read-kbd-macro (concat gcs-prefix-key " " key)))
-         (add-key (lambda (keymap) (define-key keymap key binding))))
-    (mapcar add-key gcs-prefix-key-maps)))
 
-(gcs-define-key-with-prefix "q" 'quit-window)
-(gcs-define-key-with-prefix "g" 'magit-status)
-(gcs-define-key-with-prefix "s" 'sunrise)
-(gcs-define-key-with-prefix "S" 'sunrise-cd)
+(define-prefix-command 'gcs-prefix-key-map)
+(mapc (lambda (keymap) (define-key keymap gcs-prefix-key 'gcs-prefix-key-map)) gcs-prefix-key-maps)
+(defun gcs-define-prefix-key (key command)
+  (define-key 'gcs-prefix-key-map key command))
 
-(gcs-define-key-with-prefix "u" 'undo-tree-visualize)
-(gcs-define-key-with-prefix "f" 'ido-find-file)
-(gcs-define-key-with-prefix "F" 'ido-find-alternate-file)
-(gcs-define-key-with-prefix "w" 'save-buffer)
-(gcs-define-key-with-prefix "W" 'write-file)
-(gcs-define-key-with-prefix "b" 'buffer-menu)
-(gcs-define-key-with-prefix "v" 'ido-switch-buffer)
-(gcs-define-key-with-prefix "V" 'ido-switch-buffer-other-frame)
+(gcs-define-prefix-key "q" 'quit-window)
+(gcs-define-prefix-key "g" 'magit-status)
+(gcs-define-prefix-key "s" 'sunrise)
+(gcs-define-prefix-key "S" 'sunrise-cd)
+
+(gcs-define-prefix-key "u" 'undo-tree-visualize)
+(gcs-define-prefix-key "f" 'ido-find-file)
+(gcs-define-prefix-key "F" 'ido-find-alternate-file)
+(gcs-define-prefix-key "w" 'save-buffer)
+(gcs-define-prefix-key "W" 'write-file)
+(gcs-define-prefix-key "b" 'buffer-menu)
+(gcs-define-prefix-key "v" 'ido-switch-buffer)
+(gcs-define-prefix-key "V" 'ido-switch-buffer-other-frame)
 ;; "\k" kills the buffer without asking and makes sure the buffer menu
 ;;  opens with point at the first line.
-(gcs-define-key-with-prefix "k"
+(gcs-define-prefix-key "k"
  (lambda ()
    (interactive)
    (kill-buffer (current-buffer))
@@ -80,20 +80,17 @@
          (gcs-buffer-menu-custom-font-lock)
          (goto-char (point-min)))))))
 
-(gcs-define-key-with-prefix "c" 'compile)
-(gcs-define-key-with-prefix "e" 'next-error)
-(gcs-define-key-with-prefix "E" 'previous-error)
-(gcs-define-key-with-prefix "r" 'eval-buffer)
-
-(gcs-define-key-with-prefix "j" 'ace-jump-mode)
-
-(gcs-define-key-with-prefix "x" 'smex)
-(gcs-define-key-with-prefix "X" 'smex-major-mode-commands)
-
-(gcs-define-key-with-prefix "0" 'delete-window)
-(gcs-define-key-with-prefix "1" 'delete-other-windows)
-(gcs-define-key-with-prefix "2" 'split-window-vertically)
-(gcs-define-key-with-prefix "3" 'split-window-horizontally)
+(gcs-define-prefix-key "c" 'compile)
+(gcs-define-prefix-key "e" 'next-error)
+(gcs-define-prefix-key "E" 'previous-error)
+(gcs-define-prefix-key "r" 'eval-buffer)
+(gcs-define-prefix-key "j" 'ace-jump-mode)
+(gcs-define-prefix-key "x" 'smex)
+(gcs-define-prefix-key "X" 'smex-major-mode-commands)
+(gcs-define-prefix-key "0" 'delete-window)
+(gcs-define-prefix-key "1" 'delete-other-windows)
+(gcs-define-prefix-key "2" 'split-window-vertically)
+(gcs-define-prefix-key "3" 'split-window-horizontally)
 
 ;; Use j and k pressed within .15 seconds to exit insert mode
 (defun gcs-evil-maybe-exit (entry-key exit-key)
@@ -125,13 +122,13 @@
   (interactive)
   (previous-buffer)
   (when (string= (buffer-name) "*Buffer List*") (previous-buffer)))
-(gcs-define-key-with-prefix "<left>" 'gcs-previous-buffer)
+(gcs-define-prefix-key (kbd "<left>") 'gcs-previous-buffer)
 
 (defun gcs-next-buffer ()
   (interactive)
   (next-buffer)
   (when (string= (buffer-name) "*Buffer List*") (next-buffer)))
-(gcs-define-key-with-prefix "<right>" 'gcs-next-buffer)
+(gcs-define-prefix-key (kbd "<right>") 'gcs-next-buffer)
 
 (defun comment-dwim-line (&optional arg)
   "Replacement for the comment-dwim command.
@@ -143,7 +140,7 @@
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
-(gcs-define-key-with-prefix "\\" 'comment-dwim-line)
+(gcs-define-prefix-key "\\" 'comment-dwim-line)
 
 (defun gcs-toggle-tab-width-setting ()
   "Toggle setting tab widths between 4 and 8"
@@ -153,7 +150,7 @@
                         (t 8)))
   (message (format "Tab width is now %d" tab-width))
   (redraw-display))
-(gcs-define-key-with-prefix "t" 'gcs-toggle-tab-width-setting)
+(gcs-define-prefix-key "t" 'gcs-toggle-tab-width-setting)
 
 (mapc (lambda (mode) (evil-set-initial-state mode 'emacs))
        '(inferior-emacs-lisp-mode
