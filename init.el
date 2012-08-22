@@ -225,6 +225,27 @@
 (global-set-key (kbd "s-k")    'windmove-up)
 (global-set-key (kbd "s-j")  'windmove-down)
 
+;; Use s-[H, J, K, L] to swap windows
+(defun gcs-swap-windows (dir)
+  (interactive)
+  (let ((other-window (windmove-find-other-window dir)))
+    (when other-window
+      (let* ((this-window  (selected-window))
+             (this-buffer  (window-buffer this-window))
+             (other-buffer (window-buffer other-window))
+             (this-start   (window-start this-window))
+             (other-start  (window-start other-window)))
+        (set-window-buffer this-window  other-buffer)
+        (set-window-buffer other-window this-buffer)
+        (set-window-start  this-window  other-start)
+        (set-window-start  other-window this-start)
+        (windmove-do-window-select dir)))))
+
+(global-set-key (kbd "s-H") (lambda () (interactive) (gcs-swap-windows 'left)))
+(global-set-key (kbd "s-J") (lambda () (interactive) (gcs-swap-windows 'down)))
+(global-set-key (kbd "s-K") (lambda () (interactive) (gcs-swap-windows 'up)))
+(global-set-key (kbd "s-L") (lambda () (interactive) (gcs-swap-windows 'right)))
+
 ;; Make C-M-g the same as C-g - in case 'Esc' is pressed accidentally
 (global-set-key "\C-\M-g" 'keyboard-quit)
 
