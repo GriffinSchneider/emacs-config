@@ -36,7 +36,16 @@
 ;;  evil-add-hjkl-bindings.
 (evil-add-hjkl-bindings magit-mode-map 'emacs
   "K" 'magit-discard-item
-  "j" 'magit-goto-next-section
+  ;; if j is pressed and we're already at the last section, move to end of the section.
+  ;; This fixes the problem when you're at the first line of the last section and the
+  ;; rest of the last section is off the screen, but you can't press j to see the rest
+  ;; of the section.
+  "j" (lambda ()
+        (interactive)
+        (let ((next (magit-find-section-after (point))))
+          (if next
+              (magit-goto-section next)
+            (goto-char (+ -1 (magit-section-end (magit-current-section)))))))
   "k" 'magit-goto-previous-section
   "l" 'magit-key-mode-popup-logging
   "h" 'magit-toggle-diff-refine-hunk
