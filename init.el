@@ -3,6 +3,7 @@
 ;;   android-mode-sdk-dir
 ;; Optional:
 ;;    pianobar-password
+(provide 'init)
 
 (when load-in-progress
   (setq gcs-config-directory (file-name-directory load-file-name))
@@ -25,36 +26,52 @@
 (add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
 (load-theme 'zenburn 'no-confirm)
 
-
-(require     'evil-mode-customizations)
-(require      'org-mode-customizations)
-(require   'buffer-menu-customizations)
-(require         'eclim-customizations)
-(require 'auto-complete-customizations)
-(require     'powerline-customizations)
-(require      'pianobar-customizations)
-
+;; Third-party requires
+(require 'evil)
+(require 'surround)
 (require 'moonscript-mode)
 (require 'android-mode)
 (require 'ace-jump-mode)
 (require 'typing)
-
-
 (require 'sunrise-commander)
+(require 'adaptive-wrap-prefix)
+(require 'yascroll)
+(require 'uniquify)
+(require 'ido)
+(require 'smex)
+(require 'magit)
+(require 'magit-blame)
+(require 'lua-mode)
+(require 'yasnippet) ;; not yasnippet-bundle
+(require 'sr-speedbar nil 'noerror)
+(require 'highlight-parentheses)
+(require 'eclim)
+(require 'powerline)
+(require 'pianobar)
+
+;; My requires
+(require 'keybindings)
+(require 'evil-mode-customizations)
+(require 'org-mode-customizations)
+(require 'buffer-menu-customizations)
+(require 'eclim-customizations)
+(require 'auto-complete-customizations)
+(require 'powerline-customizations)
+(require 'pianobar-customizations)
+
+
+;; Sunrise commander
 (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
 (setq find-directory-functions (cons 'sr-dired find-directory-functions))
 (define-key sr-mode-map "j" 'dired-next-line)
 (define-key sr-mode-map "k" 'dired-previous-line)
 (define-key sr-mode-map "J" 'sr-dired-prev-subdir)
 
-
 ;; XCode-like line wrapping
-(require 'adaptive-wrap-prefix)
 (global-adaptive-wrap-prefix-mode t)
 (global-visual-line-mode)
 
-
-(require 'yascroll)
+;; Yascroll
 (global-yascroll-bar-mode 1)
 (setq yascroll:delay-to-hide nil)
 (set-face-background 'yascroll:thumb-fringe powerline-color1)
@@ -63,14 +80,11 @@
 ;; Don't hide scrollbar when editing
 (defadvice yascroll:before-change (around always-show-bar activate) ())
 
+;; Uniquify-buffer
+(setq uniquify-buffer-name-style 'post-forward
+      uniquify-separator ":")
 
-(require 'uniquify)
-(setq
-  uniquify-buffer-name-style 'post-forward
-  uniquify-separator ":")
-
-
-(require 'ido)
+;; Ido
 (ido-mode t)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
@@ -82,40 +96,53 @@
 (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
-
-(require 'smex)
+;; Smex
 (smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-
-(require 'magit)
-(require 'magit-blame)
+;; Magit
+(set-face-background 'magit-item-highlight nil)
 ;; "q" always kills magit buffers
 (define-key magit-mode-map "q" (lambda () (interactive) (magit-quit-window 'kill-buffer)))
 (define-key magit-mode-map ";" 'magit-toggle-section)
-(set-face-background 'magit-item-highlight nil)
+;; Use j and k for navigation in magit-mode. For some reason, magit
+;; overrides the k binding if I don't use evil-add-hjkl-bindings.
+(evil-add-hjkl-bindings magit-mode-map 'emacs
+  "K" 'magit-discard-item
+  ;; If j is pressed and we're already at the last section, move to end of the section.
+  ;; This fixes the problem when you're at the first line of the last section and the
+  ;; rest of the last section is off the screen, but you can't press j to see the rest
+  ;; of the section.
+  "j" (lambda () (interactive)
+        (let ((next (magit-find-section-after (point))))
+          (cond (next (magit-goto-section next))
+                (t    (goto-char (+ -1 (magit-section-end (magit-current-section))))))))
+  "k" 'magit-goto-previous-section
+  "l" 'magit-key-mode-popup-logging
+  "h" 'magit-toggle-diff-refine-hunk
+  ":" 'magit-git-command)
 
-
-(require 'lua-mode)
+;; Lua-mode
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 (setq lua-indent-level 4)
 
-
-(require 'yasnippet) ;; not yasnippet-bundle
+;; Yasnippet
 (setq yas/snippet-dirs (list (concat gcs-config-directory "yasnippet/snippets")))
 (yas/initialize)
 
-
-(require 'sr-speedbar nil 'noerror)
+;; Sr-speedbar
 (setq speedbar-show-unknown-files t
       sr-speedbar-width-x 30
       sr-speedbar-right-side nil)
-(global-set-key (kbd "s-s") 'sr-speedbar-toggle)
 
+;; Highlight-parenthesis
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
 
-;; Setup haskell-mode
+;; Haskell-mode
 ;;   NOTE: If the ghci prompt is changed in your .ghci file,
 ;;   inferior-haskell-mode's regex to match the prompt may 
 ;;   not work. If this is the case, do something like:
@@ -158,12 +185,6 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 (setq backup-by-copying t)
 
-;; On OSX, use cmd-r to compile
-(global-set-key (kbd "s-r") 'compile)
-
-;; use buffer-menu instead of list-buffers
-(global-set-key "\C-x\C-b" 'buffer-menu)
-
 ;; Make scrolling not suck.
 (setq scroll-margin 0
       scroll-conservatively 100000
@@ -182,14 +203,6 @@
 ;; Highlight the current line
 (global-hl-line-mode 1)
 
-;; Highlight surrounding parens
-(require 'highlight-parentheses)
-(define-globalized-minor-mode global-highlight-parentheses-mode
-  highlight-parentheses-mode
-  (lambda ()
-    (highlight-parentheses-mode t)))
-(global-highlight-parentheses-mode t)
-
 ;; Highlight matching parens
 (require 'paren)
 (show-paren-mode 1)
@@ -202,55 +215,6 @@
 
 ;; Use "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
-
-;; Use C-w for backward-kill-word in the minibuffer
-(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
-
-;; Use C-s-f to toggle fullscreen
-(global-set-key (kbd "C-s-f") 'ns-toggle-fullscreen)
-
-;; Quick macro to get rid of repetitive (lambda () (interactive) ...)
-(defmacro global-set-key-with-func (key &rest body)
-  `(global-set-key ,key (lambda () (interactive) ,@body)))
-
-;; Use [C-]s-[y, u, i, o] to resize windows
-(global-set-key-with-func (kbd "s-y")   (shrink-window-horizontally 5))
-(global-set-key-with-func (kbd "C-s-y") (shrink-window-horizontally 1))
-(global-set-key-with-func (kbd "s-u")   (shrink-window 5))
-(global-set-key-with-func (kbd "C-s-u") (shrink-window 1))
-(global-set-key-with-func (kbd "s-i")   (enlarge-window 5))
-(global-set-key-with-func (kbd "C-s-i") (enlarge-window 1))
-(global-set-key-with-func (kbd "s-o")   (enlarge-window-horizontally 5))
-(global-set-key-with-func (kbd "C-s-o") (enlarge-window-horizontally 1))
-
-;; Use s-[h, j, k, l] for window navigation
-(global-set-key (kbd "s-h")  'windmove-left)
-(global-set-key (kbd "s-l") 'windmove-right)
-(global-set-key (kbd "s-k")    'windmove-up)
-(global-set-key (kbd "s-j")  'windmove-down)
-
-;; Use s-[H, J, K, L] to swap windows
-(defun gcs-swap-windows (dir)
-  (let ((other-window (windmove-find-other-window dir)))
-    (when other-window
-      (let* ((this-window  (selected-window))
-             (this-buffer  (window-buffer this-window))
-             (other-buffer (window-buffer other-window))
-             (this-start   (window-start this-window))
-             (other-start  (window-start other-window)))
-        (set-window-buffer this-window  other-buffer)
-        (set-window-buffer other-window this-buffer)
-        (set-window-start  this-window  other-start)
-        (set-window-start  other-window this-start)
-        (windmove-do-window-select dir)))))
-
-(global-set-key-with-func (kbd "s-H") (gcs-swap-windows 'left)))
-(global-set-key-with-func (kbd "s-J") (gcs-swap-windows 'down)))
-(global-set-key-with-func (kbd "s-K") (gcs-swap-windows 'up)))
-(global-set-key-with-func (kbd "s-L") (gcs-swap-windows 'right)))
-
-;; Make C-M-g the same as C-g - in case 'Esc' is pressed accidentally
-(global-set-key "\C-\M-g" 'keyboard-quit)
 
 ;; Prevent annoying "Active processes exist" query when Emacs is quit
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)

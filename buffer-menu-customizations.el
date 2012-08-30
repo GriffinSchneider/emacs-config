@@ -1,3 +1,5 @@
+(require 'init)
+
 (setq Buffer-menu-size-width 7)
 (setq Buffer-menu-name-width 33)
 

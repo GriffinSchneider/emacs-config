@@ -1,5 +1,4 @@
-(require 'powerline)
-
+(require 'init)
 
 (setq powerline-arrow-shape 'arrow14)
 

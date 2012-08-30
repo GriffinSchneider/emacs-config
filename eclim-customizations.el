@@ -1,4 +1,5 @@
-(require 'eclim)
+(require 'init)
+
 (setq eclim-auto-save t)
 (setq eclim-eclipse-dirs '("~/Dev/eclipse"))
 
