@@ -209,15 +209,19 @@
 ;; Use C-s-f to toggle fullscreen
 (global-set-key (kbd "C-s-f") 'ns-toggle-fullscreen)
 
+;; Quick macro to get rid of repetitive (lambda () (interactive) ...)
+(defmacro global-set-key-with-func (key &rest body)
+  `(global-set-key ,key (lambda () (interactive) ,@body)))
+
 ;; Use [C-]s-[y, u, i, o] to resize windows
-(global-set-key (kbd "s-y")   (lambda () (interactive) (shrink-window-horizontally 5)))
-(global-set-key (kbd "C-s-y") (lambda () (interactive) (shrink-window-horizontally 1)))
-(global-set-key (kbd "s-u")   (lambda () (interactive) (shrink-window 5)))
-(global-set-key (kbd "C-s-u") (lambda () (interactive) (shrink-window 1)))
-(global-set-key (kbd "s-i")   (lambda () (interactive) (enlarge-window 5)))
-(global-set-key (kbd "C-s-i") (lambda () (interactive) (enlarge-window 1)))
-(global-set-key (kbd "s-o")   (lambda () (interactive) (enlarge-window-horizontally 5)))
-(global-set-key (kbd "C-s-o") (lambda () (interactive) (enlarge-window-horizontally 1)))
+(global-set-key-with-func (kbd "s-y")   (shrink-window-horizontally 5))
+(global-set-key-with-func (kbd "C-s-y") (shrink-window-horizontally 1))
+(global-set-key-with-func (kbd "s-u")   (shrink-window 5))
+(global-set-key-with-func (kbd "C-s-u") (shrink-window 1))
+(global-set-key-with-func (kbd "s-i")   (enlarge-window 5))
+(global-set-key-with-func (kbd "C-s-i") (enlarge-window 1))
+(global-set-key-with-func (kbd "s-o")   (enlarge-window-horizontally 5))
+(global-set-key-with-func (kbd "C-s-o") (enlarge-window-horizontally 1))
 
 ;; Use s-[h, j, k, l] for window navigation
 (global-set-key (kbd "s-h")  'windmove-left)
@@ -227,7 +231,6 @@
 
 ;; Use s-[H, J, K, L] to swap windows
 (defun gcs-swap-windows (dir)
-  (interactive)
   (let ((other-window (windmove-find-other-window dir)))
     (when other-window
       (let* ((this-window  (selected-window))
@@ -241,10 +244,10 @@
         (set-window-start  other-window this-start)
         (windmove-do-window-select dir)))))
 
-(global-set-key (kbd "s-H") (lambda () (interactive) (gcs-swap-windows 'left)))
-(global-set-key (kbd "s-J") (lambda () (interactive) (gcs-swap-windows 'down)))
-(global-set-key (kbd "s-K") (lambda () (interactive) (gcs-swap-windows 'up)))
-(global-set-key (kbd "s-L") (lambda () (interactive) (gcs-swap-windows 'right)))
+(global-set-key-with-func (kbd "s-H") (gcs-swap-windows 'left)))
+(global-set-key-with-func (kbd "s-J") (gcs-swap-windows 'down)))
+(global-set-key-with-func (kbd "s-K") (gcs-swap-windows 'up)))
+(global-set-key-with-func (kbd "s-L") (gcs-swap-windows 'right)))
 
 ;; Make C-M-g the same as C-g - in case 'Esc' is pressed accidentally
 (global-set-key "\C-\M-g" 'keyboard-quit)
