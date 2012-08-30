@@ -44,6 +44,12 @@
 (global-set-key (kbd "s-k")    'windmove-up)
 (global-set-key (kbd "s-j")  'windmove-down)
 
+;; Also use C-[arrow keys] for window navigation. Useful in terminal emacs.
+(global-set-key (kbd "C-<left>")  'windmove-left)
+(global-set-key (kbd "C-<right>")  'windmove-right)
+(global-set-key (kbd "C-<up>")  'windmove-up)
+(global-set-key (kbd "C-<down>")  'windmove-down)
+
 ;; Use s-[H, J, K, L] to swap windows
 (defun gcs-swap-windows (dir)
   (let ((other-window (windmove-find-other-window dir)))
