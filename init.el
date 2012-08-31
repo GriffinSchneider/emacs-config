@@ -6,8 +6,8 @@
 (provide 'init)
 
 (when load-in-progress
-  (setq gcs-config-directory (file-name-directory load-file-name))
-  (setq gcs-thirdparty-directory (concat gcs-config-directory "thirdparty/")))
+  (setq gcs-config-directory (file-name-directory load-file-name)
+        gcs-thirdparty-directory (concat gcs-config-directory "thirdparty/")))
 
 ;; Turn off toolbar and menu bar
 (tool-bar-mode -1)
@@ -84,11 +84,11 @@
 
 ;; Ido
 (ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(setq ido-ignore-buffers (cons "\\*Buffer List\\*" ido-ignore-buffers))
-;; Show ido completions vertically
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
+(setq ido-enable-flex-matching t
+      ido-everywhere t
+      ido-ignore-buffers (cons "\\*Buffer List\\*" ido-ignore-buffers)
+      ;; Show ido completions vertically
+      ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
                               " [No match]" " [Matched]" " [Not readable]"
                               " [Too big]" " [Confirm]")))
 (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
@@ -129,14 +129,14 @@
 (yas/initialize)
 
 ;; Eclim
-(setq eclim-auto-save t)
-(setq eclim-eclipse-dirs '("~/Dev/eclipse"))
+(setq eclim-auto-save t
+      eclim-eclipse-dirs '("~/Dev/eclipse"))
 
 ;; Org-mode
-(setq org-hide-leading-stars t)
-(setq org-odd-levels-only t)
-;; Align tags to column 90
-(setq org-tags-column -90)
+(setq org-hide-leading-stars t
+      org-odd-levels-only t
+      ;; Align tags to column 90
+      org-tags-column -90)
 
 ;; Sr-speedbar
 (setq speedbar-show-unknown-files t
@@ -165,39 +165,39 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-
 ;; Setup starting frame size
 (add-to-list 'default-frame-alist '(height . 50))
 (add-to-list 'default-frame-alist '(width . 155))
 
-;; Turn off startup message
-(setq inhibit-startup-message t)
-
 ;; Turn on winner-mode
 (winner-mode t)
-
-;; Use 4-wide tabs
-(setq tab-width 4)
-
-;; Don't insert tabs
-(setq-default indent-tabs-mode nil)
 
 ;; Use electric-indent-mode
 (electric-indent-mode)
 
-;; Always show line and column numbers in mode-line
-(setq line-number-mode t)
-(setq column-number-mode t)
+;; Don't insert tabs
+(setq-default indent-tabs-mode nil)
+              
+(setq
+ ;; Turn off startup message
+ inhibit-startup-message t
 
-;; Setup backups
-(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-(setq backup-by-copying t)
+ ;; Use 4-wide tabs
+ tab-width 4
 
-;; Make scrolling not suck.
-(setq scroll-margin 0
-      scroll-conservatively 100000
-      scroll-up-aggressively 0
-      scroll-down-aggressively 0)
+ ;; Always show line and column numbers in mode-line
+ line-number-mode t
+ column-number-mode t
+
+ ;; Setup backups
+ backup-directory-alist `(("." . "~/.emacs.d/saves"))
+ backup-by-copying t
+
+ ;; Make scrolling not suck.
+ scroll-margin 0
+ scroll-conservatively 100000
+ scroll-up-aggressively 0
+ scroll-down-aggressively 0)
 
 ;; No scrollbars
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -214,8 +214,8 @@
 ;; Highlight matching parens
 (require 'paren)
 (show-paren-mode 1)
-(setq show-paren-delay 0)
-(setq show-paren-style 'parenthesis)
+(setq show-paren-delay 0
+      show-paren-style 'parenthesis)
 ;; Make show-paren-mode use a different color than highlight-parentheses
 (set-face-foreground 'show-paren-match "Orange")
 (set-face-background 'show-paren-match nil)

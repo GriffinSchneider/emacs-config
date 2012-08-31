@@ -1,9 +1,9 @@
 (require 'init)
 
-(setq Buffer-menu-size-width 7)
-(setq Buffer-menu-name-width 33)
+(setq Buffer-menu-size-width 7
+      Buffer-menu-name-width 33
 
-(setq buffer-menu-buffer-font-lock-keywords
+      buffer-menu-buffer-font-lock-keywords
       '(("^....[*]Man .*Man.*"   . font-lock-variable-name-face) ; Man page
         (".*Dired.*"             . font-lock-comment-face)       ; Dired
         ("^....[*]shell.*"       . font-lock-preprocessor-face)  ; shell buff

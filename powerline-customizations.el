@@ -3,8 +3,8 @@
 (setq powerline-arrow-shape 'arrow14)
 
 ;; Setup colors
-(setq powerline-color1 "#598559")
-(setq powerline-color2 "#383838")
+(setq powerline-color1 "#598559"
+      powerline-color2 "#383838")
 (set-face-foreground 'mode-line "#030303")
 (set-face-background 'mode-line "#f0dfaf")
 
