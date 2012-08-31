@@ -3,54 +3,22 @@
 
 (require 'init)
 
-;; Macro to get rid of repetitive (lambda () (interactive) (non-interactive-function ...))
-(defmacro global-set-key-with-func (key &rest body)
-  `(global-set-key ,key (lambda () (interactive) ,@body)))
+(defun map2 (function list)
+  (case (length list)
+    (0 list)
+    (1 (error "map2 got an odd-length list"))
+    (t (cons (funcall function (first list) (second list))
+             (map2 function (cddr list))))))
+
+(defmacro global-set-keys (&rest bindings)
+  `(progn ,@(map2 (lambda (key command)
+                    (if (listp command)
+                        `(global-set-key (kbd ,key) (lambda () (interactive) ,command))
+                      `(global-set-key (kbd ,key) ',command)))
+                  bindings)))
 
 ;;;;; GLOBAL-SET-KEY KEYS ;;;;;
 
-;; Replace normal m-x with smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-;; Use s-s to toggle sr-speedbar
-(global-set-key (kbd "s-s") 'sr-speedbar-toggle)
-
-;; Use cmd-r to compile
-(global-set-key (kbd "s-r") 'compile)
-
-;; Use buffer-menu instead of list-buffers
-(global-set-key "\C-x\C-b" 'buffer-menu)
-
-;; Use C-w for backward-kill-word in the minibuffer
-(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
-
-;; Use C-s-f to toggle fullscreen
-(global-set-key (kbd "C-s-f") 'ns-toggle-fullscreen)
-
-;; Use [C-]s-[y, u, i, o] to resize windows
-(global-set-key-with-func (kbd "s-y")   (shrink-window-horizontally 5))
-(global-set-key-with-func (kbd "C-s-y") (shrink-window-horizontally 1))
-(global-set-key-with-func (kbd "s-u")   (shrink-window 5))
-(global-set-key-with-func (kbd "C-s-u") (shrink-window 1))
-(global-set-key-with-func (kbd "s-i")   (enlarge-window 5))
-(global-set-key-with-func (kbd "C-s-i") (enlarge-window 1))
-(global-set-key-with-func (kbd "s-o")   (enlarge-window-horizontally 5))
-(global-set-key-with-func (kbd "C-s-o") (enlarge-window-horizontally 1))
-
-;; Use s-[h, j, k, l] for window navigation
-(global-set-key (kbd "s-h")  'windmove-left)
-(global-set-key (kbd "s-l") 'windmove-right)
-(global-set-key (kbd "s-k")    'windmove-up)
-(global-set-key (kbd "s-j")  'windmove-down)
-
-;; Also use C-[arrow keys] for window navigation. Useful in terminal emacs.
-(global-set-key (kbd "C-<left>")  'windmove-left)
-(global-set-key (kbd "C-<right>")  'windmove-right)
-(global-set-key (kbd "C-<up>")  'windmove-up)
-(global-set-key (kbd "C-<down>")  'windmove-down)
-
-;; Use s-[H, J, K, L] to swap windows
 (defun gcs-swap-windows (dir)
   (let ((other-window (windmove-find-other-window dir)))
     (when other-window
@@ -65,17 +33,62 @@
         (set-window-start  other-window this-start)
         (windmove-do-window-select dir)))))
 
-(global-set-key-with-func (kbd "s-H") (gcs-swap-windows 'left))
-(global-set-key-with-func (kbd "s-J") (gcs-swap-windows 'down))
-(global-set-key-with-func (kbd "s-K") (gcs-swap-windows 'up))
-(global-set-key-with-func (kbd "s-L") (gcs-swap-windows 'right))
+(global-set-keys
+ ;; Replace normal m-x with smex
+ "M-x" smex
+ "M-X" smex-major-mode-commands
 
-;; Make C-M-g the same as C-g - in case 'Esc' is pressed accidentally
-(global-set-key "\C-\M-g" 'keyboard-quit)
+ ;; Use s-s to toggle sr-speedbar
+ "s-s" sr-speedbar-toggle
 
-;; Use C-u to scoll up like vim, move emacs's universal argument to C-S-u
-(global-set-key (kbd "C-u") 'evil-scroll-up)
-(global-set-key (kbd "C-S-u") 'universal-argument)
+ ;; Use cmd-r to compile
+ "s-r" compile
+
+ ;; Use buffer-menu instead of list-buffers
+ "\C-x\C-b" buffer-menu
+
+ ;; Use C-w for backward-kill-word in the minibuffer
+ "C-w" backward-kill-word
+
+ ;; Use C-s-f to toggle fullscreen
+ "C-s-f" ns-toggle-fullscreen
+
+ ;; Use [C-]s-[y, u, i, o] to resize windows
+ "s-y"   (shrink-window-horizontally 5)
+ "C-s-y" (shrink-window-horizontally 1)
+ "s-u"   (shrink-window 5)
+ "C-s-u" (shrink-window 1)
+ "s-i"   (enlarge-window 5)
+ "C-s-i" (enlarge-window 1)
+ "s-o"   (enlarge-window-horizontally 5)
+ "C-s-o" (enlarge-window-horizontally 1)
+
+ ;; Use s-[h, j, k, l] for window navigation
+ "s-h" windmove-left
+ "s-l" windmove-right
+ "s-k" windmove-up
+ "s-j" windmove-down
+
+ ;; Also use C-[arrow keys] for window navigation. Useful in terminal emacs.
+ "C-<left>" windmove-left
+ "C-<right>" windmove-right
+ "C-<up>" windmove-up
+ "C-<down>" windmove-down
+
+ ;; Use s-[H, J, K, L] to swap windows
+ "s-H" (gcs-swap-windows 'left)
+ "s-J" (gcs-swap-windows 'down)
+ "s-K" (gcs-swap-windows 'up)
+ "s-L" (gcs-swap-windows 'right)
+
+ ;; Make C-M-g the same as C-g - in case 'Esc' is pressed accidentally
+ "\C-\M-g" keyboard-quit
+
+ ;; Use C-u to scoll up like vim, move emacs's universal argument to C-S-u
+ "C-u" evil-scroll-up
+ "C-S-u" universal-argument)
+
+;;;;;  PIANOBAR KEYS ;;;;;
 
 ;; Setup various pianobar commands with a s-p prefix
 (defun gcs-map-pianobar-key (key command)
