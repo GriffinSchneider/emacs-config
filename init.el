@@ -52,9 +52,7 @@
 ;; My requires
 (require 'keybindings)
 (require 'evil-mode-customizations)
-(require 'org-mode-customizations)
 (require 'buffer-menu-customizations)
-(require 'eclim-customizations)
 (require 'auto-complete-customizations)
 (require 'powerline-customizations)
 (require 'pianobar-customizations)
@@ -129,6 +127,16 @@
 ;; Yasnippet
 (setq yas/snippet-dirs (list (concat gcs-config-directory "yasnippet/snippets")))
 (yas/initialize)
+
+;; Eclim
+(setq eclim-auto-save t)
+(setq eclim-eclipse-dirs '("~/Dev/eclipse"))
+
+;; Org-mode
+(setq org-hide-leading-stars t)
+(setq org-odd-levels-only t)
+;; Align tags to column 90
+(setq org-tags-column -90)
 
 ;; Sr-speedbar
 (setq speedbar-show-unknown-files t
