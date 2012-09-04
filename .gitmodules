@@ -34,18 +34,9 @@
 [submodule "thirdparty/smex"]
 	path = thirdparty/smex
 	url = https://github.com/nonsequitur/smex.git
-[submodule "thirdparty/auto-complete"]
-	path = thirdparty/auto-complete
-	url = https://github.com/m2ym/auto-complete.git
-[submodule "thirdparty/popup-el"]
-	path = thirdparty/popup-el
-	url = https://github.com/m2ym/popup-el.git
 [submodule "thirdparty/emacs-powerline"]
 	path = thirdparty/emacs-powerline
 	url = git://github.com/jonathanchu/emacs-powerline.git
-[submodule "thirdparty/fuzzy-el"]
-	path = thirdparty/fuzzy-el
-	url = https://github.com/m2ym/fuzzy-el.git
 [submodule "thirdparty/yascroll-el"]
 	path = thirdparty/yascroll-el
 	url = https://github.com/m2ym/yascroll-el.git
@@ -55,3 +46,12 @@
 [submodule "thirdparty/pianobar-el"]
 	path = thirdparty/pianobar-el
 	url = git@github.com:GriffinSchneider/pianobar.el.git
+[submodule "thirdparty/auto-complete"]
+	path = thirdparty/auto-complete
+	url = git://github.com/auto-complete/auto-complete.git
+[submodule "thirdparty/popup-el"]
+	path = thirdparty/popup-el
+	url = git://github.com/auto-complete/popup-el.git
+[submodule "thirdparty/fuzzy-el"]
+	path = thirdparty/fuzzy-el
+	url = git://github.com/auto-complete/fuzzy-el.git
