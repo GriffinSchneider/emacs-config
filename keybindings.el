@@ -167,6 +167,13 @@
         (gcs-buffer-menu-custom-font-lock)
         (goto-char (point-min))))))
 
+;; "\K" kills the buffer like gcs-kill-buffer-command, while also killing
+;; the window.
+(defun gcs-kill-buffer-and-window ()
+  (interactive)
+  (gcs-kill-buffer-command)
+  (delete-window))
+
 ;; Use \<left> and \<right> to navigate buffer list, ignoring buffer menu
 (defun gcs-previous-buffer ()
   (interactive)
@@ -201,6 +208,7 @@
 (defconst gcs-prefix-key-commands
   '(("q" quit-window)
     ("k" gcs-kill-buffer-command)
+    ("K" gcs-kill-buffer-and-window)
     ("g" magit-status)
     ("s" sunrise-cd)
     ("S" sunrise)
