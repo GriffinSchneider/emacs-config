@@ -20,18 +20,18 @@
 ;;;;; GLOBAL-SET-KEY KEYS ;;;;;
 
 (defun gcs-swap-windows (dir)
-  (let ((other-window (windmove-find-other-window dir)))
-    (when other-window
-      (let* ((this-window  (selected-window))
-             (this-buffer  (window-buffer this-window))
-             (other-buffer (window-buffer other-window))
-             (this-start   (window-start this-window))
-             (other-start  (window-start other-window)))
-        (set-window-buffer this-window  other-buffer)
-        (set-window-buffer other-window this-buffer)
-        (set-window-start  this-window  other-start)
-        (set-window-start  other-window this-start)
-        (windmove-do-window-select dir)))))
+  (let* ((this-window (selected-window))
+         (other-window (progn
+                         (windmove-do-window-select dir)
+                         (selected-window)))
+         (this-buffer  (window-buffer this-window))
+         (other-buffer (window-buffer other-window))
+         (this-start   (window-start this-window))
+         (other-start  (window-start other-window)))
+    (set-window-buffer this-window  other-buffer)
+    (set-window-buffer other-window this-buffer)
+    (set-window-start  this-window  other-start)
+    (set-window-start  other-window this-start)))
 
 (global-set-keys
  ;; Replace normal m-x with smex
