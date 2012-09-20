@@ -48,6 +48,7 @@
 (require 'eclim)
 (require 'powerline)
 (require 'pianobar)
+(require 'framemove)
 
 ;; My requires
 (require 'keybindings)
@@ -64,6 +65,9 @@
 (define-key sr-mode-map "j" 'dired-next-line)
 (define-key sr-mode-map "k" 'dired-previous-line)
 (define-key sr-mode-map "J" 'sr-dired-prev-subdir)
+
+;; Framemove
+(setq framemove-hook-into-windmove t)
 
 ;; XCode-like line wrapping
 (global-adaptive-wrap-prefix-mode t)

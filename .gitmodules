@@ -55,3 +55,6 @@
 [submodule "thirdparty/fuzzy-el"]
 	path = thirdparty/fuzzy-el
 	url = git://github.com/auto-complete/fuzzy-el.git
+[submodule "thirdparty/framemove"]
+	path = thirdparty/framemove
+	url = git://github.com/emacsmirror/framemove.git
