@@ -3,9 +3,7 @@
 
 (ac-config-default)
 (setq ac-quick-help-delay 0.1
-      ac-use-menu-map t
-      ;; Use accurate column computation
-      popup-use-optimized-column-computation nil)
+      ac-use-menu-map t)
 (ac-flyspell-workaround)
 (add-to-list 'ac-dictionary-directories (concat gcs-config-directory "auto-complete/dict"))
 
