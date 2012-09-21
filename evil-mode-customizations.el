@@ -4,6 +4,9 @@
 (evil-mode 1)
 (global-surround-mode 1)
 
+;; Use tab to move between links in help mode.
+(evil-define-key 'motion help-mode-map (read-kbd-macro "TAB") 'forward-button)
+
 ;; Make cursor red in Emacs mode.
 (setq evil-emacs-state-cursor '("red" box)
       evil-cross-lines t)
