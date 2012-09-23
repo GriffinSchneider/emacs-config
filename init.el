@@ -133,8 +133,8 @@
 (setq lua-indent-level 4)
 
 ;; Yasnippet
-(setq yas/snippet-dirs (list (concat gcs-config-directory "yasnippet/snippets")))
-(yas/initialize)
+(setq yas-snippet-dirs (list (concat gcs-config-directory "yasnippet/snippets")))
+(yas-global-mode 1)
 
 ;; Eclim
 (setq eclim-auto-save t
