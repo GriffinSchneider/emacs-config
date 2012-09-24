@@ -58,3 +58,6 @@
 [submodule "thirdparty/framemove"]
 	path = thirdparty/framemove
 	url = git://github.com/emacsmirror/framemove.git
+[submodule "thirdparty/find-file-in-project"]
+	path = thirdparty/find-file-in-project
+	url = git://github.com/dburger/find-file-in-project.git

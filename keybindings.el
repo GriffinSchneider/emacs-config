@@ -55,13 +55,12 @@
 
  ;; Use [C-]s-[y, u, i, o] to resize windows
  "s-y"   (shrink-window-horizontally 5)
- "C-s-y" (shrink-window-horizontally 1)
  "s-u"   (shrink-window 5)
- "C-s-u" (shrink-window 1)
  "s-i"   (enlarge-window 5)
- "C-s-i" (enlarge-window 1)
  "s-o"   (enlarge-window-horizontally 5)
- "C-s-o" (enlarge-window-horizontally 1)
+
+ ;; Xcode-like project search
+ "s-O" find-file-in-project
 
  ;; Use s-[h, j, k, l] for window navigation
  "s-h" windmove-left
@@ -205,41 +204,51 @@
   (message (format "Tab width is now %d" tab-width))
   (redraw-display))
 
+(defun gcs-find-file-dwim ()
+  (interactive)
+  (if (project-root)
+      (find-file-in-project)
+    (ido-find-file)))
+
 (defconst gcs-prefix-key-commands
-  '(("q" quit-window)
-    ("k" gcs-kill-buffer-command)
-    ("K" gcs-kill-buffer-and-window)
-    ("g" magit-status)
-    ("s" sunrise-cd)
-    ("S" sunrise)
-    ("u" undo-tree-visualize)
-    ("x" smex)
-    ("X" smex-major-mode-commands)
-    
-    ("f" ido-find-file)
-    ("F" ido-find-alternate-file)
-    ("w" save-buffer)
-    ("W" write-file)
-    ("b" buffer-menu)
-    ("v" ido-switch-buffer)
-    ("V" ido-switch-buffer-other-frame)
+  (mapcar
+   (lambda (binding) (list (read-kbd-macro (first binding)) (second binding)))
+   '(("q" quit-window)
+     ("k" gcs-kill-buffer-command)
+     ("K" gcs-kill-buffer-and-window)
+     ("g" magit-status)
+     ("s" sunrise-cd)
+     ("S" sunrise)
+     ("u" undo-tree-visualize)
+     ("x" smex)
+     ("X" smex-major-mode-commands)
+     
+     ("f" gcs-find-file-dwim)
+     ("F" ido-find-file)
+     ("s-f" ido-find-alternate-file)
+     
+     ("w" save-buffer)
+     ("W" write-file)
+     ("b" buffer-menu)
+     ("v" ido-switch-buffer)
+     ("V" ido-switch-buffer-other-frame)
 
-    ("c" compile)
-    ("e" next-error)
-    ("E" previous-error)
-    ("r" eval-buffer)
-    
-    ("0" delete-window)
-    ("7" delete-window)
-    ("1" delete-other-windows)
-    ("2" split-window-horizontally)
-    ("3" split-window-vertically)
-    ("4" balance-windows)
+     ("c" compile)
+     ("e" next-error)
+     ("E" previous-error)
+     ("r" eval-buffer)
+     
+     ("0" delete-window)
+     ("7" delete-window)
+     ("1" delete-other-windows)
+     ("2" split-window-horizontally)
+     ("3" split-window-vertically)
+     ("4" balance-windows)
 
-    ([left]  gcs-previous-buffer)
-    ([right] gcs-next-buffer)
-    ("\\"    comment-dwim-line)
-    ("t"     gcs-toggle-tab-width-setting)))
+     ("<left>"  gcs-previous-buffer)
+     ("<right>" gcs-next-buffer)
+     ("\\"    comment-dwim-line)
+     ("t"     gcs-toggle-tab-width-setting))))
 
 (defun gcs-prefix-key-command ()
   (interactive)

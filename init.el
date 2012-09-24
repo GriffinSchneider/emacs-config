@@ -49,6 +49,8 @@
 (require 'powerline)
 (require 'pianobar)
 (require 'framemove)
+(require 'find-file-in-project)
+(require 'project)
 
 ;; My requires
 (require 'keybindings)
@@ -100,7 +102,9 @@
             ;; Disable line truncation
             (set (make-local-variable 'truncate-lines) nil)
             ;; Delete backward by word with C-w
-            (define-key ido-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)))
+            (define-key ido-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)
+            (define-key ido-completion-map (kbd "s-j") 'ido-next-match)
+            (define-key ido-completion-map (kbd "s-k") 'ido-prev-match)))
 
 ;; Smex
 (smex-initialize)
