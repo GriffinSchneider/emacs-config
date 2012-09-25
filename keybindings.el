@@ -33,11 +33,18 @@
     (set-window-start  this-window  other-start)
     (set-window-start  other-window this-start)))
 
+(defun gcs-change-around-paren ()
+  (interactive)
+  (let ((range (evil-a-paren)))
+    (evil-change (first range) (second range))))
+
 (global-set-keys
  ;; Replace normal m-x with smex
  "M-x" smex
  "M-X" smex-major-mode-commands
 
+ "M-SPC" gcs-change-around-paren
+ 
  ;; Use s-s to toggle sr-speedbar
  "s-s" sr-speedbar-toggle
 
@@ -118,7 +125,6 @@
   (define-key evil-motion-state-map key def))
 (gcs-define-evil-motion-key (kbd "SPC") 'ace-jump-word-mode)
 (gcs-define-evil-motion-key (kbd "C-SPC") 'ace-jump-char-mode)
-(gcs-define-evil-motion-key (kbd "M-SPC") 'ace-jump-line-mode)
 
 ;; Swap evil-goto-mark and evil-goto-mark-line bindings
 (define-key evil-normal-state-map "'" 'evil-goto-mark)
@@ -222,10 +228,11 @@
      ("u" undo-tree-visualize)
      ("x" smex)
      ("X" smex-major-mode-commands)
+     ("a" gcs-ack-in-project)
      
-     ("f" gcs-find-file-dwim)
-     ("F" ido-find-file)
-     ("s-f" ido-find-alternate-file)
+     ("d" gcs-find-file-dwim)
+     ("f" ido-find-file)
+     ("F" ido-find-alternate-file)
      
      ("w" save-buffer)
      ("W" write-file)
