@@ -66,7 +66,7 @@
  "s-i"   (enlarge-window 5)
  "s-o"   (enlarge-window-horizontally 5)
 
- ;; Xcode-like project search
+ ;; Xcode-like keybindings
  "s-O" find-file-in-project
 
  ;; Use s-[h, j, k, l] for window navigation
@@ -215,6 +215,12 @@
   (if (project-root)
       (find-file-in-project)
     (ido-find-file)))
+
+(defun gcs-ack-in-project (command-args)
+  (interactive (list (read-from-minibuffer "Run ack like this: " ack-command nil nil 'ack-history)))
+  (if (project-root)
+      (ack command-args (concat (project-root) "/"))
+    (ack command-args)))
 
 (defconst gcs-prefix-key-commands
   (mapcar

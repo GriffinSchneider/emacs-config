@@ -61,3 +61,6 @@
 [submodule "thirdparty/find-file-in-project"]
 	path = thirdparty/find-file-in-project
 	url = git://github.com/dburger/find-file-in-project.git
+[submodule "thirdparty/ack-el"]
+	path = thirdparty/ack-el
+	url = git://github.com/leoliu/ack-el.git

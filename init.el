@@ -51,6 +51,7 @@
 (require 'framemove)
 (require 'find-file-in-project)
 (require 'project)
+(require 'ack)
 
 ;; My requires
 (require 'keybindings)
@@ -59,6 +60,18 @@
 (require 'auto-complete-customizations)
 (require 'powerline-customizations)
 (require 'pianobar-customizations)
+
+;; Ack
+(setq ack-command "ack -i --match ")
+;; Gets run after ack output is inserted into buffer by comint and
+;; processed for color escape codes by ack.el.
+;; Replaces all whitespace at the beginning of ack matches with 1 tab for alignment.
+(defadvice ack-filter (after align-ack-results activate)
+  (goto-char compilation-filter-start)
+  (while (re-search-forward "^[0-9]*:\\([ \t]*\\)[^ ]+" nil t)
+    (replace-match "\t" nil nil nil 1)))
+;; Enable evil's g bindings in ack-mode. 
+(define-key ack-mode-map "g" nil)
 
 
 ;; Sunrise commander
