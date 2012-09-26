@@ -64,3 +64,6 @@
 [submodule "thirdparty/ack-el"]
 	path = thirdparty/ack-el
 	url = git://github.com/leoliu/ack-el.git
+[submodule "thirdparty/w3m"]
+	path = thirdparty/w3m
+	url = git://github.com/emacsmirror/w3m.git
