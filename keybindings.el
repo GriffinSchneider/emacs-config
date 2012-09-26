@@ -246,6 +246,9 @@
      ("v" ido-switch-buffer)
      ("V" ido-switch-buffer-other-frame)
 
+     ("s-v" visual-line-mode)
+     ("s-b" magit-blame-mode)
+
      ("c" compile)
      ("e" next-error)
      ("E" previous-error)

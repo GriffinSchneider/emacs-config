@@ -86,7 +86,6 @@
 
 ;; XCode-like line wrapping
 (global-adaptive-wrap-prefix-mode t)
-(global-visual-line-mode)
 
 ;; Yascroll
 (global-yascroll-bar-mode 1)
@@ -203,6 +202,9 @@
 ;; Don't insert tabs
 (setq-default indent-tabs-mode nil)
               
+(set-default 'truncate-lines t)
+(setq truncate-partial-width-windows t)
+
 (setq
  ;; Turn off startup message
  inhibit-startup-message t
