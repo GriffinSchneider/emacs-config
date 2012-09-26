@@ -23,6 +23,10 @@
 
 ;; Link following
 (define-key w3m-mode-map (read-kbd-macro "f") 'w3m-lnum-follow)
+;; F to follow in new session. Stupid function only works with 4 as an argument :-/
+(define-key w3m-mode-map (read-kbd-macro "F") (lambda () (interactive) (w3m-lnum-follow 4)))
+;; Shift-enter to open in new tab
+(define-key w3m-mode-map (read-kbd-macro "s-<return>") 'w3m-view-this-url-new-session)
 
 ;; Unbind space in w3m-mode-map, so it can still be used for ace-jump
 (define-key w3m-mode-map (kbd "SPC") nil)
