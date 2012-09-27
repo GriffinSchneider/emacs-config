@@ -6,6 +6,9 @@
 ;; Use cookies
 (setq w3m-use-cookies t)
 
+;; Use bookmarks as homepage.
+(setq w3m-home-page "about://bookmark/")
+
 ;; Tab switching
 (define-key w3m-mode-map (read-kbd-macro "C-<tab>") 'w3m-next-buffer)
 (define-key w3m-mode-map (read-kbd-macro "C-S-<tab>") 'w3m-previous-buffer)
@@ -14,7 +17,7 @@
 (define-key w3m-mode-map (read-kbd-macro "t") 'w3m-select-buffer)
 
 ;; Tab creation/deletion
-(define-key w3m-mode-map (read-kbd-macro "s-t") 'w3m-create-empty-session)
+(define-key w3m-mode-map (read-kbd-macro "s-t") 'w3m-bookmark-view-new-session)
 (define-key w3m-mode-map (read-kbd-macro "C-t C-t") 'w3m-copy-buffer)
 (define-key w3m-mode-map (read-kbd-macro "s-w") 'w3m-delete-buffer)
 (define-key w3m-mode-map (read-kbd-macro "x") 'w3m-delete-buffer)
