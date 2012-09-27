@@ -52,7 +52,6 @@
 (require 'find-file-in-project)
 (require 'project)
 (require 'ack)
-(require 'w3m)
 
 ;; My requires
 (require 'keybindings)
@@ -61,7 +60,10 @@
 (require 'auto-complete-customizations)
 (require 'powerline-customizations)
 (require 'pianobar-customizations)
-(require 'w3m-customizations)
+
+(when (executable-find "w3m")
+  (require 'w3m)
+  (require 'w3m-customizations))
 
 ;; Ack
 (setq ack-command "ack -i --match ")
