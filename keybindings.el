@@ -130,6 +130,11 @@
 (define-key evil-normal-state-map "'" 'evil-goto-mark)
 (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
 
+ ;; Use C-j and C-k for scrolling 2 lines up/down, similar to w3m binding
+(gcs-define-evil-motion-key (read-kbd-macro "C-j") (lambda () (interactive) (evil-scroll-line-down 2) (evil-next-line 2)))
+(gcs-define-evil-motion-key (read-kbd-macro "C-k") (lambda () (interactive) (evil-scroll-line-up 2) (evil-previous-line 2)))
+
+
 ;; Get rid of the "K" binding for evil-lookup
 (define-key evil-motion-state-map "K" nil)
 ;; Use j and k pressed within .15 seconds to exit insert mode
