@@ -38,6 +38,7 @@
   (let ((range (evil-a-paren)))
     (evil-change (first range) (second range))))
 
+
 (global-set-keys
  ;; Replace normal m-x with smex
  "M-x" smex
@@ -227,6 +228,15 @@
       (ack command-args (concat (project-root) "/"))
     (ack command-args)))
 
+(defun gcs-show-in-finder ()
+  (interactive)
+  (shell-command "open ."))
+
+(defun gcs-open-with-osx ()
+  (interactive)
+  (shell-command (concat "open " (buffer-file-name))))
+
+
 (defconst gcs-prefix-key-commands
   (mapcar
    (lambda (binding) (list (read-kbd-macro (first binding)) (second binding)))
@@ -241,9 +251,11 @@
      ("X" smex-major-mode-commands)
      ("a" gcs-ack-in-project)
      
-     ("d" gcs-find-file-dwim)
-     ("f" ido-find-file)
-     ("F" ido-find-alternate-file)
+     ("d"   gcs-find-file-dwim)
+     ("f"   ido-find-file)
+     ("F"   ido-find-alternate-file)
+     ("s-f" gcs-show-in-finder)
+     ("s-o" gcs-open-with-osx)
      
      ("w" save-buffer)
      ("W" write-file)
