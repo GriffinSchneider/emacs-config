@@ -67,3 +67,6 @@
 [submodule "thirdparty/w3m"]
 	path = thirdparty/w3m
 	url = git://github.com/emacsmirror/w3m.git
+[submodule "thirdparty/multi-term"]
+	path = thirdparty/multi-term
+	url = git://github.com/emacsmirror/multi-term.git

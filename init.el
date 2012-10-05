@@ -52,6 +52,7 @@
 (require 'find-file-in-project)
 (require 'project)
 (require 'ack)
+(require 'multi-term)
 
 ;; My requires
 (require 'keybindings)
@@ -65,6 +66,10 @@
   (require 'w3m)
   (require 'w3m-customizations))
 
+;; Multi-term
+(setq multi-term-program "/bin/zsh")
+(add-hook 'term-mode-hook (lambda () (yas-minor-mode  -1)))
+
 ;; Ack
 (setq ack-command "ack -i --match ")
 ;; Gets run after ack output is inserted into buffer by comint and
@@ -76,7 +81,6 @@
     (replace-match "\t" nil nil nil 1)))
 ;; Enable evil's g bindings in ack-mode. 
 (define-key ack-mode-map "g" nil)
-
 
 ;; Sunrise commander
 (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
