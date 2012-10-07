@@ -250,6 +250,7 @@
      ("k" gcs-kill-buffer-command)
      ("K" gcs-kill-buffer-and-window)
      ("g" magit-status)
+     ("l" magit-log)
      ("s" sunrise-cd)
      ("S" sunrise)
      ("u" undo-tree-visualize)
