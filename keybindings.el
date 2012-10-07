@@ -96,7 +96,14 @@
 
  ;; Use C-u to scoll up like vim, move emacs's universal argument to C-S-u
  "C-u" evil-scroll-up
- "C-S-u" universal-argument)
+ "C-S-u" universal-argument
+
+ ;; Tab navigation
+ "M-j" tabbar-backward-tab
+ "M-k" tabbar-forward-tab
+ "M-h" tabbar-backward-group
+ "M-l" tabbar-forward-group
+ "M-;" tabbar-press-home)
 
 ;;;;;  PIANOBAR KEYS ;;;;;
 

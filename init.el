@@ -53,6 +53,7 @@
 (require 'project)
 (require 'ack)
 (require 'multi-term)
+(require 'tabbar)
 
 ;; My requires
 (require 'keybindings)
@@ -61,6 +62,7 @@
 (require 'auto-complete-customizations)
 (require 'powerline-customizations)
 (require 'pianobar-customizations)
+(require 'tabbar-customizations)
 
 (when (executable-find "w3m")
   (require 'w3m)
