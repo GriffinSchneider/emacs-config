@@ -196,16 +196,22 @@
   (next-buffer)
   (when (string= (buffer-name) "*Buffer List*") (next-buffer)))
 
-(defun comment-dwim-line (&optional arg)
+(defun comment-dwim-line-or-toggle-term-mode (&optional arg)
   "Replacement for the comment-dwim command.
    If no region is selected and current line is not blank and we are not at the end of the line,
    then comment current line.
-   Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+   Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line.
+   Also, toggles between term-line-mode and term-char-mode in multi-term"
   (interactive "*P")
-  (comment-normalize-vars)
-  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
-      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
-    (comment-dwim arg)))
+  (if (equal 'term-mode major-mode)
+      (if (term-in-line-mode)
+          (progn (term-char-mode) (message "CHAR MODE"))
+        (term-line-mode) (message "LINE MODE"))
+    
+    (comment-normalize-vars)
+    (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+        (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+      (comment-dwim arg))))
 
 (defun gcs-toggle-tab-width-setting ()
   "Toggle setting tab widths between 4 and 8"
@@ -280,8 +286,8 @@
 
      ("<left>"  gcs-previous-buffer)
      ("<right>" gcs-next-buffer)
-     ("\\"    comment-dwim-line)
-     ("t"     gcs-toggle-tab-width-setting))))
+     ("\\"      comment-dwim-line-or-toggle-term-mode)
+     ("t"       gcs-toggle-tab-width-setting))))
 
 (defun gcs-prefix-key-command ()
   (interactive)

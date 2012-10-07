@@ -67,7 +67,7 @@
   (require 'w3m-customizations))
 
 ;; Multi-term
-(setq multi-term-program "/bin/zsh")
+(setq multi-term-program "/bin/bash")
 (add-hook 'term-mode-hook (lambda () (yas-minor-mode  -1)))
 
 ;; Ack
