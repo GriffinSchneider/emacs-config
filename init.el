@@ -54,6 +54,7 @@
 (require 'ack)
 (require 'multi-term)
 (require 'tabbar)
+(require 'xcode-document-viewer)
 
 ;; My requires
 (require 'keybindings)
@@ -67,6 +68,16 @@
 (when (executable-find "w3m")
   (require 'w3m)
   (require 'w3m-customizations))
+
+;; Xcode-document-viewer
+(setq gcs-docsetutil-path "/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil")
+;; Needs an absolute path
+(setq xcdoc:document-path (concat (getenv "HOME") "/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset"))
+(setq xcdoc:open-w3m-other-buffer t)
+(defun xcdoc:docsetutil-command () ""
+  (if (file-executable-p gcs-docsetutil-path)
+      gcs-docsetutil-path
+    (message "Couldn't find docsetutil!")))
 
 ;; Multi-term
 (setq multi-term-program "/bin/bash")
