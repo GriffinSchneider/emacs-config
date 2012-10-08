@@ -82,6 +82,17 @@
 ;; Multi-term
 (setq multi-term-program "/bin/bash")
 (add-hook 'term-mode-hook (lambda () (yas-minor-mode  -1)))
+;; normal, black, red, green, yellow, blue, magenta, cyan, white
+(setq ansi-term-color-vector
+      '(term-face
+        term-color-black
+        font-lock-string-face
+        font-lock-comment-face
+        font-lock-keyword-face
+        font-lock-preprocessor-face
+        term-color-magenta
+        font-lock-type-face
+        term-color-white))
 
 ;; Ack
 (setq ack-command "ack -i --match ")
