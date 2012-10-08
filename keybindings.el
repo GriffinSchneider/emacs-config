@@ -50,7 +50,7 @@
  "s-s" sr-speedbar-toggle
 
  "s-t" (progn (multi-term-dedicated-toggle) (when (multi-term-dedicated-exist-p) (multi-term-dedicated-select)))
- "s-f" ns-pop-font-panel
+ "s-f" ns-popup-font-panel
 
  ;; Use cmd-r to compile
  "s-r" compile
