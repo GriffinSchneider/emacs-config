@@ -101,8 +101,8 @@
  ;; Tab navigation
  "M-j" tabbar-backward-tab
  "M-k" tabbar-forward-tab
- "M-h" tabbar-backward-group
- "M-l" tabbar-forward-group
+ "M-h" (progn (tabbar-backward-group) (tabbar-press-home))
+ "M-l" (progn (tabbar-forward-group) (tabbar-press-home))
  "M-;" tabbar-press-home)
 
 ;;;;;  PIANOBAR KEYS ;;;;;
