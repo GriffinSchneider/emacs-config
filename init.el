@@ -90,7 +90,7 @@
         font-lock-comment-face
         font-lock-keyword-face
         font-lock-preprocessor-face
-        term-color-magenta
+        font-lock-variable-name-face
         font-lock-type-face
         term-color-white))
 
