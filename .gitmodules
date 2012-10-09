@@ -75,7 +75,7 @@
 	url = git://github.com/dholm/tabbar.git
 [submodule "thirdparty/helm"]
 	path = thirdparty/helm
-	url = thigit://github.com/emacs-helm/helm.git
+	url = git://github.com/emacs-helm/helm.git
 [submodule "thirdparty/emacs-xcode-document-viewer"]
 	path = thirdparty/emacs-xcode-document-viewer
-	url = thigithub.com:GriffinSchneider/emacs-xcode-document-viewer.git
+	url = git@github.com:GriffinSchneider/emacs-xcode-document-viewer.git
