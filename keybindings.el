@@ -72,6 +72,7 @@
 
  ;; Xcode-like keybindings
  "s-O" find-file-in-project
+ "C-s-<up>" ff-find-other-file
 
  ;; Use s-[h, j, k, l] for window navigation
  "s-h" windmove-left

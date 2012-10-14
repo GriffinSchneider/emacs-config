@@ -55,6 +55,9 @@
 (require 'multi-term)
 (require 'tabbar)
 (require 'xcode-document-viewer)
+(require 'helm)
+(require 'helm-config)
+
 
 ;; My requires
 (require 'keybindings)
@@ -64,20 +67,15 @@
 (require 'powerline-customizations)
 (require 'pianobar-customizations)
 (require 'tabbar-customizations)
+(require 'objective-c-customizations)
 
 (when (executable-find "w3m")
   (require 'w3m)
   (require 'w3m-customizations))
 
-;; Xcode-document-viewer
-(setq gcs-docsetutil-path "/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil")
-;; Needs an absolute path
-(setq xcdoc:document-path (concat (getenv "HOME") "/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset"))
-(setq xcdoc:open-w3m-other-buffer t)
-(defun xcdoc:docsetutil-command () ""
-  (if (file-executable-p gcs-docsetutil-path)
-      gcs-docsetutil-path
-    (message "Couldn't find docsetutil!")))
+;; Helm
+(define-key helm-map (kbd "s-j") 'helm-next-line)
+(define-key helm-map (kbd "s-k") 'helm-previous-line)
 
 ;; Multi-term
 (setq multi-term-program "/bin/bash")
