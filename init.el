@@ -49,14 +49,14 @@
 (require 'powerline)
 (require 'pianobar)
 (require 'framemove)
-(require 'find-file-in-project)
-(require 'project)
 (require 'ack)
 (require 'multi-term)
 (require 'tabbar)
 (require 'xcode-document-viewer)
 (require 'helm)
 (require 'helm-config)
+(require 'eproject)
+(require 'eproject-extras)
 
 
 ;; My requires
@@ -72,6 +72,9 @@
 (when (executable-find "w3m")
   (require 'w3m)
   (require 'w3m-customizations))
+
+;; eproject
+(setq eproject-completing-read-function 'eproject--ido-completing-read)
 
 ;; Helm
 (define-key helm-map (kbd "s-j") 'helm-next-line)
@@ -285,3 +288,4 @@
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   (flet ((process-list ())) ad-do-it))
 
+(setq ruby-indent-level 4)

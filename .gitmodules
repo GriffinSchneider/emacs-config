@@ -58,9 +58,6 @@
 [submodule "thirdparty/framemove"]
 	path = thirdparty/framemove
 	url = git://github.com/emacsmirror/framemove.git
-[submodule "thirdparty/find-file-in-project"]
-	path = thirdparty/find-file-in-project
-	url = git://github.com/dburger/find-file-in-project.git
 [submodule "thirdparty/ack-el"]
 	path = thirdparty/ack-el
 	url = git://github.com/leoliu/ack-el.git
@@ -79,3 +76,6 @@
 [submodule "thirdparty/emacs-xcode-document-viewer"]
 	path = thirdparty/emacs-xcode-document-viewer
 	url = git@github.com:GriffinSchneider/emacs-xcode-document-viewer.git
+[submodule "thirdparty/eproject"]
+	path = thirdparty/eproject
+	url = git://github.com/jrockway/eproject.git

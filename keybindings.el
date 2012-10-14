@@ -235,14 +235,14 @@
 
 (defun gcs-find-file-dwim ()
   (interactive)
-  (if (project-root)
-      (find-file-in-project)
+  (if (eproject-root)
+      (eproject-find-file)
     (ido-find-file)))
 
 (defun gcs-ack-in-project (command-args)
   (interactive (list (read-from-minibuffer "Run ack like this: " ack-command nil nil 'ack-history)))
-  (if (project-root)
-      (ack command-args (concat (project-root) "/"))
+  (if (eproject-root)
+      (ack command-args (concat (eproject-root) "/"))
     (ack command-args)))
 
 (defun gcs-show-in-finder ()
