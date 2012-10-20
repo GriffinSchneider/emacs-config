@@ -82,3 +82,6 @@
 [submodule "thirdparty/emacs-clang-complete-async"]
 	path = thirdparty/emacs-clang-complete-async
 	url = git@github.com:GriffinSchneider/emacs-clang-complete-async.git
+[submodule "thirdparty/exec-path-from-shell"]
+	path = thirdparty/exec-path-from-shell
+	url = git://github.com/purcell/exec-path-from-shell.git

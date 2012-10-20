@@ -58,7 +58,7 @@
 (require 'eproject)
 (require 'eproject-extras)
 (require 'auto-complete-clang-async)
-
+(require 'exec-path-from-shell)
 
 ;; My requires
 (require 'keybindings)
@@ -73,6 +73,10 @@
 (when (executable-find "w3m")
   (require 'w3m)
   (require 'w3m-customizations))
+
+;; exec-path-from-shell
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 ;; eproject
 (setq eproject-completing-read-function 'eproject--ido-completing-read)
