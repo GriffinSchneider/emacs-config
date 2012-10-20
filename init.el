@@ -63,11 +63,12 @@
 ;; My requires
 (require 'keybindings)
 (require 'evil-mode-customizations)
-(require 'buffer-menu-customizations)
+(require 'ibuffer-customizations)
 (require 'auto-complete-customizations)
 (require 'powerline-customizations)
 (require 'pianobar-customizations)
 (require 'tabbar-customizations)
+(require 'eproject-customizations)
 (require 'objective-c-customizations)
 
 (when (executable-find "w3m")

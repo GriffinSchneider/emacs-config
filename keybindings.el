@@ -38,6 +38,10 @@
   (let ((range (evil-a-paren)))
     (evil-change (first range) (second range))))
 
+(defun gcs-ibuffer ()
+  (interactive)
+  (gcs-setup-eproject-filter-groups)
+  (ibuffer))
 
 (global-set-keys
  ;; Replace normal m-x with smex
@@ -55,8 +59,8 @@
  ;; Use cmd-r to compile
  "s-r" compile
 
- ;; Use buffer-menu instead of list-buffers
- "\C-x\C-b" buffer-menu
+ ;; Use ibuffer instead of list-buffers
+ "\C-x\C-b" gcs-ibuffer
 
  ;; Use C-w for backward-kill-word in the minibuffer
  "C-w" backward-kill-word
@@ -182,7 +186,7 @@
 (defun gcs-kill-buffer-command ()
   (interactive)
   (kill-buffer (current-buffer))
-  (let ((buffer-menu-buffer (get-buffer "*Buffer List*")))
+  (let ((buffer-menu-buffer (get-buffer "*Ibuffer*")))
     (when buffer-menu-buffer
       (with-current-buffer buffer-menu-buffer
         (revert-buffer)
@@ -200,12 +204,12 @@
 (defun gcs-previous-buffer ()
   (interactive)
   (previous-buffer)
-  (when (string= (buffer-name) "*Buffer List*") (previous-buffer)))
+  (when (string= (buffer-name) "*Ibuffer*") (previous-buffer)))
 
 (defun gcs-next-buffer ()
   (interactive)
   (next-buffer)
-  (when (string= (buffer-name) "*Buffer List*") (next-buffer)))
+  (when (string= (buffer-name) "*Ibuffer*") (next-buffer)))
 
 (defun comment-dwim-line-or-toggle-term-mode (&optional arg)
   "Replacement for the comment-dwim command.
@@ -277,7 +281,7 @@
      
      ("w" save-buffer)
      ("W" write-file)
-     ("b" buffer-menu)
+     ("b" gcs-ibuffer)
      ("v" ido-switch-buffer)
      ("V" ido-switch-buffer-other-frame)
 
