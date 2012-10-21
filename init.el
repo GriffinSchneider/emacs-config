@@ -26,6 +26,10 @@
 (add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
 (load-theme 'zenburn 'no-confirm)
 
+;; exec-path-from-shell needs to happen before other requires, so the path will be setup properly
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
 ;; Third-party requires
 (require 'evil)
 (require 'surround)
@@ -58,7 +62,6 @@
 (require 'eproject)
 (require 'eproject-extras)
 (require 'auto-complete-clang-async)
-(require 'exec-path-from-shell)
 
 ;; My requires
 (require 'keybindings)
@@ -72,12 +75,9 @@
 (require 'objective-c-customizations)
 
 (when (executable-find "w3m")
+  (setq w3m-command (executable-find "w3m"))
   (require 'w3m)
   (require 'w3m-customizations))
-
-;; exec-path-from-shell
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
 
 ;; eproject
 (setq eproject-completing-read-function 'eproject--ido-completing-read)
