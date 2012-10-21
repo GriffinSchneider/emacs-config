@@ -75,7 +75,7 @@
  "s-o"   (enlarge-window-horizontally 5)
 
  ;; Xcode-like keybindings
- "s-O" find-file-in-project
+ "s-O" gcs-find-file-dwim
  "C-s-<up>" ff-find-other-file
 
  ;; Use s-[h, j, k, l] for window navigation
