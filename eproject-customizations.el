@@ -1,5 +1,20 @@
 (require 'init)
 
+;; These advices make eproject use a buffer's default-directory to determine its project
+;; membership if the buffer isn't visiting a file.
+;; When eproject tries to get the buffer's filename, return the buffer's default directory
+;; if it isn't visiting a file.
+(defadvice eproject--buffer-file-name (around eproject-fallback-to-default-dir activate)
+  (setq ad-return-value (or (buffer-file-name) default-directory)))
+;; Stop eproject from checking whether the current buffer is visiting a file before activating.
+(defadvice eproject--after-change-major-mode-hook (around eproject-dont-check-for-filename activate)
+  (when (and (eproject--buffer-file-name) (not eproject-root)) (eproject-maybe-turn-on)))
+
+;; This is a replacement for eproject's usual "look-for" form in the define-project-type
+;; macro's SELECTOR. Use this in local project defs so non-file buffers will be included
+;; in your projects.
+(defun gcs-eproject-look-for (filename)
+  (eproject--find-file-named (file-name-directory file) filename))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                      Objective-C Project Type 

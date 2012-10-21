@@ -22,12 +22,18 @@
                 (memq major-mode ibuffer-help-buffer-modes))
             font-lock-comment-face)))
 
+(define-ibuffer-filter project
+  "Filter by buffer's eproject-root"
+  (:description "project"
+   :reader (read-from-minibuffer "Filter by project root: "))
+  (with-current-buffer buf (string-equal eproject-root qualifier)))
+
 (defun gcs-get-eproject-filter-groups ()
   (let (projects-with-buffers-filters)
     ;; Fill a list of filters for projects that have open buffers
     (mapc (lambda (project)
             (when (assoc (cdr project) (eproject--project-buffers))
-              (add-to-list 'projects-with-buffers-filters (list (first project) `(filename . ,(cdr project))))))
+              (add-to-list 'projects-with-buffers-filters (list (first project) `(project . ,(cdr project))))))
           (eproject-projects))
     ;; Return a list of filters for projects, with projects that have buffers
     ;; at the start of the list.
