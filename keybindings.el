@@ -190,7 +190,6 @@
     (when buffer-menu-buffer
       (with-current-buffer buffer-menu-buffer
         (revert-buffer)
-        (gcs-buffer-menu-custom-font-lock)
         (goto-char (point-min))))))
 
 ;; "\K" kills the buffer like gcs-kill-buffer-command, while also killing
