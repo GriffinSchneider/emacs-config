@@ -19,7 +19,9 @@
 
 ;;;;; GLOBAL-SET-KEY KEYS ;;;;;
 
-(defun gcs-swap-windows (dir)
+(defun gcs-put-buffer-in-window (dir)
+  "Pop the current window's buffer off the window's buffer list
+and push it onto the buffer list of the window in direction DIR."
   (let* ((this-window (selected-window))
          (other-window (progn
                          (windmove-do-window-select dir)
@@ -28,10 +30,9 @@
          (other-buffer (window-buffer other-window))
          (this-start   (window-start this-window))
          (other-start  (window-start other-window)))
-    (set-window-buffer this-window  other-buffer)
     (set-window-buffer other-window this-buffer)
-    (set-window-start  this-window  other-start)
-    (set-window-start  other-window this-start)))
+    (set-window-start  other-window this-start)
+    (switch-to-prev-buffer this-window)))
 
 (defun gcs-change-around-paren ()
   (interactive)
@@ -91,10 +92,10 @@
  "C-<down>" windmove-down
 
  ;; Use s-[H, J, K, L] to swap windows
- "s-H" (gcs-swap-windows 'left)
- "s-J" (gcs-swap-windows 'down)
- "s-K" (gcs-swap-windows 'up)
- "s-L" (gcs-swap-windows 'right)
+ "s-H" (gcs-put-buffer-in-window 'left)
+ "s-J" (gcs-put-buffer-in-window 'down)
+ "s-K" (gcs-put-buffer-in-window 'up)
+ "s-L" (gcs-put-buffer-in-window 'right)
 
  ;; Make C-M-g the same as C-g - in case 'Esc' is pressed accidentally
  "\C-\M-g" keyboard-quit
@@ -146,7 +147,7 @@
 (define-key evil-normal-state-map "'" 'evil-goto-mark)
 (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
 
- ;; Use C-j and C-k for scrolling 2 lines up/down, similar to w3m binding
+;; Use C-j and C-k for scrolling 2 lines up/down, similar to w3m binding
 (gcs-define-evil-motion-key (read-kbd-macro "C-j") (lambda () (interactive) (evil-scroll-line-down 2) (evil-next-line 2)))
 (gcs-define-evil-motion-key (read-kbd-macro "C-k") (lambda () (interactive) (evil-scroll-line-up 2) (evil-previous-line 2)))
 
