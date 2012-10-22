@@ -168,22 +168,21 @@
 ;; "q" always kills magit buffers
 (define-key magit-mode-map "q" (lambda () (interactive) (magit-quit-window 'kill-buffer)))
 (define-key magit-mode-map ";" 'magit-toggle-section)
-;; Use j and k for navigation in magit-mode. For some reason, magit
-;; overrides the k binding if I don't use evil-add-hjkl-bindings.
-(evil-add-hjkl-bindings magit-mode-map 'emacs
-  "K" 'magit-discard-item
-  ;; If j is pressed and we're already at the last section, move to end of the section.
-  ;; This fixes the problem when you're at the first line of the last section and the
-  ;; rest of the last section is off the screen, but you can't press j to see the rest
-  ;; of the section.
-  "j" (lambda () (interactive)
-        (let ((next (magit-find-section-after (point))))
-          (cond (next (magit-goto-section next))
-                (t    (goto-char (+ -1 (magit-section-end (magit-current-section))))))))
-  "k" 'magit-goto-previous-section
-  "l" 'magit-key-mode-popup-logging
-  "h" 'magit-toggle-diff-refine-hunk
-  ":" 'magit-git-command)
+;; Use j and k for navigation in magit-mode.
+;; Remap "k" to be magit-goto-previous-section everywhere
+(define-key magit-status-mode-map "k" 'magit-goto-previous-section)
+(define-key magit-branch-manager-mode-map "k" 'magit-goto-previous-section)
+(define-key magit-mode-map "k" 'magit-goto-previous-section)
+;; Remap "K" to do what "k" used to do, wherever "k" used to be defined
+(define-key magit-status-mode-map "K" 'magit-discard-item)
+(define-key magit-branch-manager-mode-map "K" 'magit-discard-item)
+;; Map "j" to magit-goto-next-section in eveywhere
+(define-key magit-mode-map "j"
+  (lambda () (interactive)
+    (let ((next (magit-find-section-after (point))))
+      (if next
+          (magit-goto-section next)
+        (goto-char (+ -1 (magit-section-end (magit-current-section))))))))
 
 ;; Lua-mode
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
