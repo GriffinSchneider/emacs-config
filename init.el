@@ -61,6 +61,7 @@
 (require 'helm-config)
 (require 'eproject)
 (require 'eproject-extras)
+(require 'helm-eproject)
 (require 'auto-complete-clang-async)
 
 ;; My requires

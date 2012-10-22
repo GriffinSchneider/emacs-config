@@ -259,7 +259,7 @@ and push it onto the buffer list of the window in direction DIR."
 (defun gcs-find-file-dwim ()
   (interactive)
   (if (eproject-root)
-      (eproject-find-file)
+      (helm-eproject)
     (ido-find-file)))
 
 (defun gcs-ack-in-project (command-args)
