@@ -21,10 +21,14 @@
   (let ((helm-candidate-number-limit 500))
     (helm-other-buffer '(helm-c-source-objc-headline) "*ObjC Headline*")))
 
-;; Make ff-find-other-file toggle between .m and .h
-(add-hook 'objc-mode-hook (lambda ()
-                            (set (make-local-variable 'cc-other-file-alist)
-                                 '(("\\.m" (".h")) ("\\.h" (".m"))))))
+(defun gcs-objc-mode-hook ()
+  (c-set-style "stroustrup")
+  (c-toggle-auto-hungry-state 1)
+  ;; Make ff-find-other-file toggle between .m and .h
+  (set (make-local-variable 'cc-other-file-alist)
+       '(("\\.m" (".h")) ("\\.h" (".m")))))
+
+(add-hook 'objc-mode-hook 'gcs-objc-mode-hook)
 
 
 (provide 'objective-c-customizations)
