@@ -63,6 +63,7 @@
 (require 'eproject-extras)
 (require 'helm-eproject)
 (require 'auto-complete-clang-async)
+(require 'ediff)
 
 ;; My requires
 (require 'keybindings)
@@ -230,6 +231,21 @@
 (load (concat gcs-thirdparty-directory "haskell-mode/haskell-site-file"))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;; Ediff
+(set-face-attribute 'ediff-current-diff-A nil :background "#553333" :foreground nil)
+(set-face-attribute 'ediff-current-diff-B nil :background "#335533" :foreground nil)
+(set-face-attribute 'ediff-current-diff-C nil :background "#888800" :foreground nil)
+(set-face-attribute 'ediff-even-diff-A    nil :background "Grey15"  :foreground nil)
+(set-face-attribute 'ediff-even-diff-B    nil :background "Grey15"  :foreground nil)
+(set-face-attribute 'ediff-even-diff-C    nil :background "Grey15"  :foreground nil)
+(set-face-attribute 'ediff-fine-diff-A    nil :background "#880000" :foreground nil)
+(set-face-attribute 'ediff-fine-diff-B    nil :background "#113311" :foreground nil)
+(set-face-attribute 'ediff-fine-diff-C    nil :background "#666600" :foreground nil)
+(set-face-attribute 'ediff-odd-diff-A     nil :background "Grey10"  :foreground nil)
+(set-face-attribute 'ediff-odd-diff-B     nil :background "Grey10"  :foreground nil)
+(set-face-attribute 'ediff-odd-diff-C     nil :background "Grey10"  :foreground nil)
+
 
 ;; Setup starting frame size
 (add-to-list 'default-frame-alist '(height . 50))
