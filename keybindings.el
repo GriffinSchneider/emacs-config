@@ -134,14 +134,29 @@ and push it onto the buffer list of the window in direction DIR."
              pianobar-current-album)))
 
 ;;;;; EVIL STATE MAP KEYS ;;;;;
-
-;; Use space for ace-jump
 (defun gcs-define-evil-motion-key (key def)
   (define-key evil-normal-state-map key def)
   (define-key evil-visual-state-map key def)
   (define-key evil-motion-state-map key def))
+
+;; Goto the next overlay. Useful to switch between overlays
+;; from hs-mode (used by evil-mode for folding).
+(defun gcs-goto-next-overlay ()
+  (interactive)
+  (next-line)
+  (goto-char (next-overlay-change (point))))
+(defun gcs-goto-previous-overlay ()
+  (interactive)
+  (previous-line)
+  (goto-char (previous-overlay-change (point))))
+
+;; Use space for ace-jump
 (gcs-define-evil-motion-key (kbd "SPC") 'ace-jump-word-mode)
 (gcs-define-evil-motion-key (kbd "C-SPC") 'ace-jump-char-mode)
+
+;; Up and down to change navigate between overlays
+(gcs-define-evil-motion-key (kbd "<up>")   'gcs-goto-previous-overlay)
+(gcs-define-evil-motion-key (kbd "<down>") 'gcs-goto-next-overlay)
 
 ;; Swap evil-goto-mark and evil-goto-mark-line bindings
 (define-key evil-normal-state-map "'" 'evil-goto-mark)
