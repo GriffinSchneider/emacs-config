@@ -80,15 +80,14 @@
   (let* ((relative-include-paths (gcs-project-get-relative-include-paths root))
          (absolute-include-flags (gcs-project-make-absolute-include-paths root relative-include-paths)))
     (append gcs-objective-c-ac-clang-flags
-            (eproject-attribute :ac-user-cflags root)
             absolute-include-flags)))
 
 (defun gcs-objecive-c-project-file-visit ()
   (when (equal major-mode 'objc-mode)
-    (setq ac-clang-cflags (eproject-attribute :ac-clang-cflags))
+    (setq ac-clang-cflags (append (eproject-attribute :ac-user-cflags)
+                                  (eproject-attribute :ac-clang-cflags)))
     (message "Setting up clang autocompletion")
     (setq ac-sources '(ac-source-clang-async))
     (ac-clang-launch-completion-process)))
-
 
 (provide 'eproject-customizations)
