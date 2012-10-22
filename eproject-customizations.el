@@ -1,11 +1,23 @@
 (require 'init)
 
+(defconst gcs-buffer-regexps-never-in-projects
+  '("*Help*" "*Completions*"))
+
+(defun gcs-buffer-name-excluded-fromp-projects-p (name)
+  (some (lambda (r) (string-match r name))
+        gcs-buffer-regexps-never-in-projects))
+
 ;; These advices make eproject use a buffer's default-directory to determine its project
-;; membership if the buffer isn't visiting a file.
+;; membership if the buffer isn't visiting a file. Buffers in
+;; gcs-buffer-regexps-never-in-projects are never included in projects
+
 ;; When eproject tries to get the buffer's filename, return the buffer's default directory
 ;; if it isn't visiting a file.
 (defadvice eproject--buffer-file-name (around eproject-fallback-to-default-dir activate)
-  (setq ad-return-value (or (buffer-file-name) default-directory)))
+  (if (gcs-buffer-name-excluded-fromp-projects-p (buffer-name))
+      (setq ad-return-value nil)
+    (setq ad-return-value (or (buffer-file-name)
+                              default-directory))))
 ;; Stop eproject from checking whether the current buffer is visiting a file before activating.
 (defadvice eproject--after-change-major-mode-hook (around eproject-dont-check-for-filename activate)
   (when (and (eproject--buffer-file-name) (not eproject-root)) (eproject-maybe-turn-on)))
