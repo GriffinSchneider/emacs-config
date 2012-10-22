@@ -239,7 +239,7 @@
 (set-face-attribute 'ediff-even-diff-A    nil :background "Grey15"  :foreground nil)
 (set-face-attribute 'ediff-even-diff-B    nil :background "Grey15"  :foreground nil)
 (set-face-attribute 'ediff-even-diff-C    nil :background "Grey15"  :foreground nil)
-(set-face-attribute 'ediff-fine-diff-A    nil :background "#880000" :foreground nil)
+(set-face-attribute 'ediff-fine-diff-A    nil :background "#331111" :foreground nil)
 (set-face-attribute 'ediff-fine-diff-B    nil :background "#113311" :foreground nil)
 (set-face-attribute 'ediff-fine-diff-C    nil :background "#666600" :foreground nil)
 (set-face-attribute 'ediff-odd-diff-A     nil :background "Grey10"  :foreground nil)
