@@ -3,9 +3,6 @@
 (setq ibuffer-formats
       '((mark modified read-only " " (name 30 30 :left :elide) "| " (mode 10 10 :left) " | " filename)))
 
-(set-face-attribute ibuffer-filter-group-name-face nil
-                    :foreground (face-foreground 'font-lock-keyword-face))
-
 (defconst gcs-ibuffer-fontification-alist
   '((ruby-mode . font-lock-string-face)
     (objc-mode . font-lock-constant-face)
@@ -50,8 +47,11 @@
 (add-hook 'ibuffer-mode-hook
   (lambda ()
     (ibuffer-switch-to-saved-filter-groups "default")
-    (set (make-local-variable 'face-remapping-alist)
-         '((default font-lock-comment-face)))))
+    (setq ibuffer-filter-group-name-face 'font-lock-keyword-face)
+    (face-remap-add-relative 'default 'font-lock-comment-face)
+    (face-remap-add-relative ibuffer-filter-group-name-face 
+                             :box '(:style released-button
+                                    :line-width 2))))
 
           
 (define-key ibuffer-mode-map (kbd "C-g") 'quit-window)
