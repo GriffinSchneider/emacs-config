@@ -1,7 +1,7 @@
 (require 'init)
 
 (defconst gcs-buffer-regexps-never-in-projects
-  '("*Help*" "*Completions*"))
+  '("*Help*" "*Completions*" "*pianobar*"))
 
 (defun gcs-buffer-name-excluded-fromp-projects-p (name)
   (some (lambda (r) (string-match r name))
