@@ -1,4 +1,4 @@
-;; TEST
+;; TEST2
 ;; The following variables should be set by a local config file:
 ;;   eclim-executable 
 ;;   android-mode-sdk-dir
@@ -22,7 +22,7 @@
   (nconc load-path orig-load-path))
 (add-to-list 'load-path (concat gcs-config-directory "maxframe.el"))
 
-(when load-in-progress (byte-recompile-directory gcs-thirdparty-directory 0))
+(when load-in-progress (byte-recompile-directory gcs-thirdparty-directory)); 0))
 
 (add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
 (load-theme 'zenburn 'no-confirm)
@@ -93,8 +93,14 @@
 (define-key helm-map (kbd "s-k") 'helm-previous-line)
 
 ;; Multi-term
+(defun gcs-term-mode-hook ()
+  (yas-minor-mode  -1)
+  (setq ac-sources '(ac-source-filename
+                     ac-source-words-in-buffer
+                     ac-source-words-in-same-mode-buffers
+                     ac-source-words-in-all-buffer)))
 (setq multi-term-program "/bin/bash")
-(add-hook 'term-mode-hook (lambda () (yas-minor-mode  -1)))
+(add-hook 'term-mode-hook 'gcs-term-mode-hook)
 ;; normal, black, red, green, yellow, blue, magenta, cyan, white
 (setq ansi-term-color-vector
       '(term-face
@@ -108,7 +114,7 @@
         term-color-white))
 
 ;; Ack
-(setq ack-command "ack -i --match ")
+(setq ack-command "ack -i --flush --match ")
 ;; Gets run after ack output is inserted into buffer by comint and
 ;; processed for color escape codes by ack.el.
 ;; Replaces all whitespace at the beginning of ack matches with 1 tab for alignment.
@@ -122,9 +128,22 @@
 ;; Sunrise commander
 (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
 (setq find-directory-functions (cons 'sr-dired find-directory-functions))
-(define-key sr-mode-map "j" 'dired-next-line)
-(define-key sr-mode-map "k" 'dired-previous-line)
-(define-key sr-mode-map "J" 'sr-dired-prev-subdir)
+;; For some reason using define-key on sr-mode-map won't let me remap M-j (sr-goto-dir-other),
+;; so instead define advice on the goto-dir functions to use ido for directory selection.
+(defadvice sr-goto-dir (around sr-goto-dir-ido (dir) activate)
+  (interactive (list (ido-read-directory-name "Change directory: " sr-this-directory)))
+  (ad-set-arg 0 dir)
+  ad-do-it)
+(defadvice sr-goto-dir-other (around sr-goto-dir-other-ido (dir) activate)
+  (interactive (list (ido-read-directory-name "Change directory in other panel: " sr-this-directory)))
+  (ad-set-arg 0 dir)
+  ad-do-it)
+
+;; Also get sr-find-file to use ido
+(defadvice sr-find-file (around sr-find-file-ido (filename) activate)
+  (interactive (list (ido-read-file-name "Find file or directory: " sr-this-directory)))
+  (ad-set-arg 0 filename)
+  ad-do-it)
 
 ;; Framemove
 (setq framemove-hook-into-windmove t)
