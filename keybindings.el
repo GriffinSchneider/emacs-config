@@ -281,7 +281,7 @@ and push it onto the buffer list of the window in direction DIR."
      ("k" gcs-kill-buffer-command)
      ("K" gcs-kill-buffer-and-window)
      ("g" magit-status)
-     ("l" magit-log)
+     ("l" magit-file-log)
      ("s" sunrise-cd)
      ("S" sunrise)
      ("u" undo-tree-visualize)
