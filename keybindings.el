@@ -106,10 +106,7 @@ and push it onto the buffer list of the window in direction DIR."
 
  ;; Tab navigation
  "M-j" tabbar-backward-tab
- "M-k" tabbar-forward-tab
- "M-h" (progn (tabbar-backward-group) (tabbar-press-home))
- "M-l" (progn (tabbar-forward-group) (tabbar-press-home))
- "M-;" tabbar-press-home)
+ "M-k" tabbar-forward-tab)
 
 ;;;;;  PIANOBAR KEYS ;;;;;
 
