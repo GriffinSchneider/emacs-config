@@ -320,7 +320,8 @@ and push it onto the buffer list of the window in direction DIR."
      ("<left>"  gcs-previous-buffer)
      ("<right>" gcs-next-buffer)
      ("\\"      comment-dwim-line-or-toggle-term-mode)
-     ("t"       gcs-toggle-tab-width-setting))))
+     ("t"       helm-c-etags-select)
+     ("s-t"     gcs-toggle-tab-width-setting))))
 
 (defun gcs-prefix-key-command ()
   (interactive)
