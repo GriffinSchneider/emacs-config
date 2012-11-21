@@ -83,7 +83,8 @@
             absolute-include-flags)))
 
 (defun gcs-objecive-c-project-file-visit ()
-  (when (equal major-mode 'objc-mode)
+  (when (and (buffer-file-name)
+             (equal major-mode 'objc-mode))
     (setq ac-clang-cflags (append (eproject-attribute :ac-user-cflags)
                                   (eproject-attribute :ac-clang-cflags)))
     (message "Setting up clang autocompletion")
