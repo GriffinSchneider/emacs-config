@@ -24,7 +24,7 @@
   "Filter by buffer's eproject-root"
   (:description "project"
    :reader (read-from-minibuffer "Filter by project root: "))
-  (with-current-buffer buf (string-equal eproject-root qualifier)))
+  (with-current-buffer buf (string-equal eproject-root (file-truename qualifier))))
 
 (defun gcs-get-eproject-filter-groups ()
   (let (projects-with-buffers-filters)
