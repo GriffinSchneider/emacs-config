@@ -288,6 +288,7 @@ and push it onto the buffer list of the window in direction DIR."
      ("x" smex)
      ("X" smex-major-mode-commands)
      ("a" gcs-ack-in-project)
+     ("m" multi-term)
      
      ("d"   gcs-find-file-dwim)
      ("f"   ido-find-file)
