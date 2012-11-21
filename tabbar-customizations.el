@@ -27,4 +27,6 @@
       tabbar-separator '("]["))
 (tabbar-mode 1)
 
+(add-hook 'sr-mode-hook (lambda () (tabbar-local-mode 1)))
+
 (provide 'tabbar-customizations)
