@@ -8,12 +8,6 @@
 (set-face-foreground 'mode-line "#030303")
 (set-face-background 'mode-line "#f0dfaf")
 
-;; Setup modeline font
-(if (find-font (font-spec :name "Inconsolata"))
-    (progn
-      (set-face-font 'mode-line "Inconsolata-12")
-      (set-face-font 'mode-line-inactive "Inconsolata-12")))
-
 ;; Setup modeline items
 (defun gcs-propertized-evil-mode-tag ()
   (propertize evil-mode-line-tag 'font-lock-face
