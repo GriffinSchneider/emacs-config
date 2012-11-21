@@ -17,7 +17,7 @@
   (if (gcs-buffer-name-excluded-fromp-projects-p (buffer-name))
       (setq ad-return-value nil)
     (setq ad-return-value (or (buffer-file-name)
-                              default-directory))))
+                              (file-truename default-directory)))))
 ;; Stop eproject from checking whether the current buffer is visiting a file before activating.
 (defadvice eproject--after-change-major-mode-hook (around eproject-dont-check-for-filename activate)
   (when (and (eproject--buffer-file-name) (not eproject-root)) (eproject-maybe-turn-on)))
