@@ -92,8 +92,14 @@
 (define-key helm-map (kbd "s-k") 'helm-previous-line)
 
 ;; Multi-term
+(defun gcs-term-mode-hook ()
+  (yas-minor-mode  -1)
+  (setq ac-sources '(ac-source-filename
+                     ac-source-words-in-buffer
+                     ac-source-words-in-same-mode-buffers
+                     ac-source-words-in-all-buffer)))
 (setq multi-term-program "/bin/bash")
-(add-hook 'term-mode-hook (lambda () (yas-minor-mode  -1)))
+(add-hook 'term-mode-hook 'gcs-term-mode-hook)
 ;; normal, black, red, green, yellow, blue, magenta, cyan, white
 (setq ansi-term-color-vector
       '(term-face
