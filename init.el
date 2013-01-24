@@ -81,6 +81,11 @@
   (require 'w3m)
   (require 'w3m-customizations))
 
+;; processing-mode
+(autoload 'processing-mode "processing-mode" "Processing mode" t)
+(add-to-list 'auto-mode-alist '("\\.pde$" . processing-mode))
+(setq processing-location "/Applications/Processing.app/Contents/Resources/Java")
+
 ;; eproject
 (setq eproject-completing-read-function 'eproject--ido-completing-read)
 

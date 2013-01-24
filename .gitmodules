@@ -85,3 +85,6 @@
 [submodule "thirdparty/exec-path-from-shell"]
 	path = thirdparty/exec-path-from-shell
 	url = git://github.com/purcell/exec-path-from-shell.git
+[submodule "thirdparty/processing-mode"]
+	path = thirdparty/processing-mode
+	url = git@github.com:GriffinSchneider/processing-mode.git
