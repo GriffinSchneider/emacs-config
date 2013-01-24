@@ -215,8 +215,7 @@
 (yas-global-mode 1)
 
 ;; Eclim
-(setq eclim-auto-save t
-      eclim-eclipse-dirs '("~/Dev/eclipse"))
+(setq eclim-auto-save t)
 
 ;; Org-mode
 (setq org-hide-leading-stars t
