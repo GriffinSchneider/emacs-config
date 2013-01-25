@@ -7,6 +7,7 @@
   '((ruby-mode . font-lock-string-face)
     (objc-mode . font-lock-constant-face)
     (c-mode . font-lock-constant-face)
+    (java-mode . font-lock-constant-face)
     (emacs-lisp-mode . font-lock-variable-name-face)
     (term-mode . font-lock-doc-string-face)))
     
