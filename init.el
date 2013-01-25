@@ -221,6 +221,7 @@
 
 ;; Eclim
 (setq eclim-auto-save t)
+(global-eclim-mode)
 
 ;; Org-mode
 (setq org-hide-leading-stars t
