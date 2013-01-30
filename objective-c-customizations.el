@@ -22,7 +22,8 @@
     (helm-other-buffer '(helm-c-source-objc-headline) "*ObjC Headline*")))
 
 (defun gcs-objc-mode-hook ()
-  (c-set-style "stroustrup")
+  (c-set-style "java")
+  (setq tab-width 4)
   (c-toggle-auto-hungry-state 1)
   ;; Make ff-find-other-file toggle between .m and .h
   (set (make-local-variable 'cc-other-file-alist)
