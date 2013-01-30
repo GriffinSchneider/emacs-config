@@ -83,12 +83,19 @@
             absolute-include-flags)))
 
 (defun gcs-objecive-c-project-file-visit ()
-  (when (and (buffer-file-name)
-             (equal major-mode 'objc-mode))
-    (setq ac-clang-cflags (append (eproject-attribute :ac-user-cflags)
-                                  (eproject-attribute :ac-clang-cflags)))
-    (message "Setting up clang autocompletion")
-    (setq ac-sources '(ac-source-clang-async))
-    (ac-clang-launch-completion-process)))
+  (when (buffer-file-name)
+    ;; In objc projects, .h files are objc files.
+    (when (and (string= (file-name-extension (buffer-file-name)) "h")
+               (not (eq major-mode 'objc-mode)))
+      (objc-mode))
+
+    (if (equal major-mode 'objc-mode)
+        (progn
+          (setq ac-clang-cflags (append (eproject-attribute :ac-user-cflags)
+                                        (eproject-attribute :ac-clang-cflags)))
+          (message "Setting up clang autocompletion")
+          (setq ac-sources '(ac-source-clang-async))
+          (ac-clang-launch-completion-process)))))
+(add-hook 'gcs-objective-c-project-file-visit-hook 'gcs-objecive-c-project-file-visit)
 
 (provide 'eproject-customizations)
