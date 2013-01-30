@@ -90,7 +90,7 @@
 (setq eproject-completing-read-function 'eproject--ido-completing-read)
 
 ;; auto-complete-clang-async
-(setq ac-clang-complete-executable (concat gcs-thirdparty-directory "/emacs-clang-complete-async/clang-complete"))
+(setq ac-clang-complete-executable (concat gcs-thirdparty-directory "emacs-clang-complete-async/clang-complete"))
 
 ;; Helm
 (define-key helm-map (kbd "s-j") 'helm-next-line)
