@@ -78,7 +78,7 @@
 	url = git@github.com:GriffinSchneider/emacs-xcode-document-viewer.git
 [submodule "thirdparty/eproject"]
 	path = thirdparty/eproject
-	url = git://github.com/jrockway/eproject.git
+	url = git@github.com:GriffinSchneider/eproject.git
 [submodule "thirdparty/emacs-clang-complete-async"]
 	path = thirdparty/emacs-clang-complete-async
 	url = git@github.com:GriffinSchneider/emacs-clang-complete-async.git
