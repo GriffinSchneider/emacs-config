@@ -314,8 +314,8 @@ and push it onto the buffer list of the window in direction DIR."
      ("0" delete-window)
      ("7" delete-window)
      ("1" delete-other-windows)
-     ("2" split-window-horizontally)
-     ("3" split-window-vertically)
+     ("2" split-window-vertically)
+     ("3" split-window-horizontally)
      ("4" balance-windows)
 
      ("<left>"  gcs-previous-buffer)
