@@ -271,7 +271,11 @@ and push it onto the buffer list of the window in direction DIR."
 
 (defun gcs-open-with-osx ()
   (interactive)
-  (shell-command (concat "open " (buffer-file-name))))
+  (shell-command (concat "open \"" (buffer-file-name) "\"")))
+
+(defun gcs-open-with-xcode ()
+  (interactive)
+  (shell-command (concat "open -a Xcode \"" (buffer-file-name) "\"")))
 
 
 (defconst gcs-prefix-key-commands
@@ -296,6 +300,7 @@ and push it onto the buffer list of the window in direction DIR."
      ("F"   ido-find-alternate-file)
      ("s-f" gcs-show-in-finder)
      ("s-o" gcs-open-with-osx)
+     ("s-x" gcs-open-with-xcode)
      
      ("w" save-buffer)
      ("W" write-file)
