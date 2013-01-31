@@ -24,7 +24,6 @@
 (defun gcs-objc-mode-hook ()
   (c-set-style "java")
   (setq tab-width 4)
-  (c-toggle-auto-hungry-state 1)
   ;; Make ff-find-other-file toggle between .m and .h
   (set (make-local-variable 'cc-other-file-alist)
        '(("\\.m" (".h")) ("\\.h" (".m")))))
