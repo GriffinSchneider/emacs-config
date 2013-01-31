@@ -22,12 +22,24 @@
     (helm-other-buffer '(helm-c-source-objc-headline) "*ObjC Headline*")))
 
 (defun gcs-objc-mode-hook ()
-  (c-set-style "java")
-  (setq tab-width 4)
   ;; Make ff-find-other-file toggle between .m and .h
   (set (make-local-variable 'cc-other-file-alist)
-       '(("\\.m" (".h")) ("\\.h" (".m")))))
-
+       '(("\\.m" (".h")) ("\\.h" (".m"))))
+  
+  ;; Setup indentation
+  (setq tab-width 4)
+  (c-set-style "java")
+  (c-set-offset 'brace-list-close '-)
+  (c-set-offset 'brace-list-intro '0)
+  (c-set-offset 'arglist-close '0)
+  ; brackets should be at same indentation level as the statements they open
+  (c-set-offset 'substatement-open '0) 
+  (c-set-offset 'inline-open '+)
+  (c-set-offset 'block-open '+)
+  ; all "opens" should be indented by the c-indent-level
+  (c-set-offset 'brace-list-open '+)   
+  ; indent case labels by c-indent-level, too
+  (c-set-offset 'case-label '+))
 (add-hook 'objc-mode-hook 'gcs-objc-mode-hook)
 
 
