@@ -279,6 +279,7 @@ to OSX defaults for unknon modes."
     (let* ((appname (case major-mode
                       ('objc-mode "Xcode")
                       ('java-mode "Eclipse")
+                      ('emacs-lisp-mode "TextEdit")
                       (t nil)))
            (command (concat "open "
                             (if appname (concat "-a " appname " ") " ")
