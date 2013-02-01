@@ -320,6 +320,9 @@
 ;; Highlight the current line
 (global-hl-line-mode 1)
 
+;; Use visual bell
+(setq visual-bell t)
+
 ;; Highlight matching parens
 (require 'paren)
 (show-paren-mode 1)
