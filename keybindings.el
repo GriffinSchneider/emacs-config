@@ -269,15 +269,22 @@ and push it onto the buffer list of the window in direction DIR."
   (interactive)
   (shell-command "open ."))
 
-(defun gcs-open-with-osx ()
+(defun gcs-open-with-external-editor ()
+  "If this buffer isn't visiting a file, show default-directory in finder.
+If it is, open it with an external editor based on its major mode, or fallback
+to OSX defaults for unknon modes."
   (interactive)
-  (shell-command (concat "open \"" (buffer-file-name) "\"")))
-
-(defun gcs-open-with-xcode ()
-  (interactive)
-  (shell-command (concat "open -a Xcode \"" (buffer-file-name) "\"")))
-
-
+  (if (not (buffer-file-name))
+      (gcs-show-in-finder)
+    (let* ((appname (case major-mode
+                      ('objc-mode "Xcode")
+                      ('java-mode "Eclipse")
+                      (t nil)))
+           (command (concat "open "
+                            (if appname (concat "-a " appname " ") " ")
+                            "\"" (buffer-file-name) "\"")))
+      (shell-command command))))
+  
 (defconst gcs-prefix-key-commands
   (mapcar
    (lambda (binding) (list (read-kbd-macro (first binding)) (second binding)))
@@ -299,8 +306,7 @@ and push it onto the buffer list of the window in direction DIR."
      ("f"   ido-find-file)
      ("F"   ido-find-alternate-file)
      ("s-f" gcs-show-in-finder)
-     ("s-o" gcs-open-with-osx)
-     ("s-x" gcs-open-with-xcode)
+     ("s-x" gcs-open-with-external-editor)
      
      ("w" save-buffer)
      ("W" write-file)
