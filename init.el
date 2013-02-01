@@ -222,6 +222,7 @@
 ;; Eclim
 (setq eclim-auto-save t)
 (global-eclim-mode)
+(setq eclim-interactive-completion-function 'ido-completing-read)
 
 ;; Org-mode
 (setq org-hide-leading-stars t
