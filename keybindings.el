@@ -351,7 +351,8 @@ to OSX defaults for unknon modes."
                                     evil-emacs-state-map
                                     pianobar-mode-map))
 (mapc (lambda (keymap)
-        (define-key keymap gcs-prefix-key 'gcs-prefix-key-command))
+        (define-key keymap gcs-prefix-key 'gcs-prefix-key-command)
+        (define-key keymap (read-kbd-macro (concat "s-" gcs-prefix-key)) 'gcs-prefix-key-command))
       gcs-prefix-key-maps)
 
 
