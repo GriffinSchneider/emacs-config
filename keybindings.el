@@ -163,10 +163,16 @@ and push it onto the buffer list of the window in direction DIR."
 (gcs-define-evil-motion-key (read-kbd-macro "C-j") (lambda () (interactive) (evil-scroll-line-down 2) (evil-next-line 2)))
 (gcs-define-evil-motion-key (read-kbd-macro "C-k") (lambda () (interactive) (evil-scroll-line-up 2) (evil-previous-line 2)))
 
-;; Use return for fold-toggling
-(define-key evil-normal-state-map (kbd "<return>") 'evil-toggle-fold)
-(define-key evil-normal-state-map (kbd "C-<return>") 'evil-close-folds)
-(define-key evil-normal-state-map (kbd "s-<return>") 'evil-open-folds)
+;; Use return for fold-toggling, but only bind it in modes that support hs-minor-mode
+(add-hook 'after-change-major-mode-hook
+          (lambda ()
+            (condition-case nil
+                (progn
+                  (hs-minor-mode t)
+                  (evil-local-set-key 'normal (kbd "<return>") 'evil-toggle-fold)
+                  (evil-local-set-key 'normal (kbd "C-<return>") 'hs-hide-level)
+                  (evil-local-set-key 'normal (kbd "s-<return>") 'evil-open-folds))
+              (error nil))))
 
 ;; Get rid of the "K" binding for evil-lookup
 (define-key evil-motion-state-map "K" nil)
