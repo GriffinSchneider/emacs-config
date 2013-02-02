@@ -58,7 +58,7 @@ and push it onto the buffer list of the window in direction DIR."
  "s-f" ns-popup-font-panel
 
  ;; Use cmd-r to compile
- "s-r" compile
+ "s-r" gcs-compile
 
  ;; Use ibuffer instead of list-buffers
  "\C-x\C-b" gcs-ibuffer
@@ -285,6 +285,42 @@ to OSX defaults for unknon modes."
                             (if appname (concat "-a " appname " ") " ")
                             "\"" (buffer-file-name) "\"")))
       (shell-command command))))
+
+;; Like compile, but don't popup the compile buffer
+(defun gcs-notify-compilation-result (buffer msg)
+  "Notify that the compilation is finished,
+close the *compilation* buffer if the compilation is successful,
+and set the focus back to Emacs frame"
+  (switch-to-buffer (car (buffer-list)))
+  (if (string-match "^finished" msg)
+      (gcs-big-temporary-popup "Compilation Successful :-)")
+    (gcs-big-temporary-popup "Compilation Failed :-(")))
+(when (not (member 'gcs-notify-compilation-result compilation-finish-functions))
+  (add-to-list 'compilation-finish-functions 'gcs-notify-compilation-result))
+
+(defun gcs-big-temporary-popup (message)
+  (set-face-attribute 'popup-tip-face nil :height 3.0)
+  (let ((buffer (current-buffer))
+        (popup (popup-tip message
+                          :nowait t
+                          :point (save-excursion (next-line) (beginning-of-line) (point)))))
+    (run-at-time "1 sec" nil
+                 (lambda (popup)
+                   (set-face-attribute 'popup-tip-face nil :height 1.0)
+                   (popup-delete popup))
+                 popup)))
+
+(defun gcs-compile (command &optional comint)
+  (interactive
+   (list
+    (let ((command (eval compile-command)))
+      (if (or compilation-read-command current-prefix-arg)
+          (compilation-read-command command)
+        command))
+    (consp current-prefix-arg)))
+    (save-window-excursion (compile command comint)))
+
+
   
 (defconst gcs-prefix-key-commands
   (mapcar
@@ -318,7 +354,7 @@ to OSX defaults for unknon modes."
      ("s-v" visual-line-mode)
      ("s-b" magit-blame-mode)
 
-     ("c" compile)
+     ("c" gcs-compile)
      ("e" next-error)
      ("E" previous-error)
      ("r" eval-buffer)
