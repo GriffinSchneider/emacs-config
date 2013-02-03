@@ -39,11 +39,6 @@ and push it onto the buffer list of the window in direction DIR."
   (let ((range (evil-a-paren)))
     (evil-change (first range) (second range))))
 
-(defun gcs-ibuffer ()
-  (interactive)
-  (gcs-setup-eproject-filter-groups)
-  (ibuffer))
-
 (global-set-keys
  ;; Replace normal m-x with smex
  "M-x" smex
@@ -61,7 +56,7 @@ and push it onto the buffer list of the window in direction DIR."
  "s-r" gcs-compile
 
  ;; Use ibuffer instead of list-buffers
- "\C-x\C-b" gcs-ibuffer
+ "\C-x\C-b" ibuffer
 
  ;; Use C-w for backward-kill-word in the minibuffer
  "C-w" backward-kill-word
@@ -212,8 +207,7 @@ and push it onto the buffer list of the window in direction DIR."
   (let ((buffer-menu-buffer (get-buffer "*Ibuffer*")))
     (when buffer-menu-buffer
       (with-current-buffer buffer-menu-buffer
-        (revert-buffer)
-        (goto-char (point-min))))))
+        (ibuffer-update nil)))))
 
 ;; "\K" kills the buffer like gcs-kill-buffer-command, while also killing
 ;; the window.
@@ -353,7 +347,7 @@ and set the focus back to Emacs frame"
      
      ("w" save-buffer)
      ("W" write-file)
-     ("b" gcs-ibuffer)
+     ("b" ibuffer)
      ("v" ido-switch-buffer)
      ("V" ido-switch-buffer-other-frame)
 

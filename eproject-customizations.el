@@ -44,7 +44,7 @@
 ;;  :relative-include-paths - Relative paths of all folders in the project that contain .h files.
 ;;    This attribute is also updated only once per project root.
 
-(define-project-type gcs-objective-c (generic-git) nil
+(define-project-type gcs-objective-c (generic-git generic) nil
   :ac-clang-cflags (lambda (root) (gcs-project-get-ac-clang-cflags root)))
 
 (defconst gcs-objective-c-ac-clang-flags
@@ -97,5 +97,9 @@
           (setq ac-sources '(ac-source-clang-async))
           (ac-clang-launch-completion-process)))))
 (add-hook 'gcs-objective-c-project-file-visit-hook 'gcs-objecive-c-project-file-visit)
+
+(add-hook 'generic-project-file-visit-hook
+          (lambda ()
+            (gcs-setup-eproject-filter-groups)))
 
 (provide 'eproject-customizations)
