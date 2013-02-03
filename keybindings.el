@@ -161,13 +161,14 @@ and push it onto the buffer list of the window in direction DIR."
 ;; Use return for fold-toggling, but only bind it in modes that support hs-minor-mode
 (add-hook 'after-change-major-mode-hook
           (lambda ()
-            (condition-case nil
-                (progn
-                  (hs-minor-mode t)
-                  (evil-local-set-key 'normal (kbd "<return>") 'evil-toggle-fold)
-                  (evil-local-set-key 'normal (kbd "C-<return>") 'hs-hide-level)
-                  (evil-local-set-key 'normal (kbd "s-<return>") 'evil-open-folds))
-              (error nil))))
+            (when (not (string-match "Minibuf" (buffer-name)))
+              (condition-case nil
+                  (progn
+                    (hs-minor-mode t)
+                    (evil-local-set-key 'normal (kbd "<return>") 'evil-toggle-fold)
+                    (evil-local-set-key 'normal (kbd "C-<return>") 'hs-hide-level)
+                    (evil-local-set-key 'normal (kbd "s-<return>") 'evil-open-folds))
+                (error nil)))))
 
 ;; Get rid of the "K" binding for evil-lookup
 (define-key evil-motion-state-map "K" nil)
