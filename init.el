@@ -322,7 +322,7 @@
 (global-hl-line-mode 1)
 
 ;; Use visual bell
-(setq visual-bell t)
+(setq visible-bell t)
 
 ;; Highlight matching parens
 (require 'paren)
