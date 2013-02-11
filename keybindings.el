@@ -56,7 +56,7 @@ and push it onto the buffer list of the window in direction DIR."
  "s-r" gcs-compile
 
  ;; Use ibuffer instead of list-buffers
- "\C-x\C-b" ibuffer
+ "\C-x\C-b" gcs-gibuffer
 
  ;; Use C-w for backward-kill-word in the minibuffer
  "C-w" backward-kill-word
@@ -348,7 +348,7 @@ and set the focus back to Emacs frame"
      
      ("w" save-buffer)
      ("W" write-file)
-     ("b" ibuffer)
+     ("b" gcs-ibuffer)
      ("v" ido-switch-buffer)
      ("V" ido-switch-buffer-other-frame)
 

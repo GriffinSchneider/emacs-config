@@ -1,7 +1,15 @@
 (require 'init)
 
 (setq ibuffer-formats
-      '((mark modified read-only " " (name 30 30 :left :elide) "| " (mode 10 10 :left) " | " filename)))
+      `((mark
+         modified
+         read-only
+         " "
+         (name 30 30 :left :elide)
+         ,(propertize "| " 'font-lock-face ibuffer-title-face)
+         (mode 10 10 :left)
+         ,(propertize " | " 'font-lock-face ibuffer-title-face)
+         filename)))
 
 (defconst gcs-ibuffer-fontification-alist
   '((ruby-mode . font-lock-string-face)
@@ -48,13 +56,29 @@
 (add-hook 'ibuffer-mode-hook
   (lambda ()
     (ibuffer-switch-to-saved-filter-groups "default")
-    (setq ibuffer-filter-group-name-face 'font-lock-keyword-face)
+    
     (face-remap-add-relative 'default 'font-lock-comment-face)
+    
+    (copy-face 'font-lock-keyword-face 'tempface )
+    (setq ibuffer-filter-group-name-face 'tempface)
     (face-remap-add-relative ibuffer-filter-group-name-face 
                              :box '(:style released-button
-                                    :line-width 2))))
+                                           :line-width 2))))
 
-          
+;; Ibuffer vehemently does not want me to fontify the footer line, but it should
+;; really be the same color as the header. So, use this hacky wrapper around the
+;; ibuffer function to override the face on the footer.
+(defun gcs-ibuffer ()
+  (interactive)
+  (ibuffer)
+  (run-at-time nil nil
+    (lambda ()
+      (save-excursion
+        (switch-to-buffer (get-buffer "*Ibuffer*"))
+        (end-of-buffer)
+        (let ((inhibit-read-only t))
+          (set-text-properties (line-beginning-position) (line-end-position) `(font-lock-face ,ibuffer-title-face)))))))
+    
 (define-key ibuffer-mode-map (kbd "C-g") 'quit-window)
 (define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
 (define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line)
