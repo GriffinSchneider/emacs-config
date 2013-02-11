@@ -17,6 +17,7 @@
     (c-mode . font-lock-constant-face)
     (java-mode . font-lock-constant-face)
     (emacs-lisp-mode . font-lock-variable-name-face)
+    (org-mode . font-lock-negation-char-face)
     (term-mode . font-lock-doc-string-face)))
     
 (setq ibuffer-fontification-alist
