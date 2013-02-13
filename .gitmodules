@@ -91,3 +91,6 @@
 [submodule "thirdparty/undo-tree"]
 	path = thirdparty/undo-tree
 	url = git@github.com:emacsmirror/undo-tree.git
+[submodule "thirdparty/mpg123"]
+	path = thirdparty/mpg123
+	url = git://github.com/emacsmirror/mpg123.git

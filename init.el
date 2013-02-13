@@ -64,6 +64,7 @@
 (require 'helm-eproject)
 (require 'auto-complete-clang-async)
 (require 'ediff)
+(require 'mpg123)
 
 ;; My requires
 (require 'keybindings)
@@ -80,6 +81,10 @@
   (setq w3m-command (executable-find "w3m"))
   (require 'w3m)
   (require 'w3m-customizations))
+
+
+;; mpg123
+(setq mpg123-auto-redraw t)
 
 ;; processing-mode
 (autoload 'processing-mode "processing-mode" "Processing mode" t)
