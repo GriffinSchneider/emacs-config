@@ -29,6 +29,7 @@
 ;; exec-path-from-shell needs to happen before other requires, so the path will be setup properly
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
+(add-to-list 'exec-path (concat gcs-config-directory "thirdparty/emms/src/"))
 
 ;; Third-party requires
 (require 'evil)
@@ -64,7 +65,8 @@
 (require 'helm-eproject)
 (require 'auto-complete-clang-async)
 (require 'ediff)
-(require 'mpg123)
+(require 'emms-setup)
+(require 'emms-browser)
 
 ;; My requires
 (require 'keybindings)
@@ -82,9 +84,14 @@
   (require 'w3m)
   (require 'w3m-customizations))
 
-
-;; mpg123
-(setq mpg123-auto-redraw t)
+;; emms
+(emms-all)
+(emms-default-players)
+(setq emms-completing-read-function 'ido-completing-read)
+(defalias 'emms-read-directory-name 'ido-read-directory-name)
+(setq emms-info-functions '(emms-info-mp3info))
+(setq later-do-interval 0.001
+      emms-info-asynchronously nil)
 
 ;; processing-mode
 (autoload 'processing-mode "processing-mode" "Processing mode" t)
