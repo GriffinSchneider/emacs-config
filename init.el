@@ -294,7 +294,6 @@
 (set-face-attribute 'ediff-odd-diff-B     nil :background "Grey10"  :foreground nil)
 (set-face-attribute 'ediff-odd-diff-C     nil :background "Grey10"  :foreground nil)
 
-
 ;; Setup starting frame size
 (add-to-list 'default-frame-alist '(height . 50))
 (add-to-list 'default-frame-alist '(width . 155))
