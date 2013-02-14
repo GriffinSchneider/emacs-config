@@ -1,8 +1,19 @@
+;;; Setup:
 ;; The following variables should be set by a local config file:
 ;;   eclim-executable 
 ;;   android-mode-sdk-dir
-;; Optional:
-;;    pianobar-password
+;;   pianobar-password
+;; External programs to install somewhere on exec-path (all installable throgh homebrew on OSX):
+;;   mplayer
+;;   pianobar
+;;   w3m
+;;   mpg321
+;;   mplayer
+;;   ack
+;; Things that need building:
+;;   w3m
+;;   auto-complete-clang-async
+
 (provide 'init)
 
 (when load-in-progress
