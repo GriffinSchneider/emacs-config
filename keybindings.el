@@ -143,8 +143,8 @@ and push it onto the buffer list of the window in direction DIR."
   (goto-char (previous-overlay-change (point))))
 
 ;; Use space for ace-jump
-(gcs-define-evil-motion-key (kbd "SPC") 'ace-jump-word-mode)
-(gcs-define-evil-motion-key (kbd "C-SPC") 'ace-jump-char-mode)
+(gcs-define-evil-motion-key (kbd "SPC") 'evil-ace-jump-word-mode)
+(gcs-define-evil-motion-key (kbd "C-SPC") 'evil-ace-jump-char-mode)
 
 ;; Up and down to change navigate between overlays
 (gcs-define-evil-motion-key (kbd "<up>")   'gcs-goto-previous-overlay)
