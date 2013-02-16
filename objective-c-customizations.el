@@ -21,6 +21,9 @@
   (let ((helm-candidate-number-limit 500))
     (helm-other-buffer '(helm-c-source-objc-headline) "*ObjC Headline*")))
 
+;; Use objc-mode for objective-c++ files
+(add-to-list 'auto-mode-alist '("\\.mm$" . objc-mode))
+
 (defun gcs-objc-mode-hook ()
   ;; Make ff-find-other-file toggle between .m and .h
   (set (make-local-variable 'cc-other-file-alist)
