@@ -102,7 +102,7 @@
 (defalias 'emms-read-directory-name 'ido-read-directory-name)
 (setq emms-info-functions '(emms-info-mp3info))
 (setq later-do-interval 0.001
-      emms-info-asynchronously nil)
+      emms-info-asynchronously t)
 
 ;; processing-mode
 (autoload 'processing-mode "processing-mode" "Processing mode" t)
