@@ -23,6 +23,7 @@
 
 ;; Use objc-mode for objective-c++ files
 (add-to-list 'auto-mode-alist '("\\.mm$" . objc-mode))
+(add-to-list 'auto-mode-alist '("\\.pch$" . objc-mode))
 
 (defun gcs-objc-mode-hook ()
   ;; Make ff-find-other-file toggle between .m and .h
