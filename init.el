@@ -346,6 +346,9 @@
 ;; Use visual bell
 (setq visible-bell t)
 
+;; Save the session
+(desktop-save-mode 1)
+
 ;; Highlight matching parens
 (require 'paren)
 (show-paren-mode 1)
