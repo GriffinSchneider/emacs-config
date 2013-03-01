@@ -101,7 +101,10 @@ and push it onto the buffer list of the window in direction DIR."
 
  ;; Tab navigation
  "M-j" tabbar-backward-tab
- "M-k" tabbar-forward-tab)
+ "M-k" tabbar-forward-tab
+
+ ;; Revert buffer with no confirmation
+ "M-s-R" (revert-buffer t t))
 
 ;;;;;  PIANOBAR KEYS ;;;;;
 
