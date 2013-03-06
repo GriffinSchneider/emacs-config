@@ -80,6 +80,7 @@
 (require 'ediff)
 (require 'emms-setup)
 (require 'emms-browser)
+(require 'git-gutter)
 
 ;; My requires
 (require 'keybindings)
@@ -96,6 +97,9 @@
   (setq w3m-command (executable-find "w3m"))
   (require 'w3m)
   (require 'w3m-customizations))
+
+;; git-gutter
+(global-git-gutter-mode t)
 
 ;; emms
 (emms-all)

@@ -97,3 +97,6 @@
 [submodule "thirdparty/tomorrow-theme"]
 	path = thirdparty/tomorrow-theme
 	url = git://github.com/chriskempson/tomorrow-theme.git
+[submodule "thirdparty/emacs-git-gutter"]
+	path = thirdparty/emacs-git-gutter
+	url = git://github.com/syohex/emacs-git-gutter.git
