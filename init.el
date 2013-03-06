@@ -34,8 +34,10 @@
 
 (when load-in-progress (byte-recompile-directory gcs-thirdparty-directory 0))
 
+;; Add all themes to the custom theme path
 (add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
-(load-theme 'zenburn 'no-confirm)
+(add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "tomorrow-theme/GNU Emacs"))
+(load-theme 'zenburn t)
 
 ;; exec-path-from-shell needs to happen before other requires, so the path will be setup properly
 (require 'exec-path-from-shell)
@@ -342,6 +344,7 @@
 
 ;; Highlight the current line
 (global-hl-line-mode 1)
+(set-face-attribute 'hl-line nil :inherit nil)
 
 ;; Use visual bell
 (setq visible-bell t)

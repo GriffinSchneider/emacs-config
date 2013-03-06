@@ -94,3 +94,6 @@
 [submodule "thirdparty/emms"]
 	path = thirdparty/emms
 	url = git://github.com/emacsmirror/emms.git
+[submodule "thirdparty/tomorrow-theme"]
+	path = thirdparty/tomorrow-theme
+	url = git://github.com/chriskempson/tomorrow-theme.git
