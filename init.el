@@ -11,7 +11,8 @@
 ;;   mplayer
 ;;   ack
 ;; Things that need building:
-;;   w3m
+;;   w3m: run `sudo emacs -batch -q -no-site-file -l w3mhack.el NONE -f w3mhack-nonunix-install'
+;;     in the w3m directory
 ;;   auto-complete-clang-async
 
 (provide 'init)
