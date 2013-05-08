@@ -271,7 +271,7 @@ and push it onto the buffer list of the window in direction DIR."
 
 (defun gcs-show-in-finder ()
   (interactive)
-  (shell-command "open ."))
+  (shell-command "open -a \"Path Finder\" ."))
 
 (defun gcs-open-with-external-editor ()
   "If this buffer isn't visiting a file, show default-directory in finder.
