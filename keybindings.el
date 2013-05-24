@@ -39,6 +39,17 @@ and push it onto the buffer list of the window in direction DIR."
   (let ((range (evil-a-paren)))
     (evil-change (first range) (second range))))
 
+(defun gcs-multi-term-dedicated-toggle ()
+  "Toggle the multi-term dedicated window. Then, if the window
+was created, select it. If the window was dismissed, kill the
+multi-term dedicated buffer without prompting."
+  (interactive)
+  (multi-term-dedicated-toggle)
+  (if (multi-term-dedicated-exist-p)
+      (multi-term-dedicated-select)
+    (set-process-query-on-exit-flag (get-buffer-process multi-term-dedicated-buffer) nil)
+    (kill-buffer multi-term-dedicated-buffer)))
+
 (global-set-keys
  ;; Replace normal m-x with smex
  "M-x" smex
@@ -49,7 +60,7 @@ and push it onto the buffer list of the window in direction DIR."
  ;; Use s-s to toggle sr-speedbar
  "s-s" sr-speedbar-toggle
 
- "s-t" (progn (multi-term-dedicated-toggle) (when (multi-term-dedicated-exist-p) (multi-term-dedicated-select)))
+ "s-t" gcs-multi-term-dedicated-toggle
  "s-f" ns-popup-font-panel
 
  ;; Use cmd-r to compile
