@@ -125,6 +125,8 @@
 ;; Helm
 (define-key helm-map (kbd "s-j") 'helm-next-line)
 (define-key helm-map (kbd "s-k") 'helm-previous-line)
+;; Stop Helm file sources from showing only the basenames of the files.
+(setq helm-ff-transformer-show-only-basename nil)
 
 ;; Multi-term
 (defun gcs-term-mode-hook ()
