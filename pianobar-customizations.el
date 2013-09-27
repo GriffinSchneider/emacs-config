@@ -4,7 +4,7 @@
 
 ;; Setup pianobar faces to follow the color scheme
 (set-face-foreground 'pianobar-mode-input-face         (face-foreground 'font-lock-variable-name-face))
-(set-face-foreground 'pianobar-mode-song-name-face     (face-foreground 'font-lock-builtin-face))
+(set-face-foreground 'pianobar-mode-song-name-face     (face-foreground 'font-lock-function-name-face))
 (set-face-foreground 'pianobar-mode-time-face          (face-foreground 'font-lock-constant-face))
 (set-face-foreground 'pianobar-mode-choice-number-face (face-foreground 'font-lock-constant-face))
 (set-face-foreground 'pianobar-mode-choice-item-face   (face-foreground 'font-lock-variable-name-face))
