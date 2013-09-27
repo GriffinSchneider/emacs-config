@@ -47,6 +47,7 @@
 
 ;; Third-party requires
 (require 'evil)
+(require 'evil-integration)
 (require 'surround)
 (require 'moonscript-mode)
 (require 'android-mode)
@@ -303,6 +304,9 @@
 (set-face-attribute 'ediff-odd-diff-B     nil :background "Grey10"  :foreground nil)
 (set-face-attribute 'ediff-odd-diff-C     nil :background "Grey10"  :foreground nil)
 
+;; Use css-mode for SASS
+(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
+
 ;; Setup starting frame size
 (add-to-list 'default-frame-alist '(height . 50))
 (add-to-list 'default-frame-alist '(width . 155))
@@ -337,8 +341,8 @@
  ;; Make scrolling not suck.
  scroll-margin 0
  scroll-conservatively 100000
- scroll-up-aggressively 0
- scroll-down-aggressively 0)
+ scroll-up-aggressively 0.0
+ scroll-down-aggressively 0.0)
 
 ;; No scrollbars
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -358,6 +362,7 @@
 
 ;; Save the session
 (desktop-save-mode 1)
+(setq desktop-load-locked-desktop t)
 
 ;; Highlight matching parens
 (require 'paren)

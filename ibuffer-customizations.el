@@ -25,7 +25,7 @@
                     `(9999 (eq major-mode ',(car b)) ,(cdr b)))
                   gcs-ibuffer-fontification-alist)
         (90 (string-match "magit" (symbol-name major-mode))
-            font-lock-builtin-face)
+            font-lock-function-name-face)
         (90 (or (string-match "^*" (buffer-name))
                 (memq major-mode ibuffer-help-buffer-modes))
             font-lock-comment-face)))
