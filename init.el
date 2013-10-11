@@ -100,6 +100,12 @@
   (require 'w3m)
   (require 'w3m-customizations))
 
+;; markdowm-mode
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
+
 ;; git-gutter
 (global-git-gutter-mode t)
 

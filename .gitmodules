@@ -100,3 +100,6 @@
 [submodule "thirdparty/emacs-git-gutter"]
 	path = thirdparty/emacs-git-gutter
 	url = git://github.com/syohex/emacs-git-gutter.git
+[submodule "thirdparty/markdown-mode"]
+	path = thirdparty/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
