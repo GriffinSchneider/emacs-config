@@ -157,7 +157,7 @@
         term-color-white))
 
 ;; Ack
-(setq ack-command "ack -i --flush --match ")
+(setq ack-command "ack -a -i --flush --match ")
 ;; Gets run after ack output is inserted into buffer by comint and
 ;; processed for color escape codes by ack.el.
 ;; Replaces all whitespace at the beginning of ack matches with 1 tab for alignment.
