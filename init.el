@@ -144,17 +144,6 @@
                      ac-source-words-in-all-buffer)))
 (setq multi-term-program "/bin/bash")
 (add-hook 'term-mode-hook 'gcs-term-mode-hook)
-;; normal, black, red, green, yellow, blue, magenta, cyan, white
-(setq ansi-term-color-vector
-      '(term-face
-        term-color-black
-        font-lock-string-face
-        font-lock-comment-face
-        font-lock-keyword-face
-        font-lock-preprocessor-face
-        font-lock-variable-name-face
-        font-lock-type-face
-        term-color-white))
 
 ;; Ack
 (setq ack-command "ack -a -i --flush --match ")
