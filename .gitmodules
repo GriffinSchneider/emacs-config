@@ -103,3 +103,6 @@
 [submodule "thirdparty/markdown-mode"]
 	path = thirdparty/markdown-mode
 	url = git://jblevins.org/git/markdown-mode.git
+[submodule "thirdparty/git-modes"]
+	path = thirdparty/git-modes
+	url = git@github.com:magit/git-modes.git

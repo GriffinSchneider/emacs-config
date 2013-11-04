@@ -229,9 +229,9 @@
 (smex-initialize)
 
 ;; Magit
-(set-face-background 'magit-item-highlight nil)
+(set-face-attribute 'magit-item-highlight nil :inherit nil :background nil)
 ;; "q" always kills magit buffers
-(define-key magit-mode-map "q" (lambda () (interactive) (magit-quit-window 'kill-buffer)))
+(define-key magit-mode-map "q" (lambda () (interactive) (magit-mode-quit-window 'kill-buffer)))
 (define-key magit-mode-map ";" 'magit-toggle-section)
 ;; Use j and k for navigation in magit-mode.
 ;; Remap "k" to be magit-goto-previous-section everywhere
@@ -242,12 +242,14 @@
 (define-key magit-status-mode-map "K" 'magit-discard-item)
 (define-key magit-branch-manager-mode-map "K" 'magit-discard-item)
 ;; Map "j" to magit-goto-next-section in eveywhere
-(define-key magit-mode-map "j"
-  (lambda () (interactive)
-    (let ((next (magit-find-section-after (point))))
-      (if next
-          (magit-goto-section next)
-        (goto-char (+ -1 (magit-section-end (magit-current-section))))))))
+(defun gcs-magit-j ()
+  (interactive)
+  (let ((next (magit-find-section-after (point))))
+    (if next
+        (magit-goto-section next)
+      (goto-char (+ -1 (magit-section-end (magit-current-section)))))))
+(define-key magit-status-mode-map "j" 'gcs-magit-j)
+(define-key magit-mode-map "j" 'gcs-magit-j)
 
 ;; Lua-mode
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
@@ -372,7 +374,7 @@
 
 ;; Setup emacsclient
 (server-start)
-(setenv "EDITOR" "emacsclient -c")
+(setenv "EDITOR" "emacsclient")
 
 ;; Highlight matching parens
 (require 'paren)
