@@ -370,6 +370,10 @@
 (desktop-save-mode 1)
 (setq desktop-load-locked-desktop t)
 
+;; Setup emacsclient
+(server-start)
+(setenv "EDITOR" "emacsclient -c")
+
 ;; Highlight matching parens
 (require 'paren)
 (show-paren-mode 1)
