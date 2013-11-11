@@ -36,6 +36,9 @@
 ;; User-provided attributes:
 ;;  :ac-user-cflags - flags to add to ac-clang-flags.
 ;;
+;;  :ac-user-imports - tell autocomplete to assume that these files are #included at the
+;;    top of each file.
+;;
 ;; Auto-generated Attributes:
 ;;  :ac-clang-cflags - Flags to use for clang autocompletion. This contains absolute paths, so
 ;;    it's an individual-project-level variable. This attribute is updated only once per project
@@ -93,6 +96,7 @@
         (progn
           (setq ac-clang-cflags (append (eproject-attribute :ac-user-cflags)
                                         (eproject-attribute :ac-clang-cflags)))
+          (setq ac-clang-extra-imports (eproject-attribute :ac-user-imports))
           (message "Setting up clang autocompletion")
           (setq ac-sources '(ac-source-clang-async))
           (ac-clang-launch-completion-process)))))

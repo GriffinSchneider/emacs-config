@@ -4,7 +4,8 @@
 ;; Xcode-document-viewer
 (setq gcs-docsetutil-path "/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil")
 ;; Needs an absolute path
-(setq xcdoc:document-path (concat (getenv "HOME") "/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset"))
+(setq xcdoc:document-path (concat (getenv "HOME") "/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS7.0.iOSLibrary.docset"))
+
 (setq xcdoc:open-w3m-other-buffer t)
 (defun xcdoc:docsetutil-command () ""
   (if (file-executable-p gcs-docsetutil-path)
@@ -21,6 +22,7 @@
   (let ((helm-candidate-number-limit 500))
     (helm-other-buffer '(helm-c-source-objc-headline) "*ObjC Headline*")))
 
+(add-to-list 'auto-mode-alist '("\\.h$" . objc-mode))
 ;; Use objc-mode for objective-c++ files
 (add-to-list 'auto-mode-alist '("\\.mm$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.pch$" . objc-mode))
