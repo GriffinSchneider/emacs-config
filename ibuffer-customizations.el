@@ -13,6 +13,7 @@
 
 (defconst gcs-ibuffer-fontification-alist
   '((ruby-mode . font-lock-string-face)
+    (sh-mode . font-lock-string-face)
     (objc-mode . font-lock-constant-face)
     (c-mode . font-lock-constant-face)
     (java-mode . font-lock-constant-face)
