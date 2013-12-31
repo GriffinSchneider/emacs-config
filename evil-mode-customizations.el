@@ -15,6 +15,7 @@
        '(inferior-emacs-lisp-mode
          comint-mode
          shell-mode
+         git-rebase-mode
          term-mode
          magit-branch-manager-mode
          pianobar-mode))
