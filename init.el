@@ -144,6 +144,7 @@
                      ac-source-words-in-same-mode-buffers
                      ac-source-words-in-all-buffer)))
 (setq multi-term-program "/bin/bash")
+(define-key term-raw-map (kbd "s-v") 'term-paste)
 (add-hook 'term-mode-hook 'gcs-term-mode-hook)
 
 ;; Ack
