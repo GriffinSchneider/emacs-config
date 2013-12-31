@@ -280,6 +280,14 @@ multi-term dedicated buffer without prompting."
       (ack command-args (concat (eproject-root) "/"))
     (ack command-args)))
 
+(defun gcs-helm-in-buffer ()
+  "Use helm to navigate the current buffer, with a list of things in the
+buffer based on the buffer's major mode."
+  (interactive)
+  (case major-mode
+    ('css-mode (helm-css-scss))
+    (t (message "Don't know how to helm here"))))
+
 (defun gcs-show-in-finder ()
   (interactive)
   (shell-command "open -a \"Path Finder\" ."))
@@ -353,6 +361,7 @@ and set the focus back to Emacs frame"
      ("X"   smex-major-mode-commands)
      ("a"   gcs-ack-in-project)
      ("m"   multi-term)
+     ("j"   gcs-helm-in-buffer)
      
      ("d"   gcs-find-file-dwim)
      ("f"   ido-find-file)
