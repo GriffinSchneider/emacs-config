@@ -343,6 +343,8 @@
 ;; Setup emacsclient
 (server-start)
 (setenv "EDITOR" "emacsclient")
+;; Don't prompt when killing buffers with clients.
+(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
 ;; Highlight matching parens
 (require 'paren)
