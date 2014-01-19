@@ -11,6 +11,8 @@
 (setq evil-emacs-state-cursor '("red" box)
       evil-cross-lines t)
 
+(evil-global-set-key 'insert (kbd "<RET>") 'evil-ret-and-indent)
+
 (mapc (lambda (mode) (evil-set-initial-state mode 'emacs))
        '(inferior-emacs-lisp-mode
          comint-mode
