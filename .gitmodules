@@ -103,3 +103,9 @@
 [submodule "thirdparty/helm-css-scss"]
 	path = thirdparty/helm-css-scss
 	url = https://github.com/ShingoFukuyama/helm-css-scss.git
+[submodule "thirdparty/tern"]
+	path = thirdparty/tern
+	url = git@github.com:sqs/tern.git
+[submodule "thirdparty/js2-mode"]
+	path = thirdparty/js2-mode
+	url = git@github.com:mooz/js2-mode.git

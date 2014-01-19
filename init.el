@@ -80,6 +80,9 @@
 (require 'emms-setup)
 (require 'emms-browser)
 (require 'git-gutter)
+(require 'tern)
+(require 'tern-auto-complete) 
+(require 'js2-mode)
 
 ;; My requires
 (require 'keybindings)
@@ -92,6 +95,15 @@
 (require 'eproject-customizations)
 (require 'objective-c-customizations)
 (require 'eww-customizations)
+
+;; js2-mode and tern
+(tern-ac-setup)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js2-mode-hook 
+          (lambda () 
+            (tern-mode t)
+            (setq ac-sources '(ac-source-tern-completion))
+            (evil-define-key 'insert js2-mode-map (kbd "C-<SPC>") 'tern-ac-complete)))
 
 ;; markdowm-mode
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
