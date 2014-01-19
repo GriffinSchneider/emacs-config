@@ -91,6 +91,7 @@
 (require 'tabbar-customizations)
 (require 'eproject-customizations)
 (require 'objective-c-customizations)
+(require 'eww-customizations)
 
 ;; markdowm-mode
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)

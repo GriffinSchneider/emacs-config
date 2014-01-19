@@ -5,7 +5,7 @@
 ;; eww stupidly overrides shr-width before calling shr-insert-document to render a page. So,
 ;; un-override it.
 (defadvice shr-insert-document (around force-shr-width activate)
-  (let ((shr-width (min (buffer-width) gcs-shr-width)))
+  (let ((shr-width (min (1- (window-width)) gcs-shr-width)))
     ad-do-it))
 
 (defun eww-increase-width ()
@@ -41,4 +41,4 @@
 (define-key eww-mode-map (read-kbd-macro "<backspace>") 'eww-back-url)
 (define-key eww-mode-map (read-kbd-macro "S-<backspace>") 'eww-forward-url)
 
-(provide 'w3m-customizations)
+(provide 'eww-customizations)
