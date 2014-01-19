@@ -353,6 +353,9 @@
 (desktop-save-mode 1)
 (setq desktop-load-locked-desktop t)
 
+;; Save minibuffer history
+(savehist-mode t)
+
 ;; Setup emacsclient
 (server-start)
 (setenv "EDITOR" "emacsclient")
