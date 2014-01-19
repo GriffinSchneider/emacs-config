@@ -280,12 +280,14 @@ multi-term dedicated buffer without prompting."
       (ack command-args (concat (eproject-root) "/"))
     (ack command-args)))
 
-(defun gcs-helm-in-buffer ()
+(defun gcs-helm-dwim ()
   "Use helm to navigate the current buffer, with a list of things in the
 buffer based on the buffer's major mode."
   (interactive)
   (case major-mode
     ('css-mode (helm-css-scss))
+    ('objc-mode (helm-etags-select 1))
+    ('c-mode (helm-etags-select 1))
     (t (message "Don't know how to helm here"))))
 
 (defun gcs-show-in-finder ()
@@ -361,7 +363,7 @@ and set the focus back to Emacs frame"
      ("X"   smex-major-mode-commands)
      ("a"   gcs-ack-in-project)
      ("m"   multi-term)
-     ("j"   gcs-helm-in-buffer)
+     ("j"   gcs-helm-dwim)
      
      ("d"   gcs-find-file-dwim)
      ("f"   ido-find-file)
@@ -393,7 +395,6 @@ and set the focus back to Emacs frame"
      ("<left>"  gcs-previous-buffer)
      ("<right>" gcs-next-buffer)
      ("\\"      comment-dwim-line-or-toggle-term-mode)
-     ("t"       helm-c-etags-select)
      ("s-t"     gcs-toggle-tab-width-setting))))
 
 (defun gcs-prefix-key-command ()
