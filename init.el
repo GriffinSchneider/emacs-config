@@ -280,6 +280,7 @@
 (set-face-attribute 'ediff-odd-diff-C     nil :background "Grey10"  :foreground nil)
 
 ;; Use css-mode for SASS
+(setq css-indent-offset 2)
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
 ;; Setup starting frame size
