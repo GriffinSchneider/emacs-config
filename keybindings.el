@@ -356,8 +356,6 @@ and set the focus back to Emacs frame"
      ("K"   gcs-kill-buffer-and-window)
      ("g"   magit-status)
      ("l"   magit-file-log)
-     ("s"   sunrise-cd)
-     ("S"   sunrise)
      ("u"   undo-tree-visualize)
      ("x"   smex)
      ("X"   smex-major-mode-commands)
