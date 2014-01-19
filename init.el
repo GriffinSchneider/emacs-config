@@ -6,13 +6,10 @@
 ;; External programs to install somewhere on exec-path (all installable throgh homebrew on OSX):
 ;;   mplayer
 ;;   pianobar
-;;   w3m
 ;;   mpg321
 ;;   mplayer
 ;;   ack
 ;; Things that need building:
-;;   w3m: run `sudo emacs -batch -q -no-site-file -l w3mhack.el NONE -f w3mhack-nonunix-install'
-;;     in the w3m directory
 ;;   auto-complete-clang-async
 
 (provide 'init)
@@ -53,7 +50,6 @@
 (require 'android-mode)
 (require 'ace-jump-mode)
 (require 'typing)
-(require 'sunrise-commander)
 (require 'adaptive-wrap-prefix)
 (require 'yascroll)
 (require 'uniquify)
@@ -95,11 +91,6 @@
 (require 'tabbar-customizations)
 (require 'eproject-customizations)
 (require 'objective-c-customizations)
-
-(when (executable-find "w3m")
-  (setq w3m-command (executable-find "w3m"))
-  (require 'w3m)
-  (require 'w3m-customizations))
 
 ;; markdowm-mode
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
@@ -158,26 +149,6 @@
     (replace-match "\t" nil nil nil 1)))
 ;; Enable evil's g bindings in ack-mode. 
 (define-key ack-mode-map "g" nil)
-
-;; Sunrise commander
-(add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
-(setq find-directory-functions (cons 'sr-dired find-directory-functions))
-;; For some reason using define-key on sr-mode-map won't let me remap M-j (sr-goto-dir-other),
-;; so instead define advice on the goto-dir functions to use ido for directory selection.
-(defadvice sr-goto-dir (around sr-goto-dir-ido (dir) activate)
-  (interactive (list (ido-read-directory-name "Change directory: " sr-this-directory)))
-  (ad-set-arg 0 dir)
-  ad-do-it)
-(defadvice sr-goto-dir-other (around sr-goto-dir-other-ido (dir) activate)
-  (interactive (list (ido-read-directory-name "Change directory in other panel: " sr-this-directory)))
-  (ad-set-arg 0 dir)
-  ad-do-it)
-
-;; Also get sr-find-file to use ido
-(defadvice sr-find-file (around sr-find-file-ido (filename) activate)
-  (interactive (list (ido-read-file-name "Find file or directory: " sr-this-directory)))
-  (ad-set-arg 0 filename)
-  ad-do-it)
 
 ;; Framemove
 (setq framemove-hook-into-windmove t)

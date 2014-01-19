@@ -18,6 +18,7 @@
          git-rebase-mode
          term-mode
          magit-branch-manager-mode
+         eww-mode
          pianobar-mode))
 
 (provide 'evil-mode-customizations)

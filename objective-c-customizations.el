@@ -6,7 +6,7 @@
 ;; Needs an absolute path
 (setq xcdoc:document-path (concat (getenv "HOME") "/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS7.0.iOSLibrary.docset"))
 
-(setq xcdoc:open-w3m-other-buffer t)
+(setq xcdoc:open-eww-other-buffer t)
 (defun xcdoc:docsetutil-command () ""
   (if (file-executable-p gcs-docsetutil-path)
       gcs-docsetutil-path

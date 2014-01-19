@@ -40,9 +40,6 @@
 [submodule "thirdparty/yascroll-el"]
 	path = thirdparty/yascroll-el
 	url = https://github.com/m2ym/yascroll-el.git
-[submodule "thirdparty/sunrise-commander"]
-	path = thirdparty/sunrise-commander
-	url = git://github.com/escherdragon/sunrise-commander.git
 [submodule "thirdparty/pianobar-el"]
 	path = thirdparty/pianobar-el
 	url = git@github.com:GriffinSchneider/pianobar.el.git
@@ -61,9 +58,6 @@
 [submodule "thirdparty/ack-el"]
 	path = thirdparty/ack-el
 	url = git://github.com/leoliu/ack-el.git
-[submodule "thirdparty/w3m"]
-	path = thirdparty/w3m
-	url = git://github.com/emacsmirror/w3m.git
 [submodule "thirdparty/multi-term"]
 	path = thirdparty/multi-term
 	url = git://github.com/emacsmirror/multi-term.git
