@@ -219,8 +219,14 @@ multi-term dedicated buffer without prompting."
   (when (> n 0)
     (scroll-up-line 15)
     (run-at-time 0.01 nil 'gcs-smooth-scroll-down (- n 15))))
-(evil-global-set-key 'normal (kbd "C-d") (lambda () (interactive) (gcs-smooth-scroll-down (/ (window-height) 2))))
-(evil-global-set-key 'normal (kbd "C-u") (lambda () (interactive) (gcs-smooth-scroll-up (/ (window-height) 2))))
+(defun gcs-smooth-scroll-down-half-screen ()
+  (interactive)
+  (gcs-smooth-scroll-down (/ (window-height) 2)))
+(defun gcs-smooth-scroll-up-half-screen ()
+  (interactive)
+  (gcs-smooth-scroll-up (/ (window-height) 2)))
+(evil-global-set-key 'normal (kbd "C-d") 'gcs-smooth-scroll-down-half-screen)
+(evil-global-set-key 'normal (kbd "C-u") 'gcs-smooth-scroll-up-half-screen)
 
 ;;;;; PREFIX KEYBINDINGS ;;;;;
 ;; "\k" kills the buffer without asking and makes sure the buffer menu
@@ -354,8 +360,6 @@ and set the focus back to Emacs frame"
         command))
     (consp current-prefix-arg)))
     (save-window-excursion (compile command comint)))
-
-
   
 (defconst gcs-prefix-key-commands
   (mapcar
@@ -424,6 +428,47 @@ and set the focus back to Emacs frame"
         (define-key keymap gcs-prefix-key 'gcs-prefix-key-command)
         (define-key keymap (read-kbd-macro (concat "s-" gcs-prefix-key)) 'gcs-prefix-key-command))
       gcs-prefix-key-maps)
+
+;;;;; KEY-CHORD KEYBINDINGS ;;;;;
+(key-chord-mode 1)
+(setq key-chord-two-keys-delay 0.03)
+
+;; Numbers for window splitting
+(key-chord-define-global "89" 'split-window-vertically)
+(key-chord-define-global "78" 'split-window-horizontally)
+
+;; First fingers column: Prefix chord, C-g chord, and M-x chord
+(key-chord-define-global "ui" 'gcs-prefix-key-command)
+(key-chord-define evil-normal-state-map "jk" 'keyboard-quit)
+(key-chord-define minibuffer-local-map "jk" 'abort-recursive-edit)
+(key-chord-define ibuffer-mode-map "jk" 'ibuffer-quit)
+(key-chord-define-global "m," 'smex)
+
+;; Middle fingers column
+(key-chord-define-global "io" 'ido-find-file)
+(key-chord-define-global "kl" 'ido-switch-buffer)
+(key-chord-define-global ",." 'smex)
+
+;; J + v or b for buffer list
+(key-chord-define-global "jv" 'gcs-ibuffer)
+(key-chord-define-global "jb" 'gcs-ibuffer)
+
+;; K + o or . for killing buffer or window
+(key-chord-define-global "k." 'gcs-kill-buffer-command)
+(key-chord-define-global "ko" 'delete-window)
+
+;; H-chords for help
+(key-chord-define-global "hf" 'describe-function)
+(key-chord-define-global "hv" 'describe-variable)
+(key-chord-define-global "hk" 'describe-key)
+(key-chord-define-global "hc" 'describe-key-briefly)
+
+;; K + u or m for moving by half-screen
+(key-chord-define-global "ku" 'gcs-smooth-scroll-up-half-screen)
+(key-chord-define-global "km" 'gcs-smooth-scroll-down-half-screen)
+
+;; J + g for G
+(key-chord-define-global "jg" 'evil-goto-line)
 
 
 (provide 'keybindings)

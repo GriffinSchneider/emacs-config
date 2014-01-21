@@ -7,6 +7,12 @@
 ;; Use tab to move between links in help mode.
 (evil-define-key 'motion help-mode-map (read-kbd-macro "TAB") 'forward-button)
 
+;; Swap "[]" with "{}"
+(evil-global-set-key 'motion "]" 'evil-forward-paragraph)
+(evil-global-set-key 'motion "[" 'evil-backward-paragraph)
+(evil-global-set-key 'motion "}" 'evil-forward-sentence)
+(evil-global-set-key 'motion "{" 'evil-backward-sentence)
+
 ;; Make cursor red in Emacs mode.
 (setq evil-emacs-state-cursor '("red" box)
       evil-cross-lines t)

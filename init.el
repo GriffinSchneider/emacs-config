@@ -83,6 +83,8 @@
 (require 'tern)
 (require 'tern-auto-complete) 
 (require 'js2-mode)
+(require 'key-chord)
+(require 'auto-dim-other-buffers)
 
 ;; My requires
 (require 'keybindings)
@@ -95,6 +97,10 @@
 (require 'eproject-customizations)
 (require 'objective-c-customizations)
 (require 'eww-customizations)
+
+;; Lighter background on non-active buffers
+(set-face-background 'auto-dim-other-buffers-face "#4F4F4F")
+(auto-dim-other-buffers-mode t)
 
 ;; js2-mode and tern
 (tern-ac-setup)

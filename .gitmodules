@@ -109,3 +109,9 @@
 [submodule "thirdparty/js2-mode"]
 	path = thirdparty/js2-mode
 	url = git@github.com:mooz/js2-mode.git
+[submodule "thirdparty/key-chord"]
+	path = thirdparty/key-chord
+	url = git@github.com:emacsmirror/key-chord.git
+[submodule "thirdparty/auto-dim-other-buffers"]
+	path = thirdparty/auto-dim-other-buffers
+	url = git@github.com:emacsmirror/auto-dim-other-buffers.el.git
