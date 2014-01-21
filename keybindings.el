@@ -118,7 +118,6 @@ multi-term dedicated buffer without prompting."
  "M-s-R" (revert-buffer t t))
 
 ;;;;;  PIANOBAR KEYS ;;;;;
-
 ;; Setup various pianobar commands with a s-p prefix
 (defun gcs-map-pianobar-key (key command)
   (global-set-key (read-kbd-macro (concat "s-p " key)) command)
@@ -211,9 +210,19 @@ multi-term dedicated buffer without prompting."
   (gcs-evil-maybe-exit ?k ?j))
 (define-key evil-insert-state-map "k" 'gcs-evil-maybe-exit-k)
 
+;; Smooth half-page scrolling
+(defun gcs-smooth-scroll-up (n)
+  (when (> n 0)
+    (scroll-down-line 15)
+    (run-at-time 0.01 nil 'gcs-smooth-scroll-up (- n 15))))
+(defun gcs-smooth-scroll-down (n)
+  (when (> n 0)
+    (scroll-up-line 15)
+    (run-at-time 0.01 nil 'gcs-smooth-scroll-down (- n 15))))
+(evil-global-set-key 'normal (kbd "C-d") (lambda () (interactive) (gcs-smooth-scroll-down (/ (window-height) 2))))
+(evil-global-set-key 'normal (kbd "C-u") (lambda () (interactive) (gcs-smooth-scroll-up (/ (window-height) 2))))
 
 ;;;;; PREFIX KEYBINDINGS ;;;;;
-
 ;; "\k" kills the buffer without asking and makes sure the buffer menu
 ;;  opens with point at the first line.
 (defun gcs-kill-buffer-command ()
