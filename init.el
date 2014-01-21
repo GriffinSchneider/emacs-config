@@ -141,13 +141,15 @@
 (setq helm-ff-transformer-show-only-basename nil)
 
 ;; Multi-term
+(setq term-buffer-maximum-size 10000)
 (defun gcs-term-mode-hook ()
   (yas-minor-mode  -1)
+  (auto-complete-mode -1)
   (setq ac-sources '(ac-source-filename
                      ac-source-words-in-buffer
                      ac-source-words-in-same-mode-buffers
                      ac-source-words-in-all-buffer)))
-(setq multi-term-program "/bin/bash")
+(setq multi-term-program "/bin/zsh")
 (define-key term-raw-map (kbd "s-v") 'term-paste)
 (add-hook 'term-mode-hook 'gcs-term-mode-hook)
 
