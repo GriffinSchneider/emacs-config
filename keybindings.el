@@ -296,6 +296,7 @@ buffer based on the buffer's major mode."
   (case major-mode
     ('css-mode (helm-css-scss))
     ('objc-mode (helm-etags-select 1))
+    ('js2-mode (progn (evil-set-jump) (tern-find-definition)))
     ('c-mode (helm-etags-select 1))
     (t (message "Don't know how to helm here"))))
 
