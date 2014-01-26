@@ -230,6 +230,9 @@
 (define-key git-rebase-mode-map "k" 'git-rebase-backward-line)
 (define-key git-rebase-mode-map "p" 'git-rebase-pick)
 (define-key git-rebase-mode-map "K" 'git-rebase-kill-line)
+(key-chord-define magit-mode-map "k;" (lambda () (interactive) (magit-goto-previous-section) (magit-toggle-section)))
+(key-chord-define magit-mode-map "j;" (lambda () (interactive) (magit-goto-next-section) (magit-toggle-section)))
+(key-chord-define magit-mode-map "l;" 'magit-git-command)
 
 ;; Lua-mode
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))

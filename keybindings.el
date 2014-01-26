@@ -423,33 +423,36 @@ and set the focus back to Emacs frame"
         (define-key keymap (read-kbd-macro (concat "s-" gcs-prefix-key)) 'gcs-prefix-key-command))
       gcs-prefix-key-maps)
 
+
 ;;;;; KEY-CHORD KEYBINDINGS ;;;;;
 (key-chord-mode 1)
-(setq key-chord-two-keys-delay 0.03)
+(setq key-chord-two-keys-delay 0.05)
+
+;; Any prefix key, "\x" can also be triggered with the key chord "jx"
+(mapc (lambda (prefix-command)
+        (let* ((key-string (first prefix-command))
+               (key (aref key-string 0)))
+          (when (and (numberp key) (<= key 126) (>= key 32)
+                     (not (equal key-string "j"))
+                     (not (equal key-string "k")))
+            (key-chord-define-global (vector (aref "j" 0) key) (second prefix-command)))))
+      gcs-prefix-key-commands)
+
+(key-chord-define-global "jl" 'gcs-helm-dwim)
 
 ;; Numbers for window splitting
 (key-chord-define-global "89" 'split-window-vertically)
 (key-chord-define-global "78" 'split-window-horizontally)
 
-;; First fingers column: Prefix chord, C-g chord, and M-x chord
-(key-chord-define-global "ui" 'gcs-prefix-key-command)
+;; First fingers column
 (key-chord-define evil-normal-state-map "jk" 'keyboard-quit)
 (key-chord-define minibuffer-local-map "jk" 'abort-recursive-edit)
 (key-chord-define ibuffer-mode-map "jk" 'ibuffer-quit)
 (key-chord-define-global "m," 'smex)
 
-;; Middle fingers column
-(key-chord-define-global "io" 'ido-find-file)
-(key-chord-define-global "kl" 'ido-switch-buffer)
-(key-chord-define-global ",." 'smex)
-
-;; J + v or b for buffer list
-(key-chord-define-global "jv" 'gcs-ibuffer)
-(key-chord-define-global "jb" 'gcs-ibuffer)
-
 ;; K + o or . for killing buffer or window
-(key-chord-define-global "k." 'gcs-kill-buffer-command)
-(key-chord-define-global "ko" 'delete-window)
+(key-chord-define-global "k." 'delete-window)
+(key-chord-define-global "ko" 'gcs-kill-buffer-command)
 
 ;; H-chords for help
 (key-chord-define-global "hf" 'describe-function)
@@ -461,8 +464,20 @@ and set the focus back to Emacs frame"
 (key-chord-define-global "ku" 'gcs-smooth-scroll-up-half-screen)
 (key-chord-define-global "km" 'gcs-smooth-scroll-down-half-screen)
 
-;; J + g for G
-(key-chord-define-global "jg" 'evil-goto-line)
+(key-chord-define-global "kg" 'evil-goto-line)
+(key-chord-define-global "kv" 'evil-visual-line)
+
+;; Semicolon chords for evaluation
+(defun gcs-eval-dwim ()
+  (interactive)
+  (if (not mark-active)
+      (call-interactively 'eval-last-sexp)
+    (call-interactively 'eval-region)
+    (message "eval-ed.")))
+
+(key-chord-define-global "j;" 'gcs-eval-dwim)
+(key-chord-define-global "k;" 'eval-defun)
+(key-chord-define-global "l;" 'eval-expression)
 
 
 (provide 'keybindings)
