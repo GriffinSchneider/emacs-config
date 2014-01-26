@@ -289,12 +289,6 @@ multi-term dedicated buffer without prompting."
       (helm-eproject)
     (ido-find-file)))
 
-(defun gcs-ack-in-project (command-args)
-  (interactive (list (read-from-minibuffer "Run ack like this: " ack-command nil nil 'ack-history)))
-  (if (eproject-root)
-      (ack command-args (concat (eproject-root) "/"))
-    (ack command-args)))
-
 (defun gcs-helm-dwim ()
   "Use helm to navigate the current buffer, with a list of things in the
 buffer based on the buffer's major mode."
@@ -373,7 +367,7 @@ and set the focus back to Emacs frame"
      ("u"   undo-tree-visualize)
      ("x"   smex)
      ("X"   smex-major-mode-commands)
-     ("a"   gcs-ack-in-project)
+     ("a"   ag-project)
      ("m"   multi-term)
      ("j"   gcs-helm-dwim)
      

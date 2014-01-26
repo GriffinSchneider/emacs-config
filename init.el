@@ -8,7 +8,7 @@
 ;;   pianobar
 ;;   mpg321
 ;;   mplayer
-;;   ack
+;;   ag
 ;; Things that need building:
 ;;   auto-complete-clang-async
 
@@ -65,7 +65,7 @@
 (require 'powerline)
 (require 'pianobar)
 (require 'framemove)
-(require 'ack)
+(require 'ag)
 (require 'multi-term)
 (require 'tabbar)
 (require 'xcode-document-viewer)
@@ -159,17 +159,9 @@
 (define-key term-raw-map (kbd "s-v") 'term-paste)
 (add-hook 'term-mode-hook 'gcs-term-mode-hook)
 
-;; Ack
-(setq ack-command "ack -a -i --flush --match ")
-;; Gets run after ack output is inserted into buffer by comint and
-;; processed for color escape codes by ack.el.
-;; Replaces all whitespace at the beginning of ack matches with 1 tab for alignment.
-(defadvice ack-filter (after align-ack-results activate)
-  (goto-char compilation-filter-start)
-  (while (re-search-forward "^[0-9]*:\\([ \t]*\\)[^ ]+" nil t)
-    (replace-match "\t" nil nil nil 1)))
-;; Enable evil's g bindings in ack-mode. 
-(define-key ack-mode-map "g" nil)
+;; Ag
+(setq ag-highlight-search t)
+(setq ag-reuse-buffers t)
 
 ;; Framemove
 (setq framemove-hook-into-windmove t)
