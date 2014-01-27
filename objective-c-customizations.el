@@ -45,7 +45,11 @@
   ; all "opens" should be indented by the c-indent-level
   (c-set-offset 'brace-list-open '+)   
   ; indent case labels by c-indent-level, too
-  (c-set-offset 'case-label '+))
+  (c-set-offset 'case-label '+)
+
+  ;; Fix override of tab switch keybinding
+  (define-key objc-mode-map (kbd "M-j") nil))
+
 (add-hook 'objc-mode-hook 'gcs-objc-mode-hook)
 
 
