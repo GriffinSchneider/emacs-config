@@ -85,6 +85,9 @@
 (require 'js2-mode)
 (require 'key-chord)
 (require 'auto-dim-other-buffers)
+(require 'color-identifiers-mode)
+(require 'hl-defined)
+(require 'idle-highlight-mode)
 
 ;; My requires
 (require 'keybindings)
@@ -97,6 +100,19 @@
 (require 'eproject-customizations)
 (require 'objective-c-customizations)
 (require 'eww-customizations)
+
+;; idle-highlight-mode
+(setq idle-highlight-idle-time 0.1)
+(defun idle-highlight-hook () (idle-highlight-mode t))
+(mapc (lambda (m) (add-hook m 'idle-highlight-hook))
+      '(emacs-lisp-mode-hook js2-mode-hook ruby-mode-hook objc-mode-hook))
+
+;; hl-defined
+(set-face-attribute 'hdefd-functions nil :foreground nil)
+(set-face-attribute 'hdefd-functions nil :inherit 'font-lock-constant-face)
+(set-face-attribute 'hdefd-variables nil :foreground nil)
+(set-face-attribute 'hdefd-variables nil :inherit 'font-lock-variable-name-face)
+(add-hook 'emacs-lisp-mode-hook 'hdefd-highlight-mode)
 
 ;; Lighter background on non-active buffers
 (set-face-background 'auto-dim-other-buffers-face "#4F4F4F")

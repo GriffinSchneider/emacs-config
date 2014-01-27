@@ -118,3 +118,9 @@
 [submodule "thirdparty/ag-el"]
 	path = thirdparty/ag-el
 	url = git@github.com:Wilfred/ag.el.git
+[submodule "thirdparty/color-identifiers-mode"]
+	path = thirdparty/color-identifiers-mode
+	url = git@github.com:GriffinSchneider/color-identifiers-mode.git
+[submodule "thirdparty/idle-highlight-mode"]
+	path = thirdparty/idle-highlight-mode
+	url = git@github.com:nonsequitur/idle-highlight-mode.git
