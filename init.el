@@ -207,14 +207,16 @@
       ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
                               " [No match]" " [Matched]" " [Not readable]"
                               " [Too big]" " [Confirm]")))
-(add-hook 'ido-minibuffer-setup-hook
-          (lambda ()
-            ;; Disable line truncation
-            (set (make-local-variable 'truncate-lines) nil)
-            ;; Delete backward by word with C-w
-            (define-key ido-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)
-            (define-key ido-completion-map (kbd "s-j") 'ido-next-match)
-            (define-key ido-completion-map (kbd "s-k") 'ido-prev-match)))
+
+(remove-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)
+(defun gcs-ido-minibuffer-setup ()
+  ;; Disable line truncation
+  (set (make-local-variable 'truncate-lines) nil)
+  ;; Delete backward by word with C-w
+  (define-key ido-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)
+  (define-key ido-completion-map (kbd "s-j") 'ido-next-match)
+  (define-key ido-completion-map (kbd "s-k") 'ido-prev-match))
+(add-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)
 
 ;; Smex
 (smex-initialize)
