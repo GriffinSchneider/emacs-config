@@ -327,6 +327,9 @@
 
 ;; Don't insert tabs
 (setq-default indent-tabs-mode nil)
+
+;; Auto revert
+(global-auto-revert-mode t)
               
 (set-default 'truncate-lines t)
 (setq truncate-partial-width-windows t)
