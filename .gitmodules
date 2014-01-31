@@ -55,9 +55,6 @@
 [submodule "thirdparty/framemove"]
 	path = thirdparty/framemove
 	url = git://github.com/emacsmirror/framemove.git
-[submodule "thirdparty/ack-el"]
-	path = thirdparty/ack-el
-	url = git://github.com/leoliu/ack-el.git
 [submodule "thirdparty/multi-term"]
 	path = thirdparty/multi-term
 	url = git://github.com/emacsmirror/multi-term.git
