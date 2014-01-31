@@ -121,6 +121,10 @@
 ;; js2-mode and tern
 (tern-ac-setup)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(defun gcs-js2-get-type ()
+    (when (eq major-mode 'js2-mode)
+      (tern-get-type)))
+(run-with-idle-timer 0.5 t 'gcs-js2-get-type)
 (add-hook 'js2-mode-hook 
           (lambda () 
             (tern-mode t)
