@@ -458,7 +458,6 @@ and set the focus back to Emacs frame"
 (key-chord-define-global "hf" 'describe-function)
 (key-chord-define-global "hv" 'describe-variable)
 (key-chord-define-global "hk" 'describe-key)
-(key-chord-define-global "hc" 'describe-key-briefly)
 
 ;; K + u or m for moving by half-screen
 (key-chord-define-global "ku" 'gcs-smooth-scroll-up-half-screen)
