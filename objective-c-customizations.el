@@ -31,6 +31,8 @@
   ;; Make ff-find-other-file toggle between .m and .h
   (set (make-local-variable 'cc-other-file-alist)
        '(("\\.m" (".h")) ("\\.h" (".m"))))
+
+  (color-identifiers-mode t)
   
   ;; Setup indentation
   (setq tab-width 4)
