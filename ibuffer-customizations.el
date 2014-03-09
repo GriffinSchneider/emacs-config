@@ -32,40 +32,41 @@
             font-lock-comment-face)))
 
 (define-ibuffer-filter project
-  "Filter by buffer's eproject-root"
+  "Filter by buffer's project root"
   (:description "project"
    :reader (read-from-minibuffer "Filter by project root: "))
-  (with-current-buffer buf (string-equal eproject-root (file-truename qualifier))))
+  (with-current-buffer buf (let ((projectile-require-project-root nil))
+                             (string-equal (projectile-project-root) (file-truename qualifier)))))
 
-(defun gcs-get-eproject-filter-groups ()
+(defun gcs-get-project-filter-groups ()
   (let (projects-with-buffers-filters)
     ;; Fill a list of filters for projects that have open buffers
-    (mapc (lambda (project)
-            (when (assoc (cdr project) (eproject--project-buffers))
-              (add-to-list 'projects-with-buffers-filters (list (first project) `(project . ,(cdr project))))))
-          (eproject-projects))
+    (mapc (lambda (project-root)
+            (add-to-list 'projects-with-buffers-filters
+                         (list (file-name-nondirectory (directory-file-name project-root))
+                               `(project . ,(expand-file-name project-root)))))
+          projectile-known-projects)
     ;; Return a list of filters for projects, with projects that have buffers
     ;; at the start of the list.
     projects-with-buffers-filters))
 
-(defun gcs-setup-eproject-filter-groups ()
+(defun gcs-setup-project-filter-groups ()
   (interactive)
   (setq ibuffer-saved-filter-groups
         `(("default"
-           ,@(gcs-get-eproject-filter-groups))))
+           ,@(gcs-get-project-filter-groups))))
   (when (get-buffer "*Ibuffer*") (kill-buffer "*Ibuffer*")))
 
-(add-hook 'ibuffer-mode-hook
-  (lambda ()
-    (ibuffer-switch-to-saved-filter-groups "default")
+(defun gcs-ibuffer-hook ()
+  (ibuffer-switch-to-saved-filter-groups "default")
+  (face-remap-add-relative 'default 'font-lock-comment-face)
+  (copy-face 'font-lock-keyword-face 'tempface )
+  (setq ibuffer-filter-group-name-face 'tempface)
+  (face-remap-add-relative ibuffer-filter-group-name-face 
+                           :box '(:style released-button
+                                         :line-width 2)))
     
-    (face-remap-add-relative 'default 'font-lock-comment-face)
-    
-    (copy-face 'font-lock-keyword-face 'tempface )
-    (setq ibuffer-filter-group-name-face 'tempface)
-    (face-remap-add-relative ibuffer-filter-group-name-face 
-                             :box '(:style released-button
-                                           :line-width 2))))
+(add-hook 'ibuffer-mode-hook 'gcs-ibuffer-hook)
 
 ;; Ibuffer vehemently does not want me to fontify the footer line, but it should
 ;; really be the same color as the header. So, use this hacky wrapper around the

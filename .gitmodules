@@ -121,3 +121,6 @@
 [submodule "thirdparty/idle-highlight-mode"]
 	path = thirdparty/idle-highlight-mode
 	url = git@github.com:nonsequitur/idle-highlight-mode.git
+[submodule "thirdparty/use-package"]
+	path = thirdparty/use-package
+	url = git@github.com:jwiegley/use-package.git

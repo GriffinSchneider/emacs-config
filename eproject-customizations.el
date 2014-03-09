@@ -104,6 +104,6 @@
 
 (add-hook 'generic-project-file-visit-hook
           (lambda ()
-            (gcs-setup-eproject-filter-groups)))
+            (gcs-setup-project-filter-groups)))
 
 (provide 'eproject-customizations)

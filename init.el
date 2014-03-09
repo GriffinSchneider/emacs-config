@@ -42,9 +42,25 @@
 (exec-path-from-shell-initialize)
 (add-to-list 'exec-path (concat gcs-config-directory "thirdparty/emms/src/"))
 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
+(require 'use-package)
+
+(require'projectile)
+
 ;; Third-party requires
+(defmacro gcs-package (package &rest options)
+  `(use-package ,package
+     :ensure ,package
+     ,@options))
+    
+(gcs-package projectile)
 (require 'evil)
+(require 'evil-visualstar)
 (require 'evil-integration)
+
 (require 'surround)
 (require 'moonscript-mode)
 (require 'android-mode)
@@ -371,15 +387,16 @@
 (set-face-foreground 'vertical-border (face-background 'fringe))
 
 ;; Highlight the current line
-(global-hl-line-mode 1)
-(set-face-attribute 'hl-line nil :inherit nil)
+;; (global-hl-line-mode 1)
+;; (set-face-attribute 'hl-line nil :inherit nil)
 
 ;; Use visual bell
 (setq visible-bell t)
 
 ;; Save the session
-(desktop-save-mode 1)
 (setq desktop-load-locked-desktop t)
+(desktop-save-mode 1)
+(desktop-read)
 
 ;; Save minibuffer history
 (savehist-mode t)

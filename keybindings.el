@@ -285,8 +285,8 @@ multi-term dedicated buffer without prompting."
 
 (defun gcs-find-file-dwim ()
   (interactive)
-  (if (eproject-root)
-      (helm-eproject)
+  (if (projectile-project-p)
+      (projectile-find-file)
     (ido-find-file)))
 
 (defun gcs-helm-dwim ()
@@ -295,7 +295,7 @@ buffer based on the buffer's major mode."
   (interactive)
   (case major-mode
     ('css-mode (helm-css-scss))
-    ('objc-mode (helm-etags-select 1))
+    ('objc-mode (projectile-find-tag))
     ('js2-mode (progn (evil-set-jump) (tern-find-definition)))
     ('c-mode (helm-etags-select 1))
     (t (message "Don't know how to helm here"))))
