@@ -15,6 +15,7 @@
 
 ;; Make cursor red in Emacs mode.
 (setq evil-emacs-state-cursor '("red" box)
+      evil-normal-state-cursor '("white")
       evil-cross-lines t)
 (setq-default evil-symbol-word-search t)
 

@@ -48,20 +48,19 @@
 (package-initialize)
 (require 'use-package)
 
-(require'projectile)
-
 ;; Third-party requires
 (defmacro gcs-package (package &rest options)
   `(use-package ,package
      :ensure ,package
      ,@options))
-    
-(gcs-package projectile)
-(require 'evil)
-(require 'evil-visualstar)
-(require 'evil-integration)
+(put 'gcs-package 'lisp-indent-function 'defun)
 
-(require 'surround)
+(gcs-package projectile)
+
+(gcs-package evil-visualstar)
+(gcs-package surround)
+(gcs-package evil)
+
 (require 'moonscript-mode)
 (require 'android-mode)
 (require 'ace-jump-mode)

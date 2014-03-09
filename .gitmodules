@@ -1,9 +1,3 @@
-[submodule "thirdparty/evil"]
-	path = thirdparty/evil
-	url = https://github.com/emacsmirror/evil.git
-[submodule "thirdparty/evil-surround"]
-	path = thirdparty/evil-surround
-	url = https://github.com/timcharper/evil-surround.git
 [submodule "thirdparty/haskell-mode"]
 	path = thirdparty/haskell-mode
 	url = https://github.com/emacsmirror/haskell-mode.git
