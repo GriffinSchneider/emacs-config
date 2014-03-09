@@ -7,6 +7,8 @@
 (ac-flyspell-workaround)
 (add-to-list 'ac-dictionary-directories (concat gcs-config-directory "auto-complete/dict"))
 
+(add-to-list 'ac-sources 'ac-source-words-in-all-buffer 'append)
+
 (global-set-key (kbd "C-SPC") 'auto-complete)
 (define-key ac-menu-map (kbd "s-j") 'ac-next)
 (define-key ac-menu-map (kbd "s-k") 'ac-previous)
