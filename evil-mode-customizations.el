@@ -16,6 +16,7 @@
 ;; Make cursor red in Emacs mode.
 (setq evil-emacs-state-cursor '("red" box)
       evil-cross-lines t)
+(setq-default evil-symbol-word-search t)
 
 (evil-global-set-key 'insert (kbd "<RET>") 'evil-ret-and-indent)
 
