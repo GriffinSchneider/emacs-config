@@ -100,7 +100,6 @@
 (require 'tern-auto-complete) 
 (require 'js2-mode)
 (require 'key-chord)
-(require 'auto-dim-other-buffers)
 (require 'color-identifiers-mode)
 (require 'hl-defined)
 (require 'idle-highlight-mode)
@@ -129,10 +128,6 @@
 (set-face-attribute 'hdefd-variables nil :foreground nil)
 (set-face-attribute 'hdefd-variables nil :inherit 'font-lock-variable-name-face)
 (add-hook 'emacs-lisp-mode-hook 'hdefd-highlight-mode)
-
-;; Lighter background on non-active buffers
-(set-face-background 'auto-dim-other-buffers-face "#4F4F4F")
-(auto-dim-other-buffers-mode t)
 
 ;; js2-mode and tern
 (tern-ac-setup)
