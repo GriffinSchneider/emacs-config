@@ -42,25 +42,60 @@
 (exec-path-from-shell-initialize)
 (add-to-list 'exec-path (concat gcs-config-directory "thirdparty/emms/src/"))
 
+;; Setup package archibes
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
-(require 'use-package)
 
-;; Third-party requires
+(require 'use-package)
+;; I always want to download packages if they aren't installed, so always use :ensure
 (defmacro gcs-package (package &rest options)
   `(use-package ,package
      :ensure ,package
      ,@options))
 (put 'gcs-package 'lisp-indent-function 'defun)
 
+;;;;;;;;;;;;;;;;;;
+;; Packages
+;;;;;;;;;;;;;;;;;;
 (gcs-package projectile)
 
-(gcs-package evil-visualstar)
-(gcs-package surround)
-(gcs-package evil)
+;; ido and smex
+(gcs-package ido)
+(gcs-package smex)
+(gcs-package flx-ido
+  :config
+  (progn 
+    ;; Ido
+    (ido-mode t)
+    (setq ido-everywhere t
+          ido-ignore-buffers (cons "\\*Buffer List\\*" ido-ignore-buffers)
+          ;; Show ido completions vertically
+          ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
+                                  " [No match]" " [Matched]" " [Not readable]"
+                                  " [Too big]" " [Confirm]")))
+    (flx-ido-mode t)
+    (setq gc-cons-threshold 20000000)
+    (set-face-foreground 'flx-highlight-face (face-foreground 'isearch))
+    (set-face-background 'flx-highlight-face (face-background 'isearch))
+    (set-face-attribute 'flx-highlight-face nil :inherit 'font-lock-keyword-face)
+    ;; diss ido faces to see flx highlights.
+    (setq ido-use-faces nil)
 
+    (remove-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)
+    (defun gcs-ido-minibuffer-setup ()
+      ;; Disable line truncation
+      (set (make-local-variable 'truncate-lines) nil)
+      ;; Delete backward by word with C-w
+      (define-key ido-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)
+      (define-key ido-completion-map (kbd "s-j") 'ido-next-match)
+      (define-key ido-completion-map (kbd "s-k") 'ido-prev-match))
+    (add-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)))
+
+;;;;;;;;;;;;;;;;;;
+;; Non-package thirdparty requires
+;;;;;;;;;;;;;;;;;;
 (require 'moonscript-mode)
 (require 'android-mode)
 (require 'ace-jump-mode)
@@ -68,13 +103,11 @@
 (require 'adaptive-wrap-prefix)
 (require 'yascroll)
 (require 'uniquify)
-(require 'ido)
-(require 'smex)
 (require 'magit)
 (require 'magit-blame)
 (require 'lua-mode)
 (require 'yasnippet) ;; not yasnippet-bundle
-(require 'sr-speedbar nil 'noerror)
+;; (require 'sr-speedbar nil 'noerror)
 (require 'highlight-parentheses)
 (require 'eclim)
 (require 'powerline)
@@ -103,9 +136,11 @@
 (require 'hl-defined)
 (require 'idle-highlight-mode)
 
+;;;;;;;;;;;;;;;;;;
 ;; My requires
-(require 'keybindings)
+;;;;;;;;;;;;;;;;;;
 (require 'evil-mode-customizations)
+(require 'keybindings)
 (require 'ibuffer-customizations)
 (require 'auto-complete-customizations)
 (require 'powerline-customizations)
@@ -211,29 +246,6 @@
 ;; Uniquify-buffer
 (setq uniquify-buffer-name-style 'post-forward
       uniquify-separator ":")
-
-;; Ido
-(ido-mode t)
-(setq ido-enable-flex-matching t
-      ido-everywhere t
-      ido-ignore-buffers (cons "\\*Buffer List\\*" ido-ignore-buffers)
-      ;; Show ido completions vertically
-      ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
-                              " [No match]" " [Matched]" " [Not readable]"
-                              " [Too big]" " [Confirm]")))
-
-(remove-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)
-(defun gcs-ido-minibuffer-setup ()
-  ;; Disable line truncation
-  (set (make-local-variable 'truncate-lines) nil)
-  ;; Delete backward by word with C-w
-  (define-key ido-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)
-  (define-key ido-completion-map (kbd "s-j") 'ido-next-match)
-  (define-key ido-completion-map (kbd "s-k") 'ido-prev-match))
-(add-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)
-
-;; Smex
-(smex-initialize)
 
 ;; Magit
 (set-face-attribute 'magit-item-highlight nil :inherit nil :background nil)

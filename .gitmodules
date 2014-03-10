@@ -25,9 +25,6 @@
 [submodule "thirdparty/yasnippet"]
 	path = thirdparty/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
-[submodule "thirdparty/smex"]
-	path = thirdparty/smex
-	url = https://github.com/nonsequitur/smex.git
 [submodule "thirdparty/emacs-powerline"]
 	path = thirdparty/emacs-powerline
 	url = git://github.com/jonathanchu/emacs-powerline.git
