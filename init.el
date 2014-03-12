@@ -95,17 +95,20 @@
     ;; Ido
     (ido-mode t)
     (setq ido-everywhere t
-          ido-ignore-buffers (cons "\\*Buffer List\\*" ido-ignore-buffers)
+          ido-ignore-buffers (append (list "\\*Buffer List\\*" "*magit-process*")
+                                     ido-ignore-buffers)
           ;; Show ido completions vertically
           ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
                                   " [No match]" " [Matched]" " [Not readable]"
                                   " [Too big]" " [Confirm]")))
+    (setq ido-default-file-method 'selected-window)
+    
     (flx-ido-mode t)
     (setq gc-cons-threshold 20000000)
     (set-face-foreground 'flx-highlight-face (face-foreground 'isearch))
     (set-face-background 'flx-highlight-face (face-background 'isearch))
     (set-face-attribute 'flx-highlight-face nil :inherit 'font-lock-keyword-face)
-    ;; diss ido faces to see flx highlights.
+    ;; disable ido faces to see flx highlights.
     (setq ido-use-faces nil)
 
     (remove-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)
