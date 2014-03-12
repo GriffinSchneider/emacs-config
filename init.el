@@ -60,6 +60,31 @@
 ;; Packages
 ;;;;;;;;;;;;;;;;;;
 (gcs-package projectile)
+(gcs-package ace-jump-mode)
+(gcs-package typing)
+
+;; TODO: powerline's new version requires changes.
+(require 'powerline)
+;; TODO: move this down. colors in here are required elsewhere
+(require 'powerline-customizations)
+(gcs-package yascroll
+  :config
+  (progn
+    ;; Yascroll
+    (global-yascroll-bar-mode 1)
+    (setq yascroll:delay-to-hide nil)
+    (set-face-background 'yascroll:thumb-fringe powerline-color1)
+    (set-face-foreground 'yascroll:thumb-fringe powerline-color1)
+    (set-face-background 'yascroll:thumb-text-area powerline-color1)
+    ;; Don't hide scrollbar when editing
+    (defadvice yascroll:before-change (around always-show-bar activate) ())))
+
+(gcs-package yasnippet
+  :config
+  (progn 
+    (setq yas-snippet-dirs (list (concat gcs-thirdparty-directory "yasnippet/snippets")
+                                 (concat gcs-config-directory "snippets")))
+    (yas-global-mode 1)))
 
 ;; ido and smex
 (gcs-package ido)
@@ -93,24 +118,20 @@
       (define-key ido-completion-map (kbd "s-k") 'ido-prev-match))
     (add-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)))
 
+
 ;;;;;;;;;;;;;;;;;;
 ;; Non-package thirdparty requires
 ;;;;;;;;;;;;;;;;;;
 (require 'moonscript-mode)
 (require 'android-mode)
-(require 'ace-jump-mode)
-(require 'typing)
-(require 'adaptive-wrap-prefix)
-(require 'yascroll)
+
 (require 'uniquify)
 (require 'magit)
 (require 'magit-blame)
 (require 'lua-mode)
-(require 'yasnippet) ;; not yasnippet-bundle
 ;; (require 'sr-speedbar nil 'noerror)
 (require 'highlight-parentheses)
 (require 'eclim)
-(require 'powerline)
 (require 'pianobar)
 (require 'framemove)
 (require 'ag)
@@ -137,13 +158,17 @@
 (require 'idle-highlight-mode)
 
 ;;;;;;;;;;;;;;;;;;
+;; Non-package forked requires
+;;;;;;;;;;;;;;;;;;
+(require 'adaptive-wrap-prefix)
+
+;;;;;;;;;;;;;;;;;;
 ;; My requires
 ;;;;;;;;;;;;;;;;;;
 (require 'evil-mode-customizations)
 (require 'keybindings)
 (require 'ibuffer-customizations)
 (require 'auto-complete-customizations)
-(require 'powerline-customizations)
 (require 'pianobar-customizations)
 (require 'tabbar-customizations)
 (require 'eproject-customizations)
@@ -234,14 +259,6 @@
 ;; XCode-like line wrapping
 (global-adaptive-wrap-prefix-mode t)
 
-;; Yascroll
-(global-yascroll-bar-mode 1)
-(setq yascroll:delay-to-hide nil)
-(set-face-background 'yascroll:thumb-fringe powerline-color1)
-(set-face-foreground 'yascroll:thumb-fringe powerline-color1)
-(set-face-background 'yascroll:thumb-text-area powerline-color1)
-;; Don't hide scrollbar when editing
-(defadvice yascroll:before-change (around always-show-bar activate) ())
 
 ;; Uniquify-buffer
 (setq uniquify-buffer-name-style 'post-forward
@@ -283,9 +300,6 @@
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 (setq lua-indent-level 4)
 
-;; Yasnippet
-(setq yas-snippet-dirs (list (concat gcs-thirdparty-directory "yasnippet/snippets")))
-(yas-global-mode 1)
 
 ;; Eclim
 (setq eclim-auto-save t)

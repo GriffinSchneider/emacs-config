@@ -7,9 +7,6 @@
 [submodule "thirdparty/zenburn-emacs"]
 	path = thirdparty/zenburn-emacs
 	url = git://github.com/bbatsov/zenburn-emacs.git
-[submodule "thirdparty/ace-jump-mode"]
-	path = thirdparty/ace-jump-mode
-	url = https://github.com/winterTTr/ace-jump-mode.git
 [submodule "thirdparty/emacs-eclim"]
 	path = thirdparty/emacs-eclim
 	url = https://github.com/senny/emacs-eclim.git
