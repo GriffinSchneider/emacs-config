@@ -62,6 +62,7 @@
 (gcs-package projectile)
 (gcs-package ace-jump-mode)
 (gcs-package typing)
+(gcs-package auto-complete-c-headers)
 
 ;; TODO: powerline's new version requires changes.
 (require 'powerline)

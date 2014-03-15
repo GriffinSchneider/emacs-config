@@ -94,6 +94,7 @@
 
     (if (equal major-mode 'objc-mode)
         (progn
+          (setq achead:include-directories (directory-dirs-with-headers eproject-root))
           (setq ac-clang-cflags (append (eproject-attribute :ac-user-cflags)
                                         (eproject-attribute :ac-clang-cflags)))
           (setq ac-clang-extra-imports (eproject-attribute :ac-user-imports))
