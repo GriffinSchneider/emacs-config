@@ -30,8 +30,6 @@
   (nconc load-path orig-load-path))
 (add-to-list 'load-path (concat gcs-config-directory "maxframe.el"))
 
-(when load-in-progress (byte-recompile-directory gcs-thirdparty-directory 0))
-
 ;; Add all themes to the custom theme path
 (add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
 (add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "tomorrow-theme/GNU Emacs"))
@@ -63,6 +61,20 @@
 (gcs-package ace-jump-mode)
 (gcs-package typing)
 (gcs-package auto-complete-c-headers)
+(gcs-package web-mode)
+
+(gcs-package pretty-mode
+  :config
+  (progn
+    (pretty-add-keywords 'js2-mode '(("\\_<var\\_>" . "∃")))
+    (pretty-activate-groups '(:greek))
+    (pretty-deactivate-groups (list :equality) (list 'javascript-mode))
+    (global-pretty-mode 1)))
+
+(gcs-package dired+
+  :config
+  (progn
+    (setq diredp-hide-details-initially-flag nil)))
 
 ;; TODO: powerline's new version requires changes.
 (require 'powerline)
@@ -195,10 +207,6 @@
 ;; js2-mode and tern
 (tern-ac-setup)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(defun gcs-js2-get-type ()
-    (when (eq major-mode 'js2-mode)
-      (tern-get-type)))
-(run-with-idle-timer 0.5 t 'gcs-js2-get-type)
 (add-hook 'js2-mode-hook 
           (lambda () 
             (tern-mode t)
@@ -417,11 +425,6 @@
 ;; Use visual bell
 (setq visible-bell t)
 
-;; Save the session
-(setq desktop-load-locked-desktop t)
-(desktop-save-mode 1)
-(desktop-read)
-
 ;; Save minibuffer history
 (savehist-mode t)
 
@@ -447,5 +450,14 @@
 ;; Prevent annoying "Active processes exist" query when Emacs is quit
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   (cl-flet ((process-list ())) ad-do-it))
+
+;; Save the session
+(run-with-timer
+ 0.1 nil
+ (lambda ()
+   (setq desktop-load-locked-desktop t)
+   (setq desktop-dirname "~/.emacs.d/")
+   (desktop-save-mode 1)
+   (ignore-errors (desktop-read))))
 
 (setq ruby-indent-level 4)

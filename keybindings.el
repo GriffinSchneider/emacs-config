@@ -379,7 +379,7 @@ and set the focus back to Emacs frame"
      
      ("w" save-buffer)
      ("W" write-file)
-     ("b" gcs-ibuffer)
+     ("b" ibuffer)
      ("v" ido-switch-buffer)
      ("V" ido-switch-buffer-other-frame)
 

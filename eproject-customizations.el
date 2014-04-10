@@ -103,8 +103,4 @@
           (ac-clang-launch-completion-process)))))
 (add-hook 'gcs-objective-c-project-file-visit-hook 'gcs-objecive-c-project-file-visit)
 
-(add-hook 'generic-project-file-visit-hook
-          (lambda ()
-            (gcs-setup-project-filter-groups)))
-
 (provide 'eproject-customizations)
