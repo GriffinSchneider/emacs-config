@@ -55,21 +55,31 @@
     "-fno-caret-diagnostics"
     "-std=gnu99"))
 
+(defun memo-table-for-symbol (sym)
+  (let ((memo-table (get sym 'memo-table)))
+    (if memo-table
+        memo-table
+      (put sym 'memo-table (make-hash-table :test 'equal))))
+
 (defun directory-dirs-with-headers (dir)
   "Find all directories in dir containing any .h files."
   (unless (file-directory-p dir)
     (error "Not a directory `%s'" dir))
-  (let ((dir (directory-file-name dir))
+  (let* ((dir (directory-file-name dir))
         (dirs '())
-        (files (directory-files dir nil nil t)))
-    (dolist (file files)
-      (unless (member file '("." ".."))
-        (let ((file (concat dir "/" file)))
-          (when (file-directory-p file)
-            (if (> (length (directory-files file nil ".*\\.h" t)) 0)
-                (setq dirs (append (cons file (directory-dirs-with-headers file)) dirs))
-              (setq dirs (append (directory-dirs-with-headers file) dirs)))))))
-    dirs))
+        (memo-table (memo-table-for-symbol 'dirs-with-headers))
+        (memoized (gethash dir memo-table)))
+    (if memoized memoized
+      (let ((files (directory-files dir nil nil t)))
+        (dolist (file files)
+          (unless (member file '("." ".."))
+            (let ((file (concat dir "/" file)))
+              (when (file-directory-p file)
+                (if (> (length (directory-files file nil ".*\\.h" t)) 0)
+                    (setq dirs (append (cons file (directory-dirs-with-headers file)) dirs))
+                  (setq dirs (append (directory-dirs-with-headers file) dirs)))))))
+        (puthash dir dirs memo-table)
+        dirs))))
 
 (defun gcs-project-get-relative-include-paths (root)
   (mapcar (lambda (dir) (file-relative-name dir root))

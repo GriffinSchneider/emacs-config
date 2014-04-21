@@ -23,6 +23,7 @@
     (helm-other-buffer '(helm-c-source-objc-headline) "*ObjC Headline*")))
 
 (add-to-list 'auto-mode-alist '("\\.h$" . objc-mode))
+(add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
 ;; Use objc-mode for objective-c++ files
 (add-to-list 'auto-mode-alist '("\\.mm$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.pch$" . objc-mode))
