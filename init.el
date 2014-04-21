@@ -198,11 +198,15 @@
       '(emacs-lisp-mode-hook js2-mode-hook ruby-mode-hook objc-mode-hook))
 
 ;; hl-defined
-(set-face-attribute 'hdefd-functions nil :foreground nil)
-(set-face-attribute 'hdefd-functions nil :inherit 'font-lock-constant-face)
-(set-face-attribute 'hdefd-variables nil :foreground nil)
-(set-face-attribute 'hdefd-variables nil :inherit 'font-lock-variable-name-face)
 (add-hook 'emacs-lisp-mode-hook 'hdefd-highlight-mode)
+;; For some reason these need to be in a hook or else they don't apply to
+;; new frames.
+(defun gcs-fix-hdefd-faces (x)
+  (set-face-attribute 'hdefd-functions nil :foreground nil)
+  (set-face-attribute 'hdefd-functions nil :inherit 'font-lock-constant-face)
+  (set-face-attribute 'hdefd-variables nil :foreground nil)
+  (set-face-attribute 'hdefd-variables nil :inherit 'font-lock-variable-name-face))
+(add-hook 'after-make-frame-functions 'gcs-fix-hdefd-faces)
 
 ;; js2-mode and tern
 (tern-ac-setup)
