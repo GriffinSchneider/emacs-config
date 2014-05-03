@@ -406,10 +406,7 @@ and set the focus back to Emacs frame"
 (defun gcs-prefix-key-command ()
   (interactive)
   (let* ((old-cursor-color (prog1 (face-background 'cursor) (set-cursor-color "Green")))
-         (old-overriding-local-map overriding-local-map)
-         (overriding-local-map (make-sparse-keymap))
          (key (read-key-sequence nil)))
-    (setq overriding-local-map old-overriding-local-map)
     (set-cursor-color old-cursor-color)
     (call-interactively (second (assoc key gcs-prefix-key-commands)))))
 
