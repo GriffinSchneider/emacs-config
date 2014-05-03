@@ -17,7 +17,7 @@
   (if (gcs-buffer-name-excluded-fromp-projects-p (buffer-name))
       (setq ad-return-value nil)
     (setq ad-return-value (or (buffer-file-name)
-                              (file-truename default-directory)))))
+			     (file-truename default-directory)))))
 ;; Stop eproject from checking whether the current buffer is visiting a file before activating.
 (defadvice eproject--after-change-major-mode-hook (around eproject-dont-check-for-filename activate)
   (when (and (eproject--buffer-file-name) (not eproject-root)) (eproject-maybe-turn-on)))
@@ -59,16 +59,16 @@
   (let ((memo-table (get sym 'memo-table)))
     (if memo-table
         memo-table
-      (put sym 'memo-table (make-hash-table :test 'equal))))
+      (put sym 'memo-table (make-hash-table :test 'equal)))))
 
 (defun directory-dirs-with-headers (dir)
   "Find all directories in dir containing any .h files."
   (unless (file-directory-p dir)
     (error "Not a directory `%s'" dir))
   (let* ((dir (directory-file-name dir))
-        (dirs '())
-        (memo-table (memo-table-for-symbol 'dirs-with-headers))
-        (memoized (gethash dir memo-table)))
+         (dirs '())
+         (memo-table (memo-table-for-symbol 'dirs-with-headers))
+         (memoized (gethash dir memo-table)))
     (if memoized memoized
       (let ((files (directory-files dir nil nil t)))
         (dolist (file files)
@@ -99,7 +99,7 @@
   (when (buffer-file-name)
     ;; In objc projects, .h files are objc files.
     (when (and (string= (file-name-extension (buffer-file-name)) "h")
-               (not (eq major-mode 'objc-mode)))
+             (not (eq major-mode 'objc-mode)))
       (objc-mode))
 
     (if (equal major-mode 'objc-mode)

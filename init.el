@@ -75,7 +75,7 @@
   :config
   (progn
     (setq diredp-hide-details-initially-flag nil)
-    (setq diredp-hide-details-propagate-flag nil))
+    (setq diredp-hide-details-propagate-flag nil)))
 
 ;; TODO: powerline's new version requires changes.
 (require 'powerline)
