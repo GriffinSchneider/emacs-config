@@ -170,7 +170,6 @@
 (require 'tern-auto-complete) 
 (require 'js2-mode)
 (require 'key-chord)
-(require 'color-identifiers-mode)
 (require 'hl-defined)
 (require 'idle-highlight-mode)
 
@@ -178,6 +177,7 @@
 ;; Non-package forked requires
 ;;;;;;;;;;;;;;;;;;
 (require 'adaptive-wrap-prefix)
+(require 'color-identifiers-mode)
 
 ;;;;;;;;;;;;;;;;;;
 ;; My requires
@@ -212,11 +212,12 @@
 ;; js2-mode and tern
 (tern-ac-setup)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-hook 'js2-mode-hook 
-          (lambda () 
-            (tern-mode t)
-            (setq ac-sources '(ac-source-tern-completion))
-            (evil-define-key 'insert js2-mode-map (kbd "C-<SPC>") 'tern-ac-complete)))
+(defun gcs-js2-mode-hook ()
+  (tern-mode t)
+  (color-identifiers-mode)
+  (setq ac-sources '(ac-source-tern-completion))
+  (evil-define-key 'insert js2-mode-map (kbd "C-<SPC>") 'tern-ac-complete))
+(add-hook 'js2-mode-hook  'gcs-js2-mode-hook)
 
 ;; markdowm-mode
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
