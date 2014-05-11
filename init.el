@@ -61,7 +61,20 @@
 (gcs-package ace-jump-mode)
 (gcs-package typing)
 (gcs-package auto-complete-c-headers)
-(gcs-package web-mode)
+
+(gcs-package rainbow-delimiters
+  :config
+  (progn
+    (global-rainbow-delimiters-mode t)))
+
+(gcs-package autopair
+  :config
+  (autopair-global-mode))
+
+(gcs-package web-mode
+  :config
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))))
 
 (gcs-package pretty-mode
   :config
