@@ -463,6 +463,8 @@ and set the focus back to Emacs frame"
 (key-chord-define-global "kg" 'evil-goto-line)
 (key-chord-define-global "kv" 'evil-visual-line)
 
+(key-chord-define-global " j" 'yas-expand)
+
 ;; Semicolon chords for evaluation
 (defun gcs-eval-dwim ()
   (interactive)

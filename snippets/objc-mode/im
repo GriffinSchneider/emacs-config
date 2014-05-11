@@ -1,0 +1,5 @@
+#name : im
+# --
+- (${1:returnType})${2:name} {
+
+}

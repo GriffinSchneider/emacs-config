@@ -1,0 +1,4 @@
+#name : int
+# --
+@interface ${1:name} : ${2:superclass}
+@end

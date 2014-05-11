@@ -1,0 +1,3 @@
+#name : prop
+# --
+@property (${1:attributes}) ${2:...};

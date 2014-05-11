@@ -1,0 +1,5 @@
+#name : cm
+# --
++ (${1:returnType})${2:name} {
+
+}
