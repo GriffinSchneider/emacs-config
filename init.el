@@ -206,7 +206,10 @@
 (require 'eww-customizations)
 
 ;; color-identifiers-mode
-(setq color-identifiers:color-luminance 0.8)
+(setq color-identifiers:num-colors 20)
+(setq color-identifiers:color-luminance 0.86)
+(setq color-identifiers:min-color-saturation 0.7)
+(setq color-identifiers:max-color-saturation 1.0)
 
 ;; idle-highlight-mode
 (setq idle-highlight-idle-time 0.1)
