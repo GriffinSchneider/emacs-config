@@ -205,6 +205,9 @@
 (require 'objective-c-customizations)
 (require 'eww-customizations)
 
+;; color-identifiers-mode
+(setq color-identifiers:color-luminance 0.8)
+
 ;; idle-highlight-mode
 (setq idle-highlight-idle-time 0.1)
 (defun idle-highlight-hook () (idle-highlight-mode t))
