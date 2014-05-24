@@ -10,9 +10,6 @@
 [submodule "thirdparty/emacs-eclim"]
 	path = thirdparty/emacs-eclim
 	url = https://github.com/senny/emacs-eclim.git
-[submodule "thirdparty/magit"]
-	path = thirdparty/magit
-	url = https://github.com/magit/magit.git
 [submodule "thirdparty/android-mode"]
 	path = thirdparty/android-mode
 	url = https://github.com/remvee/android-mode.git

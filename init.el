@@ -14,6 +14,10 @@
 
 (provide 'init)
 
+
+;;;;;;;;;;;;;;;;;;
+;; Initialization
+;;;;;;;;;;;;;;;;;;
 (when load-in-progress
   (setq gcs-config-directory (file-name-directory load-file-name)
         gcs-thirdparty-directory (concat gcs-config-directory "thirdparty/")))
@@ -53,6 +57,50 @@
      :ensure ,package
      ,@options))
 (put 'gcs-package 'lisp-indent-function 'defun)
+
+
+;;;;;;;;;;;;;;;;;;
+;; Non-package thirdparty requires
+;;;;;;;;;;;;;;;;;;
+(require 'moonscript-mode)
+(require 'android-mode)
+
+(require 'uniquify)
+(require 'lua-mode)
+;; (require 'sr-speedbar nil 'noerror)
+(require 'highlight-parentheses)
+(require 'eclim)
+(require 'pianobar)
+(require 'framemove)
+(require 'ag)
+(require 'multi-term)
+(require 'tabbar)
+(require 'xcode-document-viewer)
+(require 'helm)
+(require 'helm-config)
+(require 'helm-css-scss)
+(require 'eproject)
+(require 'eproject-extras)
+(require 'helm-eproject)
+(require 'auto-complete-clang-async)
+(require 'ediff)
+(require 'emms-setup)
+(require 'emms-browser)
+(require 'git-gutter)
+(require 'tern)
+(require 'tern-auto-complete) 
+(require 'js2-mode)
+(require 'key-chord)
+(require 'hl-defined)
+(require 'idle-highlight-mode)
+
+
+;;;;;;;;;;;;;;;;;;
+;; Non-package forked requires
+;;;;;;;;;;;;;;;;;;
+(require 'adaptive-wrap-prefix)
+(require 'color-identifiers-mode)
+
 
 ;;;;;;;;;;;;;;;;;;
 ;; Packages
@@ -148,49 +196,41 @@
       (define-key ido-completion-map (kbd "s-k") 'ido-prev-match))
     (add-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)))
 
+(gcs-package magit
+  :config
+  (progn
+    (require 'magit-blame)
+    ;; Magit
+    (set-face-attribute 'magit-item-highlight nil :inherit nil :background nil)
+    ;; "q" always kills magit buffers
+    (define-key magit-mode-map "q" (lambda () (interactive) (magit-mode-quit-window 'kill-buffer)))
+    (define-key magit-mode-map ";" 'magit-toggle-section)
+    ;; Use j and k for navigation in magit-mode.
+    ;; Remap "k" to be magit-goto-previous-section everywhere
+    (define-key magit-status-mode-map "k" 'magit-goto-previous-section)
+    (define-key magit-branch-manager-mode-map "k" 'magit-goto-previous-section)
+    (define-key magit-mode-map "k" 'magit-goto-previous-section)
+    ;; Remap "K" to do what "k" used to do, wherever "k" used to be defined
+    (define-key magit-status-mode-map "K" 'magit-discard-item)
+    (define-key magit-branch-manager-mode-map "K" 'magit-discard-item)
+    ;; Map "j" to magit-goto-next-section in eveywhere
+    (defun gcs-magit-j ()
+      (interactive)
+      (let ((next (magit-find-section-after (point))))
+        (if next
+            (magit-goto-section next)
+          (goto-char (+ -1 (magit-section-end (magit-current-section)))))))
+    (define-key magit-status-mode-map "j" 'gcs-magit-j)
+    (define-key magit-mode-map "j" 'gcs-magit-j)
+    ;; git-rebase-mode
+    (define-key git-rebase-mode-map "j" 'forward-line)
+    (define-key git-rebase-mode-map "k" 'git-rebase-backward-line)
+    (define-key git-rebase-mode-map "p" 'git-rebase-pick)
+    (define-key git-rebase-mode-map "K" 'git-rebase-kill-line)
+    (key-chord-define magit-mode-map "k;" (lambda () (interactive) (magit-goto-previous-section) (magit-toggle-section)))
+    (key-chord-define magit-mode-map "j;" (lambda () (interactive) (magit-goto-next-section) (magit-toggle-section)))
+    (key-chord-define magit-mode-map "l;" 'magit-git-command)))
 
-;;;;;;;;;;;;;;;;;;
-;; Non-package thirdparty requires
-;;;;;;;;;;;;;;;;;;
-(require 'moonscript-mode)
-(require 'android-mode)
-
-(require 'uniquify)
-(require 'magit)
-(require 'magit-blame)
-(require 'lua-mode)
-;; (require 'sr-speedbar nil 'noerror)
-(require 'highlight-parentheses)
-(require 'eclim)
-(require 'pianobar)
-(require 'framemove)
-(require 'ag)
-(require 'multi-term)
-(require 'tabbar)
-(require 'xcode-document-viewer)
-(require 'helm)
-(require 'helm-config)
-(require 'helm-css-scss)
-(require 'eproject)
-(require 'eproject-extras)
-(require 'helm-eproject)
-(require 'auto-complete-clang-async)
-(require 'ediff)
-(require 'emms-setup)
-(require 'emms-browser)
-(require 'git-gutter)
-(require 'tern)
-(require 'tern-auto-complete) 
-(require 'js2-mode)
-(require 'key-chord)
-(require 'hl-defined)
-(require 'idle-highlight-mode)
-
-;;;;;;;;;;;;;;;;;;
-;; Non-package forked requires
-;;;;;;;;;;;;;;;;;;
-(require 'adaptive-wrap-prefix)
-(require 'color-identifiers-mode)
 
 ;;;;;;;;;;;;;;;;;;
 ;; My requires
@@ -207,8 +247,8 @@
 
 ;; color-identifiers-mode
 (setq color-identifiers:num-colors 20)
-(setq color-identifiers:color-luminance 0.86)
-(setq color-identifiers:min-color-saturation 0.7)
+(setq color-identifiers:color-luminance 0.84)
+(setq color-identifiers:min-color-saturation 0.8)
 (setq color-identifiers:max-color-saturation 1.0)
 
 ;; idle-highlight-mode
@@ -296,47 +336,14 @@
 ;; XCode-like line wrapping
 (global-adaptive-wrap-prefix-mode t)
 
-
 ;; Uniquify-buffer
 (setq uniquify-buffer-name-style 'post-forward
       uniquify-separator ":")
-
-;; Magit
-(set-face-attribute 'magit-item-highlight nil :inherit nil :background nil)
-;; "q" always kills magit buffers
-(define-key magit-mode-map "q" (lambda () (interactive) (magit-mode-quit-window 'kill-buffer)))
-(define-key magit-mode-map ";" 'magit-toggle-section)
-;; Use j and k for navigation in magit-mode.
-;; Remap "k" to be magit-goto-previous-section everywhere
-(define-key magit-status-mode-map "k" 'magit-goto-previous-section)
-(define-key magit-branch-manager-mode-map "k" 'magit-goto-previous-section)
-(define-key magit-mode-map "k" 'magit-goto-previous-section)
-;; Remap "K" to do what "k" used to do, wherever "k" used to be defined
-(define-key magit-status-mode-map "K" 'magit-discard-item)
-(define-key magit-branch-manager-mode-map "K" 'magit-discard-item)
-;; Map "j" to magit-goto-next-section in eveywhere
-(defun gcs-magit-j ()
-  (interactive)
-  (let ((next (magit-find-section-after (point))))
-    (if next
-        (magit-goto-section next)
-      (goto-char (+ -1 (magit-section-end (magit-current-section)))))))
-(define-key magit-status-mode-map "j" 'gcs-magit-j)
-(define-key magit-mode-map "j" 'gcs-magit-j)
-;; git-rebase-mode
-(define-key git-rebase-mode-map "j" 'forward-line)
-(define-key git-rebase-mode-map "k" 'git-rebase-backward-line)
-(define-key git-rebase-mode-map "p" 'git-rebase-pick)
-(define-key git-rebase-mode-map "K" 'git-rebase-kill-line)
-(key-chord-define magit-mode-map "k;" (lambda () (interactive) (magit-goto-previous-section) (magit-toggle-section)))
-(key-chord-define magit-mode-map "j;" (lambda () (interactive) (magit-goto-next-section) (magit-toggle-section)))
-(key-chord-define magit-mode-map "l;" 'magit-git-command)
 
 ;; Lua-mode
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 (setq lua-indent-level 4)
-
 
 ;; Eclim
 (setq eclim-auto-save t)
