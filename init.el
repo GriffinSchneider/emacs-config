@@ -196,41 +196,7 @@
       (define-key ido-completion-map (kbd "s-k") 'ido-prev-match))
     (add-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)))
 
-(gcs-package magit
-  :config
-  (progn
-    (require 'magit-blame)
-    ;; Magit
-    (set-face-attribute 'magit-item-highlight nil :inherit nil :background nil)
-    ;; "q" always kills magit buffers
-    (define-key magit-mode-map "q" (lambda () (interactive) (magit-mode-quit-window 'kill-buffer)))
-    (define-key magit-mode-map ";" 'magit-toggle-section)
-    ;; Use j and k for navigation in magit-mode.
-    ;; Remap "k" to be magit-goto-previous-section everywhere
-    (define-key magit-status-mode-map "k" 'magit-goto-previous-section)
-    (define-key magit-branch-manager-mode-map "k" 'magit-goto-previous-section)
-    (define-key magit-mode-map "k" 'magit-goto-previous-section)
-    ;; Remap "K" to do what "k" used to do, wherever "k" used to be defined
-    (define-key magit-status-mode-map "K" 'magit-discard-item)
-    (define-key magit-branch-manager-mode-map "K" 'magit-discard-item)
-    ;; Map "j" to magit-goto-next-section in eveywhere
-    (defun gcs-magit-j ()
-      (interactive)
-      (let ((next (magit-find-section-after (point))))
-        (if next
-            (magit-goto-section next)
-          (goto-char (+ -1 (magit-section-end (magit-current-section)))))))
-    (define-key magit-status-mode-map "j" 'gcs-magit-j)
-    (define-key magit-mode-map "j" 'gcs-magit-j)
-    ;; git-rebase-mode
-    (define-key git-rebase-mode-map "j" 'forward-line)
-    (define-key git-rebase-mode-map "k" 'git-rebase-backward-line)
-    (define-key git-rebase-mode-map "p" 'git-rebase-pick)
-    (define-key git-rebase-mode-map "K" 'git-rebase-kill-line)
-    (key-chord-define magit-mode-map "k;" (lambda () (interactive) (magit-goto-previous-section) (magit-toggle-section)))
-    (key-chord-define magit-mode-map "j;" (lambda () (interactive) (magit-goto-next-section) (magit-toggle-section)))
-    (key-chord-define magit-mode-map "l;" 'magit-git-command)))
-
+(gcs-package magit :config (require 'magit-mode-customizations))
 
 ;;;;;;;;;;;;;;;;;;
 ;; My requires
