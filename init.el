@@ -10,7 +10,8 @@
 ;;   mplayer
 ;;   ag
 ;; Things that need building:
-;;   auto-complete-clang-async
+;;   auto-complete-clang-async needs make
+;;   tern needs needs npm install
 
 (provide 'init)
 
@@ -43,6 +44,7 @@
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 (add-to-list 'exec-path (concat gcs-config-directory "thirdparty/emms/src/"))
+(add-to-list 'exec-path (concat gcs-config-directory "thirdparty/tern/bin/"))
 
 ;; Setup package archibes
 (require 'package)
@@ -213,7 +215,7 @@
 
 ;; color-identifiers-mode
 (setq color-identifiers:num-colors 20)
-(setq color-identifiers:color-luminance 0.84)
+(setq color-identifiers:color-luminance 0.86)
 (setq color-identifiers:min-color-saturation 0.8)
 (setq color-identifiers:max-color-saturation 1.0)
 
