@@ -112,6 +112,14 @@
 (gcs-package typing)
 (gcs-package auto-complete-c-headers)
 
+(gcs-package glsl-mode
+  :commands glsl-mode
+  :init
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+    (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+    (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))))
+  
 (gcs-package rainbow-delimiters
   :config
   (progn
