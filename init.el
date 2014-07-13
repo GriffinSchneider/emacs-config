@@ -326,6 +326,13 @@
 (global-eclim-mode)
 (setq eclim-interactive-completion-function 'ido-completing-read)
 
+;; java-mode
+(defun gcs-java-mode-hook ()
+  (setq c-basic-offset 2
+        tab-width 2
+        indent-tabs-mode t))
+(add-hook 'java-mode-hook 'gcs-java-mode-hook)
+
 ;; Org-mode
 (setq org-hide-leading-stars t
       org-odd-levels-only t
