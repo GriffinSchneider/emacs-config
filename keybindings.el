@@ -57,9 +57,6 @@ multi-term dedicated buffer without prompting."
 
  "M-SPC" gcs-change-around-paren
  
- ;; Use s-s to toggle sr-speedbar
- "s-s" sr-speedbar-toggle
-
  "s-t" gcs-multi-term-dedicated-toggle
  "s-f" ns-popup-font-panel
 

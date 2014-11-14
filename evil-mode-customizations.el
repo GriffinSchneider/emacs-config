@@ -33,8 +33,4 @@
 
 (gcs-package evil-visualstar)
 
-(gcs-package surround
-  :config (global-surround-mode 1))
-
-
 (provide 'evil-mode-customizations)

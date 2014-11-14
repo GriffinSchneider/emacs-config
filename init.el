@@ -69,13 +69,11 @@
 
 (require 'uniquify)
 (require 'lua-mode)
-;; (require 'sr-speedbar nil 'noerror)
 (require 'highlight-parentheses)
 (require 'eclim)
 (require 'pianobar)
 (require 'framemove)
 (require 'ag)
-(require 'multi-term)
 (require 'tabbar)
 (require 'xcode-document-viewer)
 (require 'helm)
@@ -97,10 +95,16 @@
 (require 'idle-highlight-mode)
 
 
+
+
 ;;;;;;;;;;;;;;;;;;
 ;; Non-package forked requires
 ;;;;;;;;;;;;;;;;;;
+
+
 (require 'adaptive-wrap-prefix)
+
+(gcs-package dash)
 (require 'color-identifiers-mode)
 
 
@@ -111,6 +115,7 @@
 (gcs-package ace-jump-mode)
 (gcs-package typing)
 (gcs-package auto-complete-c-headers)
+(gcs-package multi-term)
 
 (gcs-package glsl-mode
   :commands glsl-mode
@@ -207,6 +212,9 @@
     (add-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)))
 
 (gcs-package magit :config (require 'magit-mode-customizations))
+;(gcs-package magit-gh-s :config
+;  (progn
+;    (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)))
 
 ;;;;;;;;;;;;;;;;;;
 ;; My requires
@@ -339,11 +347,6 @@
       ;; Align tags to column 90
       org-tags-column -90)
 
-;; Sr-speedbar
-(setq speedbar-show-unknown-files t
-      sr-speedbar-width-x 30
-      sr-speedbar-right-side nil)
-
 ;; Highlight-parenthesis
 (define-globalized-minor-mode global-highlight-parentheses-mode
   highlight-parentheses-mode
@@ -362,7 +365,7 @@
 ;;
 ;;  where REGEX matches the ghci prompt. Otherwise, emacs will hang on 
 ;;  inferior-haskell-load-file.
-(load (concat gcs-thirdparty-directory "haskell-mode/haskell-site-file"))
+;; (load (concat gcs-thirdparty-directory "haskell-mode/haskell-site-file"))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
@@ -475,4 +478,4 @@
    (desktop-save-mode 1)
    (ignore-errors (desktop-read))))
 
-(setq ruby-indent-level 4)
+(setq ruby-indent-level 2)
