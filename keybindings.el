@@ -301,7 +301,8 @@ buffer based on the buffer's major mode."
 
 (defun gcs-show-in-finder ()
   (interactive)
-  (shell-command "open -a \"Path Finder\" ."))
+  (if (shell-command "open -a \"Path Finder\" .")
+      (shell-command "open .")))
 
 (defun gcs-open-with-external-editor ()
   "If this buffer isn't visiting a file, show default-directory in finder.
