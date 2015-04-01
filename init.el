@@ -78,7 +78,6 @@
 (require 'xcode-document-viewer)
 (require 'helm)
 (require 'helm-config)
-(require 'helm-css-scss)
 (require 'eproject)
 (require 'eproject-extras)
 (require 'helm-eproject)
