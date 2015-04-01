@@ -55,6 +55,8 @@ multi-term dedicated buffer without prompting."
  "M-x" smex
  "M-X" smex-major-mode-commands
 
+ "M-0" (insert-char ?º)
+
  "M-SPC" gcs-change-around-paren
  
  "s-t" gcs-multi-term-dedicated-toggle
