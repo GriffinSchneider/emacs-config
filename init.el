@@ -211,6 +211,21 @@
       (define-key ido-completion-map (kbd "s-k") 'ido-prev-match))
     (add-hook 'ido-minibuffer-setup-hook 'gcs-ido-minibuffer-setup)))
 
+(gcs-package multi-term
+  :config
+  (progn
+    (setq term-buffer-maximum-size 10000)
+    (defun gcs-term-mode-hook ()
+      (yas-minor-mode  -1)
+      (auto-complete-mode -1)
+      (setq ac-sources '(ac-source-filename
+                         ac-source-words-in-buffer
+                         ac-source-words-in-same-mode-buffers
+                         ac-source-words-in-all-buffer)))
+    (setq multi-term-program "/bin/zsh")
+    (define-key term-raw-map (kbd "s-v") 'term-paste)
+    (add-hook 'term-mode-hook 'gcs-term-mode-hook)))
+
 (gcs-package magit :config (require 'magit-mode-customizations))
 ;(gcs-package magit-gh-s :config
 ;  (progn
@@ -296,19 +311,6 @@
 (define-key helm-map (kbd "s-k") 'helm-previous-line)
 ;; Stop Helm file sources from showing only the basenames of the files.
 (setq helm-ff-transformer-show-only-basename nil)
-
-;; Multi-term
-(setq term-buffer-maximum-size 10000)
-(defun gcs-term-mode-hook ()
-  (yas-minor-mode  -1)
-  (auto-complete-mode -1)
-  (setq ac-sources '(ac-source-filename
-                     ac-source-words-in-buffer
-                     ac-source-words-in-same-mode-buffers
-                     ac-source-words-in-all-buffer)))
-(setq multi-term-program "/bin/zsh")
-(define-key term-raw-map (kbd "s-v") 'term-paste)
-(add-hook 'term-mode-hook 'gcs-term-mode-hook)
 
 ;; Ag
 (setq ag-highlight-search t)

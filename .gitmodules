@@ -40,9 +40,6 @@
 [submodule "thirdparty/framemove"]
 	path = thirdparty/framemove
 	url = git://github.com/emacsmirror/framemove.git
-[submodule "thirdparty/multi-term"]
-	path = thirdparty/multi-term
-	url = git://github.com/emacsmirror/multi-term.git
 [submodule "thirdparty/tabbar"]
 	path = thirdparty/tabbar
 	url = git://github.com/dholm/tabbar.git
