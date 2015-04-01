@@ -356,21 +356,6 @@
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
 
-;; Haskell-mode
-;;   NOTE: If the ghci prompt is changed in your .ghci file,
-;;   inferior-haskell-mode's regex to match the prompt may 
-;;   not work. If this is the case, do something like:
-;;
-;;     (add-hook
-;;       'inferior-haskell-mode-hook
-;;       (lambda () (set (make-local-variable 'comint-prompt-regexp) "REGEX")))
-;;
-;;  where REGEX matches the ghci prompt. Otherwise, emacs will hang on 
-;;  inferior-haskell-load-file.
-;; (load (concat gcs-thirdparty-directory "haskell-mode/haskell-site-file"))
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
 ;; Ediff
 (set-face-attribute 'ediff-current-diff-A nil :background "#553333" :foreground nil)
 (set-face-attribute 'ediff-current-diff-B nil :background "#335533" :foreground nil)
