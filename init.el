@@ -33,7 +33,6 @@
   (setq load-path (cons default-directory nil))
   (normal-top-level-add-subdirs-to-load-path)
   (nconc load-path orig-load-path))
-(add-to-list 'load-path (concat gcs-config-directory "maxframe.el"))
 
 ;; Add all themes to the custom theme path
 (add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
