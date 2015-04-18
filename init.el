@@ -240,9 +240,6 @@
     (add-hook 'term-mode-hook 'gcs-term-mode-hook)))
 
 (gcs-package magit :config (require 'magit-mode-customizations))
-;(gcs-package magit-gh-s :config
-;  (progn
-;    (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)))
 
 ;;;;;;;;;;;;;;;;;;
 ;; My requires
