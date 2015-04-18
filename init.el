@@ -374,10 +374,6 @@
 (setq css-indent-offset 2)
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
-;; Setup starting frame size
-(add-to-list 'default-frame-alist '(height . 50))
-(add-to-list 'default-frame-alist '(width . 155))
-
 ;; Turn on winner-mode
 (winner-mode t)
 
