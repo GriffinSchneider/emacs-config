@@ -3,7 +3,7 @@
 (set-face-attribute 'tabbar-default nil
   :inherit nil
   :height 1.0
-  :background powerline-color2
+  :background "#383838"
   :box '(:line-width -1 :style released-button))
 (set-face-attribute 'tabbar-unselected nil
   :foreground "#7f7f7f"

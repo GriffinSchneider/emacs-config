@@ -163,19 +163,22 @@
     (setq diredp-hide-details-initially-flag nil)
     (setq diredp-hide-details-propagate-flag nil)))
 
-;; TODO: powerline's new version requires changes.
-(require 'powerline)
-;; TODO: move this down. colors in here are required elsewhere
-(require 'powerline-customizations)
+(gcs-package powerline
+  :config
+  (progn
+    (require 'powerline-customizations)))
+
 (gcs-package yascroll
   :config
   (progn
     ;; Yascroll
     (global-yascroll-bar-mode 1)
+    (setq gcs-yascroll-color "#598559")
     (setq yascroll:delay-to-hide nil)
-    (set-face-background 'yascroll:thumb-fringe powerline-color1)
-    (set-face-foreground 'yascroll:thumb-fringe powerline-color1)
-    (set-face-background 'yascroll:thumb-text-area powerline-color1)
+    (zenburn-with-color-variables)
+    (set-face-background 'yascroll:thumb-fringe gcs-yascroll-color)
+    (set-face-foreground 'yascroll:thumb-fringe gcs-yascroll-color)
+    (set-face-background 'yascroll:thumb-text-area gcs-yascroll-color)
     ;; Don't hide scrollbar when editing
     (defadvice yascroll:before-change (around always-show-bar activate) ())))
 

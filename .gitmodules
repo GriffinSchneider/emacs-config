@@ -19,9 +19,6 @@
 [submodule "thirdparty/yasnippet"]
 	path = thirdparty/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
-[submodule "thirdparty/emacs-powerline"]
-	path = thirdparty/emacs-powerline
-	url = git://github.com/jonathanchu/emacs-powerline.git
 [submodule "thirdparty/yascroll-el"]
 	path = thirdparty/yascroll-el
 	url = https://github.com/m2ym/yascroll-el.git
