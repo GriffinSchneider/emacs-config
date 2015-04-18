@@ -457,12 +457,8 @@
   (cl-flet ((process-list ())) ad-do-it))
 
 ;; Save the session
-(run-with-timer
- 0.1 nil
- (lambda ()
-   (setq desktop-load-locked-desktop t)
-   (setq desktop-dirname "~/.emacs.d/")
-   (desktop-save-mode 1)
-   (ignore-errors (desktop-read))))
+(setq desktop-load-locked-desktop t)
+(setq desktop-dirname "~/.emacs.d/")
+(desktop-save-mode 1)
 
 (setq ruby-indent-level 2)
