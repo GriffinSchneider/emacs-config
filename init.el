@@ -460,5 +460,12 @@
 (setq desktop-load-locked-desktop t)
 (setq desktop-dirname "~/.emacs.d/")
 (desktop-save-mode 1)
+;; Save desktop when opening files, to avoid losing state if Emacs crashes.
+(defun gcs-desktop-find-file-hook-helper ()
+  (setq desktop-file-modtime (nth 5 (file-attributes (desktop-full-file-name))))
+  (desktop-save user-emacs-directory))
+(defun gcs-desktop-find-file-hook ()
+  (run-with-timer 2 nil 'gcs-desktop-find-file-hook-helper))
+(add-hook 'find-file-hook 'gcs-desktop-find-file-hook)
 
 (setq ruby-indent-level 2)
