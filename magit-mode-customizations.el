@@ -1,6 +1,8 @@
 
 (require 'magit-blame)
 
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;; Magit
 (set-face-attribute 'magit-item-highlight nil :inherit nil :background nil)
 ;; "q" always kills magit buffers
