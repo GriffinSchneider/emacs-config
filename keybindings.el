@@ -66,7 +66,7 @@ multi-term dedicated buffer without prompting."
  "s-r" gcs-compile
 
  ;; Use ibuffer instead of list-buffers
- "\C-x\C-b" gcs-gibuffer
+ "\C-x\C-b" gcs-ibuffer
 
  ;; Use C-w for backward-kill-word in the minibuffer
  "C-w" backward-kill-word
