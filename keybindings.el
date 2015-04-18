@@ -19,6 +19,26 @@
 
 ;;;;; GLOBAL-SET-KEY KEYS ;;;;;
 
+;; Fixup OSX keybindings
+(when (equal system-type 'darwin)
+  ;; Treat option as meta and command as super
+  (setq mac-option-key-is-meta t)
+  (setq mac-command-key-is-meta nil)
+  (setq mac-command-modifier 'super)
+  (setq mac-option-modifier 'meta)
+  
+  ;; Keybindings
+  (global-set-keys
+   "s-q" save-buffers-kill-terminal
+   "s-v" yank
+   "s-c" kill-ring-save
+   "s-x" kill-region
+   "s-w" delete-frame
+   "s-n" make-frame
+   "s-z" undo-tree-undo
+   "s-s" save-buffer
+   "s-Z" undo-tree-redo))
+
 (defun gcs-put-buffer-in-window (dir)
   "Pop the current window's buffer off the window's buffer list
 and push it onto the buffer list of the window in direction DIR."
