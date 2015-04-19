@@ -34,11 +34,6 @@
   (normal-top-level-add-subdirs-to-load-path)
   (nconc load-path orig-load-path))
 
-;; Add all themes to the custom theme path
-(add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "zenburn-emacs"))
-(add-to-list 'custom-theme-load-path (concat gcs-thirdparty-directory "tomorrow-theme/GNU Emacs"))
-(load-theme 'zenburn t)
-
 ;; exec-path-from-shell needs to happen before other requires, so the path will be setup properly
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
@@ -58,6 +53,8 @@
      :ensure ,package
      ,@options))
 (put 'gcs-package 'lisp-indent-function 'defun)
+
+(gcs-package zenburn-theme :init (load-theme 'zenburn ))
 
 
 ;;;;;;;;;;;;;;;;;;

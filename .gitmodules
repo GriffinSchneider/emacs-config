@@ -4,9 +4,6 @@
 [submodule "thirdparty/sr-speedbar"]
 	path = thirdparty/sr-speedbar
 	url = https://github.com/emacsmirror/sr-speedbar.git
-[submodule "thirdparty/zenburn-emacs"]
-	path = thirdparty/zenburn-emacs
-	url = git://github.com/bbatsov/zenburn-emacs.git
 [submodule "thirdparty/emacs-eclim"]
 	path = thirdparty/emacs-eclim
 	url = https://github.com/senny/emacs-eclim.git
@@ -64,9 +61,6 @@
 [submodule "thirdparty/emms"]
 	path = thirdparty/emms
 	url = git://github.com/emacsmirror/emms.git
-[submodule "thirdparty/tomorrow-theme"]
-	path = thirdparty/tomorrow-theme
-	url = git://github.com/chriskempson/tomorrow-theme.git
 [submodule "thirdparty/emacs-git-gutter"]
 	path = thirdparty/emacs-git-gutter
 	url = git://github.com/syohex/emacs-git-gutter.git
