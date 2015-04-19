@@ -1,23 +1,29 @@
 (require 'init)
 
+(set-face-attribute 'mode-line nil :box nil)
+(set-face-attribute 'mode-line-inactive nil :box nil)
+
 (zenburn-with-color-variables
   (set-face-foreground 'mode-line-buffer-id nil)
   (defface powerline-active3 `((t (:foreground ,zenburn-yellow :weight bold))) nil)
-  (defface powerline-inactive3 `((t (:foreground ,zenburn-green))) nil))
+  (defface powerline-inactive3 `((t (:foreground ,zenburn-green))) nil)
 
-(setq powerline-default-separator 'arrow-fade)
+  (defface evil-mode-line-tag-normal-face `((t (:foreground ,zenburn-green))) nil)
+  (defface evil-mode-line-tag-emacs-face `((t (:background "red" :foreground "white"))) nil)
+  (defface evil-mode-line-tag-motion-face `((t (:background "orange"))) nil)
+  (defface evil-mode-line-tag-visual-face `((t (:background "blue" :foreground "white"))) nil)
+  (defface evil-mode-line-tag-insert-face `((t (:background "green" :foreground "black"))) nil))
 
-(defun gcs-propertized-evil-mode-tag ()
-  (zenburn-with-color-variables
-    (propertize evil-mode-line-tag 'font-lock-face
-                ;; Don't propertize if we're not in the selected buffer
-                (cond ((not (eq (current-buffer) (car (buffer-list)))) '(:foreground ,zenburn-green))
-                      ((evil-normal-state-p) `(:foreground ,zenburn-green))
-                      ((evil-emacs-state-p)  `(:background "red" :foreground "white"))
-                      ((evil-motion-state-p) `(:background "orange"))
-                      ((evil-visual-state-p) `(:background "blue" :foreground "white"))
-                      ((evil-insert-state-p) `(:background "green" :foreground "black"))
-                      (t '())))))
+(setq powerline-default-separator 'slant)
+
+(defun gcs-evil-mode-line-tag-face ()
+  (cond ((not (eq (current-buffer) (car (buffer-list)))) 'evil-mode-line-tag-normal-face)
+        ((evil-normal-state-p) 'evil-mode-line-tag-normal-face)
+        ((evil-emacs-state-p)  'evil-mode-line-tag-emacs-face)
+        ((evil-motion-state-p) 'evil-mode-line-tag-motion-face)
+        ((evil-visual-state-p) 'evil-mode-line-tag-visual-face)
+        ((evil-insert-state-p) 'evil-mode-line-tag-visual-face)
+        (t 'evil-mode-line-tag-normal-face)))
 
 (setq-default
  mode-line-format
@@ -28,13 +34,17 @@
            (face1 (if active 'powerline-active1 'powerline-inactive1))
            (face2 (if active 'powerline-active2 'powerline-inactive2))
            (face3 (if active 'powerline-active3 'powerline-inactive3))
+           (face4 (gcs-evil-mode-line-tag-face))
            (separator-left (intern (format "powerline-%s-%s"
                                            (powerline-current-separator)
                                            (car powerline-default-separator-dir))))
            (separator-right (intern (format "powerline-%s-%s"
                                             (powerline-current-separator)
                                             (cdr powerline-default-separator-dir))))
-           (lhs (list (powerline-raw "%*" nil)
+           (lhs (list (funcall separator-right mode-line face4)
+                      (powerline-raw (s-chop-prefix " <" (s-chop-suffix "> " evil-mode-line-tag)) face4)
+                      (funcall separator-left face4 mode-line)
+                      (powerline-raw "%*" nil)
                       (powerline-buffer-size nil 'l)
                       (powerline-buffer-id face3 'l)
                       (powerline-raw " ")
@@ -60,8 +70,7 @@
                          (powerline-minor-modes face2 'l)
                          (powerline-raw " " face2)
                          )))
-      (concat (gcs-propertized-evil-mode-tag)
-              (powerline-render lhs)
+      (concat (powerline-render lhs)
               (powerline-fill-center face2 (/ (powerline-width center) 2.0))
               (powerline-render center)
               (powerline-fill face2 (powerline-width rhs))

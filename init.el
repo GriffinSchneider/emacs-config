@@ -105,6 +105,7 @@
 ;;;;;;;;;;;;;;;;;;
 ;; Packages
 ;;;;;;;;;;;;;;;;;;
+(gcs-package s)
 (gcs-package projectile)
 (gcs-package ace-jump-mode)
 (gcs-package typing)
