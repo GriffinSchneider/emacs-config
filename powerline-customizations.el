@@ -5,17 +5,19 @@
   (defface powerline-active3 `((t (:foreground ,zenburn-yellow :weight bold))) nil)
   (defface powerline-inactive3 `((t (:foreground ,zenburn-green))) nil))
 
-(setq powerline-default-separator 'slant)
+(setq powerline-default-separator 'arrow-fade)
 
 (defun gcs-propertized-evil-mode-tag ()
-  (propertize evil-mode-line-tag 'font-lock-face
-              ;; Don't propertize if we're not in the selected buffer
-              (cond ((not (eq (current-buffer) (car (buffer-list)))) '())
-                    ((evil-emacs-state-p)  '(:background "red"))
-                    ((evil-motion-state-p) '(:background "orange"))
-                    ((evil-visual-state-p) '(:background "blue" :foreground "white"))
-                    ((evil-insert-state-p) '(:background "green"))
-                    (t '()))))
+  (zenburn-with-color-variables
+    (propertize evil-mode-line-tag 'font-lock-face
+                ;; Don't propertize if we're not in the selected buffer
+                (cond ((not (eq (current-buffer) (car (buffer-list)))) '(:foreground ,zenburn-green))
+                      ((evil-normal-state-p) `(:foreground ,zenburn-green))
+                      ((evil-emacs-state-p)  `(:background "red" :foreground "white"))
+                      ((evil-motion-state-p) `(:background "orange"))
+                      ((evil-visual-state-p) `(:background "blue" :foreground "white"))
+                      ((evil-insert-state-p) `(:background "green" :foreground "black"))
+                      (t '())))))
 
 (setq-default
  mode-line-format
