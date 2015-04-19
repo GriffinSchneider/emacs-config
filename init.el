@@ -54,7 +54,7 @@
      ,@options))
 (put 'gcs-package 'lisp-indent-function 'defun)
 
-(gcs-package zenburn-theme :init (load-theme 'zenburn ))
+(gcs-package zenburn-theme :init (load-theme 'zenburn t))
 
 
 ;;;;;;;;;;;;;;;;;;
