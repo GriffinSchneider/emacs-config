@@ -190,6 +190,9 @@ multi-term dedicated buffer without prompting."
 (gcs-define-evil-motion-key (read-kbd-macro "C-j") (lambda () (interactive) (evil-scroll-line-down 2) (evil-next-line 2)))
 (gcs-define-evil-motion-key (read-kbd-macro "C-k") (lambda () (interactive) (evil-scroll-line-up 2) (evil-previous-line 2)))
 
+(gcs-define-evil-motion-key (kbd "K") 'er/expand-region)
+(gcs-define-evil-motion-key (kbd "s-K") 'er/contract-region)
+
 ;; Use return for fold-toggling, but only bind it in modes that support hs-minor-mode
 (add-hook 'after-change-major-mode-hook
           (lambda ()
