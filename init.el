@@ -130,6 +130,7 @@
       (tern-mode t)
       (color-identifiers-mode)
       (setq ac-sources '(ac-source-tern-completion))
+      (define-key js2-mode-map (kbd "M-j") nil)
       (evil-define-key 'insert js2-mode-map (kbd "C-<SPC>") 'tern-ac-complete))
     (add-hook 'js2-mode-hook  'gcs-js2-mode-hook)))
 
