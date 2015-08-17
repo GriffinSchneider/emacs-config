@@ -345,8 +345,13 @@
 ;; Org-mode
 (setq org-hide-leading-stars t
       org-odd-levels-only t
-      ;; Align tags to column 90
-      org-tags-column -90)
+      org-reverse-note-order t
+      org-log-states-order-reversed nil
+      ;; Align tags to column 120
+      org-tags-column -110
+      org-todo-keyword-faces 
+      '(("TODO" . org-warning)
+        ("DOING" . "yellow")))
 
 ;; Highlight-parenthesis
 (define-globalized-minor-mode global-highlight-parentheses-mode
