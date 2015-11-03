@@ -351,7 +351,8 @@
       org-tags-column -110
       org-todo-keyword-faces 
       '(("TODO" . org-warning)
-        ("DOING" . "yellow")))
+        ("DOING" . "yellow")
+        ("DONE" . org-done)))
 
 ;; Highlight-parenthesis
 (define-globalized-minor-mode global-highlight-parentheses-mode
