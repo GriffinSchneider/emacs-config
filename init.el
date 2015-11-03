@@ -346,6 +346,7 @@
 (setq org-hide-leading-stars t
       org-odd-levels-only t
       org-reverse-note-order t
+      org-fast-tag-selection-include-todo t
       org-log-states-order-reversed nil
       ;; Align tags to column 120
       org-tags-column -110
