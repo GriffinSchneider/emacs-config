@@ -112,6 +112,7 @@
 (gcs-package auto-complete-c-headers)
 (gcs-package multi-term)
 (gcs-package expand-region)
+(gcs-package epresent)
 
 (gcs-package glsl-mode
   :commands glsl-mode
