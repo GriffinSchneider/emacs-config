@@ -134,7 +134,13 @@ multi-term dedicated buffer without prompting."
  "M-k" tabbar-forward-tab
 
  ;; Revert buffer with no confirmation
- "M-s-R" (revert-buffer t t))
+ "M-s-R" (revert-buffer t t)
+
+ ;; s-=, s--, and s-0 to adjust font size like in a browser
+ "s-=" (text-scale-increase 1)
+ "s--" (text-scale-increase -1)
+ "s-0" (text-scale-adjust 0)
+ )
 
 ;;;;;  PIANOBAR KEYS ;;;;;
 ;; Setup various pianobar commands with a s-p prefix
