@@ -351,6 +351,7 @@
       org-reverse-note-order t
       org-fast-tag-selection-include-todo t
       org-log-states-order-reversed nil
+      org-fast-tag-selection-include-todo t
       ;; Align tags to column 120
       org-tags-column -110
       org-todo-keyword-faces 
