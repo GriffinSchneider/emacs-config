@@ -29,7 +29,9 @@
             term-mode
             magit-branch-manager-mode
             eww-mode
-            pianobar-mode))))
+    (mapc (lambda (mode) (evil-set-initial-state mode 'normal))
+          '(git-commit-mode))
+    ))
 
 (gcs-package evil-visualstar)
 
