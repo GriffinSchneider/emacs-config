@@ -25,6 +25,8 @@
       (goto-char (+ -1 (magit-section-end (magit-current-section)))))))
 (define-key magit-status-mode-map "j" 'gcs-magit-j)
 (define-key magit-mode-map "j" 'gcs-magit-j)
+(define-key magit-diff-mode-map "j" 'gcs-magit-j)
+(define-key magit-commit-mode-map "j" 'gcs-magit-j)
 ;; git-rebase-mode
 (define-key git-rebase-mode-map "j" 'forward-line)
 (define-key git-rebase-mode-map "k" 'git-rebase-backward-line)
