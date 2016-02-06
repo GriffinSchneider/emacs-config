@@ -9,6 +9,8 @@
 ;;   mpg321
 ;;   mplayer
 ;;   ag
+;; Other stuff that needs to be installed:
+;;   company-sourcekit needs https://github.com/terhechte/SourceKittenDaemon to be installed
 ;; Things that need building:
 ;;   auto-complete-clang-async needs make
 ;;   tern needs needs npm install
@@ -56,6 +58,9 @@
 
 (gcs-package zenburn-theme :init (load-theme 'zenburn t))
 
+(gcs-package company)
+(gcs-package dash-functional)
+(gcs-package swift-mode)
 
 ;;;;;;;;;;;;;;;;;;
 ;; Non-package thirdparty requires
@@ -87,6 +92,8 @@
 (require 'key-chord)
 (require 'hl-defined)
 (require 'idle-highlight-mode)
+(require 'company-sourcekit)
+(require 'magit)
 
 
 
@@ -255,6 +262,7 @@
 (require 'eproject-customizations)
 (require 'objective-c-customizations)
 (require 'eww-customizations)
+(require 'magit-mode-customizations)
 
 ;; color-identifiers-mode
 (setq color-identifiers:num-colors 10)
@@ -473,5 +481,3 @@
 (defun gcs-desktop-find-file-hook ()
   (run-with-timer 2 nil 'gcs-desktop-find-file-hook-helper))
 (add-hook 'find-file-hook 'gcs-desktop-find-file-hook)
-
-(setq ruby-indent-level 2)

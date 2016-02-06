@@ -88,3 +88,9 @@
 [submodule "thirdparty/use-package"]
 	path = thirdparty/use-package
 	url = git@github.com:jwiegley/use-package.git
+[submodule "thirdparty/company-sourcekit"]
+	path = thirdparty/company-sourcekit
+	url = git@github.com:nathankot/company-sourcekit.git
+[submodule "thirdparty/magit"]
+	path = thirdparty/magit
+	url = git@github.com:magit/magit.git
