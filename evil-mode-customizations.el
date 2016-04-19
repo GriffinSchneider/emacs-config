@@ -28,7 +28,7 @@
             git-rebase-mode
             term-mode
             magit-branch-manager-mode
-            eww-mode
+            eww-mode))
     (mapc (lambda (mode) (evil-set-initial-state mode 'normal))
           '(git-commit-mode))
     ))
