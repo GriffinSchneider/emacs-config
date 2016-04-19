@@ -248,8 +248,6 @@
     (define-key term-raw-map (kbd "s-v") 'term-paste)
     (add-hook 'term-mode-hook 'gcs-term-mode-hook)))
 
-(gcs-package magit :config (require 'magit-mode-customizations))
-
 ;;;;;;;;;;;;;;;;;;
 ;; My requires
 ;;;;;;;;;;;;;;;;;;
