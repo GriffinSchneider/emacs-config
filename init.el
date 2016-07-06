@@ -363,7 +363,8 @@
       org-todo-keyword-faces 
       '(("TODO" . org-warning)
         ("DOING" . "yellow")
-        ("DONE" . org-done)))
+        ("DONE" . org-done)
+        ("CANCELLED" . org-done)))
 
 ;; Highlight-parenthesis
 (define-globalized-minor-mode global-highlight-parentheses-mode
